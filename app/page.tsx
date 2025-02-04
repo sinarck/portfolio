@@ -1,21 +1,26 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { socials } from "@/config/socials";
 import { links } from "@/config/links";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+} from "@/components/ui/tooltip";
+import { TooltipTrigger } from "@radix-ui/react-tooltip";
 
-export default function Home() {
+const Home = () => {
   return (
-    <div className="min-h-screen bg-neutral-900 text-neutral-200 flex items-center justify-center p-4">
-      <main className="bg-neutral-800 rounded-lg shadow-2xl p-6 md:p-8 max-w-4xl w-full flex flex-col md:flex-row gap-8">
+    <div className="min-h-screen flex items-center justify-center p-4">
+      <main className="bg-neutral-900 rounded-lg shadow-2xl p-6 md:p-8 max-w-4xl w-full flex flex-col md:flex-row gap-8 border border-neutral-800">
         <div className="w-full md:w-1/3 flex flex-col items-center">
           <Image
             src="/pic.jpg"
             alt="Picture of me"
             width={200}
             height={200}
-            className="rounded-full border-4 border-neutral-600 aspect-square object-cover"
+            className="rounded-full border border-neutral-800 aspect-square object-cover"
             style={{
               objectPosition: "center 10%",
             }}
@@ -27,7 +32,7 @@ export default function Home() {
             Aspiring Software Engineer
           </p>
         </div>
-        <div className="w-full md:w-2/3 flex flex-col justify-center mt-8 md:mt-0">
+        <div className="w-full md:w-2/3 flex flex-col justify-start mt-8 md:mt-0">
           <h2 className="text-2xl font-semibold text-neutral-100 mb-4">
             About Me
           </h2>
@@ -39,34 +44,50 @@ export default function Home() {
             to complex problems.
           </p>
           <div className="flex flex-col items-center align-middle sm:flex-row gap-4">
-            {/* Map over links array */}
-            {links.map((link) => (
-              <Button
-                key={link.name}
-                asChild
-                className="bg-neutral-700 hover:bg-neutral-600 text-neutral-100"
-              >
-                <Link href={link.href}>{link.name}</Link>
-              </Button>
-            ))}
+            <TooltipProvider>
+              {/* Map over links array */}
+              {links.map((link) => (
+                <Tooltip key={link.name}>
+                  <TooltipTrigger>
+                    <Button
+                      asChild
+                      className="bg-neutral-800 hover:bg-neutral-900 hover:border-neutral-800 border border-neutral-700"
+                    >
+                      <Link href={link.href}>{link.name}</Link>
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom" align="center">
+                    {link.tooltip}
+                  </TooltipContent>
+                </Tooltip>
+              ))}
 
-            {/* Map over socials array */}
-            {socials.map((social) => (
-              <Button
-                key={social.name}
-                asChild
-                className="bg-neutral-700 hover:bg-neutral-600 text-neutral-100"
-              >
-                <Link href={social.link} target="_blank">
-                  <social.icon className="w-6 h-6" />
-                  <span className="sr-only">{social.name}</span>
-                </Link>
-              </Button>
-            ))}
+              {/* Map over socials array */}
+              {socials.map((social) => (
+                <Tooltip key={social.name}>
+                  <TooltipTrigger>
+                    <Button
+                      asChild
+                      className="bg-neutral-800 hover:bg-neutral-900 hover:border-neutral-800 border border-neutral-700"
+                    >
+                      <Link href={social.link} target="_blank">
+                        <social.icon className="w-6 h-6" />
+                        <span className="sr-only">{social.name}</span>
+                      </Link>
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent side="bottom" align="center">
+                    {social.name}
+                  </TooltipContent>
+                </Tooltip>
+              ))}
+            </TooltipProvider>
           </div>
         </div>
       </main>
     </div>
   );
-}
+};
+
+export default Home;
 

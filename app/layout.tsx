@@ -21,7 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${manRope.className} antialiased`}>{children}</body>
+      <body
+        className={`${manRope.className} antialiased min-h-screen bg-black text-neutral-100`}
+      >
+        {children}
+      </body>
     </html>
   );
 }
