@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
+import { CSPostHogProvider } from "@/lib/providers";
 
 const manRope = Manrope({
   subsets: ["latin"],
@@ -21,11 +22,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${manRope.className} antialiased min-h-screen bg-black text-neutral-100`}
-      >
-        {children}
-      </body>
+      <CSPostHogProvider>
+        <body
+          className={`${manRope.className} antialiased min-h-screen bg-black text-neutral-100`}
+        >
+          {children}
+        </body>
+      </CSPostHogProvider>
     </html>
   );
 }
