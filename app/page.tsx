@@ -58,11 +58,10 @@ const Home = () => {
               About Me
             </h2>
             <p className="text-lg text-neutral-300 mb-6">
-              Passionate about web development and machine learning. Always
-              eager to learn and create innovative solutions that push the
-              boundaries of technology. With a strong foundation in computer
-              science and a keen eye for detail, I strive to develop efficient
-              and elegant solutions to complex problems.
+              I'm a creative and driven student with a passion for building
+              dynamic frontend experiences and exploring innovative machine
+              learning solutions. I thrive on transforming ideas into engaging
+              digital products.
             </p>
             {/* Updated container: all links side by side */}
             <div className="flex flex-row items-center gap-4">
