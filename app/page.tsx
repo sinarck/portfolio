@@ -58,7 +58,7 @@ const Home = () => {
               About Me
             </h2>
             <p className="text-lg text-neutral-300 mb-6">
-              I&aposm a creative and driven student with a passion for building
+              I&apos;m a creative and driven student with a passion for building
               dynamic frontend experiences and exploring innovative machine
               learning solutions. I thrive on transforming ideas into engaging
               digital products.
