@@ -21,11 +21,7 @@ export const socials: Social[] = [
     tooltip: "View my LinkedIn profile",
   },
   {
-    link: `mailto:aadisanghvi321@outlook.com?subject=${encodeURIComponent(
-      "Portfolio Inquiry"
-    )}&body=${encodeURIComponent(
-      "Hello Aadi,\n\nI came across your portfolio and would like to connect."
-    )}`,
+    link: "mailto:aadisanghvi321@outlook.com",
     name: "Email",
     icon: Mail,
     tooltip: "Send me an email",

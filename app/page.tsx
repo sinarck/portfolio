@@ -64,26 +64,35 @@ const Home = () => {
               science and a keen eye for detail, I strive to develop efficient
               and elegant solutions to complex problems.
             </p>
-            <div className="flex flex-col items-center align-middle sm:flex-row gap-4">
+            {/* Updated container: all links side by side */}
+            <div className="flex flex-row items-center gap-4">
               <TooltipProvider>
-                {/* Map over links array */}
-                {links.map((link) => (
-                  <Tooltip key={link.name}>
-                    <TooltipTrigger>
-                      <Button
-                        asChild
-                        className="bg-neutral-800 hover:bg-neutral-900 hover:border-neutral-800 border border-neutral-700"
-                      >
-                        <Link href={link.href}>{link.name}</Link>
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent side="bottom" align="center">
-                      {link.tooltip}
-                    </TooltipContent>
-                  </Tooltip>
-                ))}
+                {/* Filter out "Projects" and "Experience" */}
+                {links
+                  .filter(
+                    (link) =>
+                      link.name !== "Projects" && link.name !== "Experience"
+                  )
+                  .map((link) => (
+                    <Tooltip key={link.name}>
+                      <TooltipTrigger>
+                        <Button
+                          asChild
+                          className="bg-neutral-800 hover:bg-neutral-900 hover:border-neutral-800 border border-neutral-700"
+                        >
+                          {link.href.startsWith("mailto:") ? (
+                            <a href={link.href}>{link.name}</a>
+                          ) : (
+                            <Link href={link.href}>{link.name}</Link>
+                          )}
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent side="bottom" align="center">
+                        {link.tooltip}
+                      </TooltipContent>
+                    </Tooltip>
+                  ))}
 
-                {/* Map over socials array */}
                 {socials.map((social) => (
                   <Tooltip key={social.name}>
                     <TooltipTrigger>
@@ -91,10 +100,17 @@ const Home = () => {
                         asChild
                         className="bg-neutral-800 hover:bg-neutral-900 hover:border-neutral-800 border border-neutral-700"
                       >
-                        <Link href={social.link} target="_blank">
-                          <social.icon className="w-6 h-6" />
-                          <span className="sr-only">{social.name}</span>
-                        </Link>
+                        {social.link.startsWith("mailto:") ? (
+                          <a href={social.link}>
+                            <social.icon className="w-6 h-6" />
+                            <span className="sr-only">{social.name}</span>
+                          </a>
+                        ) : (
+                          <Link href={social.link} target="_blank">
+                            <social.icon className="w-6 h-6" />
+                            <span className="sr-only">{social.name}</span>
+                          </Link>
+                        )}
                       </Button>
                     </TooltipTrigger>
                     <TooltipContent side="bottom" align="center">
@@ -112,3 +128,4 @@ const Home = () => {
 };
 
 export default Home;
+
