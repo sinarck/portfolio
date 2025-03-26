@@ -1,6 +1,5 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -23,7 +22,6 @@ const Home = () => {
         numSquares={30}
         maxOpacity={0.1}
         duration={3}
-        repeatDelay={1}
         className={cn(
           "[mask-image:radial-gradient(800px_circle_at_center,white,transparent)]",
           "absolute inset-x-0 inset-y-0 h-full w-full"
