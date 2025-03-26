@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { socials } from "@/config/socials";
@@ -14,6 +13,7 @@ import { TooltipTrigger } from "@radix-ui/react-tooltip";
 import { AnimatedGridPattern } from "@/components/ui/animated-grid-pattern";
 import { cn } from "@/lib/utils";
 
+/* eslint-disable @next/next/no-img-element */
 const Home = () => {
   return (
     <div className="min-h-screen flex items-center justify-center p-4 relative z-10">
@@ -30,7 +30,7 @@ const Home = () => {
 
       <main className="bg-neutral-900/80 backdrop-blur-sm rounded-lg shadow-2xl p-6 md:p-8 max-w-4xl w-full flex flex-col md:flex-row gap-8 border border-neutral-800 z-20 relative">
         <div className="w-full md:w-1/3 flex flex-col items-center">
-          <Image
+          <img
             src="pic.jpg"
             alt="Picture of me"
             width={200}
