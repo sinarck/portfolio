@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { CSPostHogProvider } from "@/lib/providers";
 
@@ -27,6 +28,7 @@ export default function RootLayout({
           className={`${manRope.className} antialiased min-h-screen bg-black text-neutral-100`}
         >
           {children}
+          <Analytics />
         </body>
       </CSPostHogProvider>
     </html>
