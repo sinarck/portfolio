@@ -31,7 +31,7 @@ const Home = () => {
       <main className="bg-neutral-900/80 backdrop-blur-sm rounded-lg shadow-2xl p-6 md:p-8 max-w-4xl w-full flex flex-col md:flex-row gap-8 border border-neutral-800 z-20 relative">
         <div className="w-full md:w-1/3 flex flex-col items-center">
           <img
-            src="pic.jpg"
+            src="/pic.jpg"
             alt="Picture of me"
             width={200}
             height={200}
