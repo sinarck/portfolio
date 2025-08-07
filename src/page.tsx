@@ -4,7 +4,6 @@ export default function Page() {
   const contacts = [
     portfolioData.location,
     portfolioData.email,
-    portfolioData.website,
     portfolioData.github,
     portfolioData.linkedin,
   ]
@@ -81,7 +80,9 @@ export default function Page() {
                         </a>
                       )}
                     </div>
-                    <div className="ml-6 text-neutral-400">{p.description}</div>
+                    <ul className="mt-1 ml-6 list-[circle] text-neutral-400 space-y-1">
+                      <li>{p.description}</li>
+                    </ul>
                   </li>
                 ))}
               </ul>

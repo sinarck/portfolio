@@ -26,7 +26,6 @@ export const portfolioData: PortfolioData = {
   skills: ["skill a", "skill b", "skill c"],
   location: "city, country",
   email: "you@example.com",
-  website: "https://your.site",
   github: "https://github.com/yourhandle",
   linkedin: "https://www.linkedin.com/in/yourhandle/",
 };
