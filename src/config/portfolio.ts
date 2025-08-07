@@ -1,10 +1,10 @@
 import type { PortfolioData } from "../types/portfolio";
 
 export const portfolioData: PortfolioData = {
-  name: "your name",
-  headline: "your role · your focus/stack",
+  name: "Hey, I'm aadi sanghvi",
+  headline: "Building scora, a wrapper for SIS systems",
   summary:
-    "short, concrete statement about what you do, the problems you like solving, and the scale you've operated at.",
+    "I'm a student with a passion for building products that help people live better lives.",
   experience: [
     {
       company: "company, inc.",
@@ -30,3 +30,4 @@ export const portfolioData: PortfolioData = {
   github: "https://github.com/yourhandle",
   linkedin: "https://www.linkedin.com/in/yourhandle/",
 };
+
