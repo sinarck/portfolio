@@ -23,5 +23,6 @@ export type PortfolioData = {
   website?: string;
   github?: string;
   linkedin?: string;
+  twitter?: string;
 };
 

@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { cn } from "../lib/utils";
 
 type SectionProps = {
   label: string;
@@ -13,9 +14,10 @@ export default function Section({
 }: SectionProps) {
   return (
     <section
-      className={`space-y-3 ${
-        withDivider ? "pt-4 border-t border-neutral-800/70" : ""
-      }`}
+      className={cn(
+        "space-y-3",
+        withDivider && "pt-4 border-t border-neutral-800/70"
+      )}
     >
       <h3 className="text-section-label">{label}</h3>
       {children}

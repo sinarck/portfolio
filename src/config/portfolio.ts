@@ -8,14 +8,15 @@ export const portfolioData: PortfolioData = {
   experience: [],
   projects: [
     {
-      name: "project name",
-      description: "what it does, how many users, notable tech/approach.",
-      link: "https://example.com",
+      name: "hand wave",
+      description: "real-time asl translation with meta ai glasses",
+      link: "https://handwave.app",
     },
   ],
   skills: [],
-  email: "you@example.com",
+  email: "aadisanghvi321@outlook.com",
   github: "https://github.com/yourhandle",
-  linkedin: "https://www.linkedin.com/in/yourhandle/",
+  linkedin: "https://www.linkedin.com/in/aadisanghvi/",
+  twitter: "https://twitter.com/aadisanghvii",
 };
 

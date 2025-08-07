@@ -1,3 +1,4 @@
+import Footer from "./components/footer";
 import PortfolioHeader from "./components/portfolio-header";
 import Projects from "./components/projects";
 import Section from "./components/section";
@@ -5,15 +6,6 @@ import Separator from "./components/ui/separator";
 import { portfolioData } from "./config/portfolio";
 
 export default function Page() {
-  const contacts = [
-    portfolioData.location,
-    portfolioData.email,
-    portfolioData.github,
-    portfolioData.linkedin,
-  ]
-    .filter(Boolean)
-    .join(" · ");
-
   return (
     <main className="min-h-screen bg-neutral-950 text-neutral-200 flex items-center justify-center">
       <div className="max-w-3xl mx-auto px-6 py-16">
@@ -22,7 +14,6 @@ export default function Page() {
             <PortfolioHeader
               name={portfolioData.name}
               headline={portfolioData.headline}
-              contacts={contacts}
             />
 
             <Separator />
@@ -32,6 +23,12 @@ export default function Page() {
             </Section>
 
             <Projects items={portfolioData.projects} />
+            <Footer
+              email={portfolioData.email}
+              github={portfolioData.github}
+              linkedin={portfolioData.linkedin}
+              twitter={portfolioData.twitter}
+            />
           </div>
         </article>
       </div>
