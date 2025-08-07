@@ -43,15 +43,16 @@ export default function Page() {
                 experience
               </h3>
               <ul className="ml-4 list-disc text-sm text-neutral-300 space-y-3">
-                {portfolioData.experience.map((e, idx) => (
+                {portfolioData.experience.map((experience, idx) => (
                   <li key={idx}>
                     <div>
-                      {e.role} @ {e.company} ({e.period})
+                      {experience.role} @ {experience.company} (
+                      {experience.period})
                     </div>
-                    {e.highlights?.length > 0 && (
+                    {experience.highlights?.length > 0 && (
                       <ul className="mt-1 ml-6 list-[circle] text-neutral-400 space-y-1">
-                        {e.highlights.map((h, i) => (
-                          <li key={i}>{h}</li>
+                        {experience.highlights.map((highlight, i) => (
+                          <li key={i}>{highlight}</li>
                         ))}
                       </ul>
                     )}
@@ -65,23 +66,23 @@ export default function Page() {
                 projects
               </h3>
               <ul className="ml-4 list-disc text-sm text-neutral-300 space-y-3">
-                {portfolioData.projects.map((p, idx) => (
+                {portfolioData.projects.map((project, idx) => (
                   <li key={idx}>
                     <div className="flex flex-wrap items-baseline gap-2">
-                      <span>{p.name}</span>
-                      {p.link && (
+                      <span>{project.name}</span>
+                      {project.link && (
                         <a
-                          href={p.link}
+                          href={project.link}
                           target="_blank"
                           rel="noreferrer"
                           className="underline decoration-neutral-700 hover:decoration-neutral-400"
                         >
-                          {p.link}
+                          {project.link}
                         </a>
                       )}
                     </div>
                     <ul className="mt-1 ml-6 list-[circle] text-neutral-400 space-y-1">
-                      <li>{p.description}</li>
+                      <li>{project.description}</li>
                     </ul>
                   </li>
                 ))}
