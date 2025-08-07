@@ -11,3 +11,32 @@
 :root {
   font-family: var(--font-mono);
 }
+
+/* Semantic typography utilities */
+@utility text-header {
+  @apply font-sans text-2xl md:text-3xl font-semibold text-neutral-100 tracking-tight;
+}
+
+@utility text-subtitle {
+  @apply font-sans text-base md:text-lg text-neutral-300;
+}
+
+@utility text-meta {
+  @apply text-xs text-neutral-500 leading-relaxed;
+}
+
+@utility text-section-label {
+  @apply font-sans text-xs font-medium text-neutral-500 tracking-wide;
+}
+
+@utility text-body {
+  @apply text-sm leading-relaxed text-neutral-300;
+}
+
+@utility list-bullets {
+  @apply ml-4 list-disc text-sm text-neutral-300 space-y-3;
+}
+
+@utility list-subbullets {
+  @apply mt-1 ml-6 list-[circle] text-neutral-400 space-y-1 leading-relaxed;
+}
