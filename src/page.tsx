@@ -1,8 +1,6 @@
-import Experience from "./components/experience";
 import PortfolioHeader from "./components/portfolio-header";
 import Projects from "./components/projects";
 import Section from "./components/section";
-import Skills from "./components/skills";
 import Separator from "./components/ui/separator";
 import { portfolioData } from "./config/portfolio";
 
@@ -33,11 +31,7 @@ export default function Page() {
               <p className="text-body">{portfolioData.summary}</p>
             </Section>
 
-            <Experience items={portfolioData.experience} />
-
             <Projects items={portfolioData.projects} />
-
-            <Skills items={portfolioData.skills} />
           </div>
         </article>
       </div>
