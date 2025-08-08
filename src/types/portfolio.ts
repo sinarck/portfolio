@@ -22,8 +22,9 @@ export type PortfolioData = {
   location?: string;
   email?: string;
   website?: string;
-  github?: string;
-  linkedin?: string;
-  twitter?: string;
+  socials: {
+    name: string;
+    link: string;
+  }[];
 };
 

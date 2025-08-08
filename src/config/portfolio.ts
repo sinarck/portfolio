@@ -23,8 +23,19 @@ export const portfolioData: PortfolioData = {
   ],
   skills: [],
   email: "you can reach me at aadi [at] outlook.com",
-  github: "https://github.com/sinarck",
-  linkedin: "https://www.linkedin.com/in/aadisanghvi/",
-  twitter: "https://twitter.com/aadisanghvii",
+  socials: [
+    {
+      name: "github",
+      link: "https://github.com/sinarck",
+    },
+    {
+      name: "linkedin",
+      link: "https://www.linkedin.com/in/aadisanghvi/",
+    },
+    {
+      name: "x",
+      link: "https://x.com/aadisanghvii",
+    },
+  ],
 };
 

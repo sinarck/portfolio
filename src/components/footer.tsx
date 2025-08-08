@@ -1,64 +1,48 @@
 import { GitHub, Linkedin, X } from "react-feather";
+import { Button } from "./ui/button";
 
 type FooterProps = {
   email?: string;
   github?: string;
   linkedin?: string;
   twitter?: string;
+  socials: {
+    name: string;
+    link: string;
+  }[];
 };
 
-export default function Footer({
-  email,
-  github,
-  linkedin,
-  twitter,
-}: FooterProps) {
+export default function Footer({ email, socials }: FooterProps) {
   return (
     <footer className="mt-6 flex w-full items-center justify-between text-xs text-neutral-500">
       <p className="truncate">
         {email && (
-          <span className="font-mono bg-neutral-800/50 px-2 py-1 rounded text-neutral-400">
+          <span className="dark:bg-neutral-800/50 bg-neutral-200/50 px-2 py-1 rounded dark:text-neutral-400 text-neutral-900">
             {email}
           </span>
         )}
       </p>
       <div className="flex items-center gap-3 pl-4">
-        {github && (
-          <a
-            href={github}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="github"
-            title="github"
-            className="text-neutral-500 hover:text-neutral-300 transition-colors"
+        {socials.map((social) => (
+          <Button
+            variant="ghost"
+            size="icon"
+            // className="text-neutral-500 hover:text-neutral-300"
+            asChild
           >
-            <GitHub className="h-4 w-4" />
-          </a>
-        )}
-        {linkedin && (
-          <a
-            href={linkedin}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="linkedin"
-            title="linkedin"
-            className="text-neutral-500 hover:text-neutral-300 transition-colors"
-          >
-            <Linkedin className="h-4 w-4" />
-          </a>
-        )}
-        {twitter && (
-          <a
-            href={twitter}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="x"
-            title="x"
-            className="text-neutral-500 hover:text-neutral-300 transition-colors"
-          >
-            <X className="h-4 w-4" />
-          </a>
-        )}
+            <a
+              href={social.link}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={social.name}
+              title={social.name}
+            >
+              {social.name === "github" && <GitHub className="h-4 w-4" />}
+              {social.name === "linkedin" && <Linkedin className="h-4 w-4" />}
+              {social.name === "x" && <X className="h-4 w-4" />}
+            </a>
+          </Button>
+        ))}
       </div>
     </footer>
   );
