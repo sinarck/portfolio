@@ -22,7 +22,7 @@ export const portfolioData: PortfolioData = {
     },
   ],
   skills: [],
-  email: "aadisanghvi321@outlook.com",
+  email: "you can reach me at aadi [at] outlook.com",
   github: "https://github.com/sinarck",
   linkedin: "https://www.linkedin.com/in/aadisanghvi/",
   twitter: "https://twitter.com/aadisanghvii",
