@@ -1,4 +1,4 @@
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { GitHub, Linkedin, X } from "react-feather";
 
 type FooterProps = {
   email?: string;
@@ -32,7 +32,7 @@ export default function Footer({
             title="github"
             className="text-neutral-500 hover:text-neutral-300 transition-colors"
           >
-            <Github className="h-4 w-4" />
+            <GitHub className="h-4 w-4" />
           </a>
         )}
         {linkedin && (
@@ -56,7 +56,7 @@ export default function Footer({
             title="x"
             className="text-neutral-500 hover:text-neutral-300 transition-colors"
           >
-            <Twitter className="h-4 w-4" />
+            <X className="h-4 w-4" />
           </a>
         )}
       </div>
