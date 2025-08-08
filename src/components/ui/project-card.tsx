@@ -1,4 +1,4 @@
-import { Card, CardContent, CardTitle } from "./card";
+import { Card, CardTitle } from "./card";
 
 type ProjectCardProps = {
   name: string;
@@ -26,9 +26,8 @@ export default function ProjectCard({
   link,
   date,
 }: ProjectCardProps) {
-  const isLink = Boolean(link);
-  const inner = (
-    <>
+  const content = (
+    <Card className="h-full p-4 transition-colors hover:border-neutral-700">
       <div className="flex items-baseline justify-between gap-2">
         <CardTitle>{name}</CardTitle>
         {formatDate(date) && (
@@ -40,10 +39,10 @@ export default function ProjectCard({
       <p className="mt-2 text-sm leading-relaxed text-neutral-400">
         {description}
       </p>
-    </>
+    </Card>
   );
 
-  if (isLink) {
+  if (link) {
     return (
       <a
         href={link}
@@ -51,17 +50,11 @@ export default function ProjectCard({
         rel="noreferrer"
         className="block h-full focus:outline-none focus:ring-1 focus:ring-neutral-700"
       >
-        <Card className="h-full p-4 transition-colors hover:border-neutral-700">
-          <CardContent className="p-0">{inner}</CardContent>
-        </Card>
+        {content}
       </a>
     );
   }
 
-  return (
-    <Card className="h-full p-4">
-      <CardContent className="p-0">{inner}</CardContent>
-    </Card>
-  );
+  return content;
 }
 
