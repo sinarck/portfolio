@@ -24,12 +24,7 @@ export default function Footer({ email, socials }: FooterProps) {
       </p>
       <div className="flex items-center gap-3 pl-4">
         {socials.map((social) => (
-          <Button
-            variant="ghost"
-            size="icon"
-            // className="text-neutral-500 hover:text-neutral-300"
-            asChild
-          >
+          <Button variant="ghost" size="icon" asChild>
             <a
               href={social.link}
               target="_blank"

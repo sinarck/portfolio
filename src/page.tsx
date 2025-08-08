@@ -29,6 +29,9 @@ export default function Page() {
               </Section>
 
               <Projects items={portfolioData.projects} />
+
+              <Separator />
+
               <Footer
                 email={portfolioData.email}
                 socials={portfolioData.socials}

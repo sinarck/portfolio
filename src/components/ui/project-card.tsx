@@ -27,7 +27,7 @@ export default function ProjectCard({
   date,
 }: ProjectCardProps) {
   const content = (
-    <Card className="h-full p-4  hover:border-muted-foreground/50">
+    <Card className="h-full p-4 hover:border-muted-foreground/50 dark:hover:border-muted-foreground/50">
       <div className="flex items-baseline justify-between gap-2">
         <CardTitle>{name}</CardTitle>
         {formatDate(date) && (

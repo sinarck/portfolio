@@ -16,7 +16,8 @@ export default function Section({
     <section
       className={cn(
         "space-y-3",
-        withDivider && "pt-4 border-t border-neutral-800/70"
+        withDivider &&
+          "pt-4 border-t dark:border-neutral-800/70 border-neutral-200/70"
       )}
     >
       <h3 className="text-section-label">{label}</h3>

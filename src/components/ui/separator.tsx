@@ -3,7 +3,7 @@ export default function Separator() {
     <div
       role="separator"
       aria-hidden
-      className="my-4 border-t border-neutral-800/70"
+      className="my-4 border-t dark:border-neutral-800/70 border-neutral-200/70"
     />
   );
 }

@@ -27,7 +27,7 @@ export function CardTitle({
   return (
     <div
       className={cn(
-        "font-sans font-medium dark:text-neutral-200 text-card-foreground",
+        "font-sans font-medium dark:text-neutral-200 text-neutral-900",
         className
       )}
       {...props}
