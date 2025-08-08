@@ -14,6 +14,7 @@ export default function Projects({ items }: { items: ProjectItem[] }) {
             name={project.name}
             description={project.description}
             link={project.link}
+            date={project.date}
           />
         ))}
       </div>

@@ -9,6 +9,7 @@ export type ProjectItem = {
   name: string;
   description: string;
   link?: string;
+  date?: Date;
 };
 
 export type PortfolioData = {

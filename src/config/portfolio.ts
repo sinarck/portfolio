@@ -11,11 +11,12 @@ export const portfolioData: PortfolioData = {
       name: "hand wave",
       description: "real-time asl translation with meta ai glasses",
       link: "https://handwave.app",
+      date: new Date("2025-01-01"),
     },
   ],
   skills: [],
   email: "aadisanghvi321@outlook.com",
-  github: "https://github.com/yourhandle",
+  github: "https://github.com/sinarck",
   linkedin: "https://www.linkedin.com/in/aadisanghvi/",
   twitter: "https://twitter.com/aadisanghvii",
 };
