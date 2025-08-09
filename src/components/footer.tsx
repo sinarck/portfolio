@@ -1,4 +1,5 @@
-import { GitHub, Linkedin, X } from "react-feather";
+import { GitHub, Linkedin } from "react-feather";
+import XIcon from "./icons/x";
 import { Button } from "./ui/button";
 
 type FooterProps = {
@@ -32,9 +33,9 @@ export default function Footer({ email, socials }: FooterProps) {
               aria-label={social.name}
               title={social.name}
             >
-              {social.name === "github" && <GitHub className="h-4 w-4" />}
-              {social.name === "linkedin" && <Linkedin className="h-4 w-4" />}
-              {social.name === "x" && <X className="h-4 w-4" />}
+              {social.name === "github" && <GitHub className="size-4" />}
+              {social.name === "linkedin" && <Linkedin className="size-4" />}
+              {social.name === "x" && <XIcon className="size-4" />}
             </a>
           </Button>
         ))}
