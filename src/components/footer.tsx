@@ -34,7 +34,14 @@ export default function Footer({ email, socials }: FooterProps) {
             asChild
             key={social.name}
             onClick={() =>
-              posthog.capture("social_click", { social: social.name })
+              posthog.capture(
+                "social_click",
+                {
+                  "social.name": social.name,
+                  "social.url": social.link,
+                },
+                { send_instantly: true }
+              )
             }
           >
             <a
