@@ -11,9 +11,9 @@ export default function Page() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <main className="min-h-screen bg-background text-foreground flex items-center justify-center">
-        <div className="max-w-3xl mx-auto px-6 py-16">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-16">
           <article className="lowercase font-mono rounded-xl border bg-card shadow-xl">
-            <div className="p-8 sm:p-10 space-y-8">
+            <div className="p-4 sm:p-8 lg:p-10 space-y-6 sm:space-y-8">
               <div className="flex items-start justify-between">
                 <PortfolioHeader
                   name={portfolioData.name}

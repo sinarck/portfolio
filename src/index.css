@@ -49,11 +49,11 @@
 
 /* Semantic typography utilities */
 @utility text-header {
-  @apply font-sans text-2xl md:text-3xl font-semibold text-foreground tracking-tight;
+  @apply font-sans text-xl sm:text-2xl md:text-3xl font-semibold text-foreground tracking-tight;
 }
 
 @utility text-subtitle {
-  @apply font-sans text-base md:text-lg text-muted-foreground;
+  @apply font-sans text-sm sm:text-base md:text-lg text-muted-foreground;
 }
 
 @utility text-meta {
@@ -65,7 +65,7 @@
 }
 
 @utility text-body {
-  @apply text-sm leading-relaxed text-muted-foreground;
+  @apply text-xs sm:text-sm leading-relaxed text-muted-foreground;
 }
 
 @utility list-bullets {

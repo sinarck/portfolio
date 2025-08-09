@@ -27,16 +27,16 @@ export default function ProjectCard({
   date,
 }: ProjectCardProps) {
   const content = (
-    <Card className="h-full p-4 hover:border-muted-foreground/50 dark:hover:border-muted-foreground/50">
-      <div className="flex items-baseline justify-between gap-2">
-        <CardTitle>{name}</CardTitle>
+    <Card className="h-full p-3 sm:p-4 hover:border-muted-foreground/50 dark:hover:border-muted-foreground/50">
+      <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-2">
+        <CardTitle className="text-sm sm:text-base">{name}</CardTitle>
         {formatDate(date) && (
-          <div className="text-xs text-muted-foreground tabular-nums">
+          <div className="text-xs text-muted-foreground tabular-nums self-start sm:self-auto">
             {formatDate(date)}
           </div>
         )}
       </div>
-      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+      <p className="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground">
         {description}
       </p>
     </Card>

@@ -17,15 +17,15 @@ export default function Footer({ email, socials }: FooterProps) {
   const posthog = useVitePostHog();
 
   return (
-    <footer className="mt-6 flex w-full items-center justify-between text-xs text-neutral-500">
-      <p className="truncate">
+    <footer className="mt-4 sm:mt-6 flex flex-col sm:flex-row w-full items-center justify-between gap-3 sm:gap-0 text-xs text-neutral-500">
+      <p className="truncate order-2 sm:order-1">
         {email && (
           <span className="dark:bg-neutral-800/50 bg-neutral-200/50 px-2 py-1 rounded dark:text-neutral-400 text-neutral-900">
             {email}
           </span>
         )}
       </p>
-      <div className="flex items-center gap-3 pl-4">
+      <div className="flex items-center gap-3 order-1 sm:order-2 sm:pl-4">
         {socials.map((social) => (
           <Button variant="ghost" size="icon" asChild>
             <a

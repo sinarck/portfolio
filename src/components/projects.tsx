@@ -7,7 +7,7 @@ export default function Projects({ items }: { items: ProjectItem[] }) {
 
   return (
     <Section label="projects" withDivider>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-3 sm:gap-4 sm:grid-cols-2">
         {items.map((project) => (
           <ProjectCard
             key={`${project.name}-${project.link ?? "nolink"}`}
