@@ -5,9 +5,18 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./page.tsx";
 
-posthog.init(process.env.VITE_POSTHOG_KEY!, {
-  defaults: "2025-05-24",
-});
+const POSTHOG_KEY = import.meta.env.VITE_POSTHOG_KEY as string | undefined;
+const POSTHOG_HOST =
+  (import.meta.env.VITE_POSTHOG_API_HOST as string | undefined) ||
+  "https://us.i.posthog.com";
+
+if (POSTHOG_KEY) {
+  posthog.init(POSTHOG_KEY, {
+    api_host: POSTHOG_HOST,
+    autocapture: false,
+    capture_pageview: false,
+  });
+}
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
