@@ -1,5 +1,4 @@
 import { GitHub, Linkedin, X } from "react-feather";
-import { useVitePostHog } from "vite-plugin-posthog/react";
 import { Button } from "./ui/button";
 
 type FooterProps = {
@@ -14,8 +13,6 @@ type FooterProps = {
 };
 
 export default function Footer({ email, socials }: FooterProps) {
-  const posthog = useVitePostHog();
-
   return (
     <footer className="mt-4 sm:mt-6 flex flex-col sm:flex-row w-full items-center justify-between gap-3 sm:gap-0 text-xs text-neutral-500">
       <p className="truncate order-2 sm:order-1">
@@ -34,9 +31,6 @@ export default function Footer({ email, socials }: FooterProps) {
               rel="noreferrer"
               aria-label={social.name}
               title={social.name}
-              onClick={() =>
-                posthog.capture("social_click", { social: social.name })
-              }
             >
               {social.name === "github" && <GitHub className="h-4 w-4" />}
               {social.name === "linkedin" && <Linkedin className="h-4 w-4" />}
