@@ -40,7 +40,7 @@ export default function Footer({ email, socials }: FooterProps) {
                   "social.name": social.name,
                   "social.url": social.link,
                 },
-                { send_instantly: true }
+                { send_instantly: true },
               )
             }
           >
@@ -61,4 +61,3 @@ export default function Footer({ email, socials }: FooterProps) {
     </footer>
   );
 }
-

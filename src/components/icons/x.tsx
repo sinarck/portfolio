@@ -15,4 +15,3 @@ export default function XIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
-

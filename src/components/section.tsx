@@ -17,7 +17,7 @@ export default function Section({
       className={cn(
         "space-y-3",
         withDivider &&
-          "pt-4 border-t dark:border-neutral-800/70 border-neutral-200/70"
+          "pt-4 border-t dark:border-neutral-800/70 border-neutral-200/70",
       )}
     >
       <h3 className="text-section-label">{label}</h3>
@@ -25,4 +25,3 @@ export default function Section({
     </section>
   );
 }
-

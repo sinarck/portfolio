@@ -11,4 +11,3 @@ export default function PortfolioHeader({ name, headline }: HeaderProps) {
     </header>
   );
 }
-

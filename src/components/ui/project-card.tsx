@@ -60,7 +60,7 @@ export default function ProjectCard({
               "project.name": name,
               "project.url": link,
             },
-            { send_instantly: true }
+            { send_instantly: true },
           )
         }
       >
@@ -71,4 +71,3 @@ export default function ProjectCard({
 
   return content;
 }
-
