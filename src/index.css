@@ -174,13 +174,18 @@
     @apply bg-background text-foreground;
   }
 
-  /* Disable scroll on mobile */
+  /* Better mobile viewport handling */
   @media (max-width: 640px) {
-    html,
-    body {
+    html {
+      height: 100%;
       overflow: hidden;
-      height: 100vh;
+    }
+    body {
       height: 100dvh; /* Use dynamic viewport height for better mobile support */
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+      overscroll-behavior-y: none; /* Prevent pull-to-refresh bounce */
     }
   }
 }
