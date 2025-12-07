@@ -25,7 +25,10 @@ export default function Page() {
 						<Projects items={portfolioData.projects} />
 					</Section>
 
-					<div className="pt-4 animate-in-up" style={{ animationDelay: "200ms" }}>
+					<div
+						className="pt-4 animate-in-up"
+						style={{ animationDelay: "200ms" }}
+					>
 						<Footer
 							email={portfolioData.email}
 							socials={portfolioData.socials}

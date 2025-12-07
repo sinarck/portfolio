@@ -7,20 +7,20 @@ import App from "./page.tsx";
 
 const POSTHOG_KEY = import.meta.env.VITE_POSTHOG_KEY as string | undefined;
 const POSTHOG_HOST =
-  (import.meta.env.VITE_POSTHOG_API_HOST as string | undefined) ||
-  "https://us.i.posthog.com";
+	(import.meta.env.VITE_POSTHOG_API_HOST as string | undefined) ||
+	"https://us.i.posthog.com";
 
 if (POSTHOG_KEY) {
-  posthog.init(POSTHOG_KEY, {
-    api_host: "/pineapple-lemon/",
-    ui_host: POSTHOG_HOST,
-  });
+	posthog.init(POSTHOG_KEY, {
+		api_host: "/pineapple-lemon/",
+		ui_host: POSTHOG_HOST,
+	});
 }
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <PostHogProvider client={posthog}>
-      <App />
-    </PostHogProvider>
-  </StrictMode>,
+	<StrictMode>
+		<PostHogProvider client={posthog}>
+			<App />
+		</PostHogProvider>
+	</StrictMode>,
 );
