@@ -119,7 +119,7 @@
 }
 
 .dark {
-	--background: oklch(0.12 0.01 285);
+	--background: oklch(0.11 0.01 285);
 	--foreground: oklch(0.96 0.01 285);
 	--card: oklch(0.14 0.01 285);
 	--card-foreground: oklch(0.96 0.01 285);
@@ -134,7 +134,7 @@
 	--accent: oklch(0.16 0.01 285);
 	--accent-foreground: oklch(0.96 0.01 285);
 	--destructive: oklch(0.7 0.2 20);
-	--border: oklch(0.18 0.01 285);
+	--border: oklch(0.22 0.01 285);
 	--input: oklch(0.18 0.01 285);
 	--ring: oklch(0.8 0 0);
 
