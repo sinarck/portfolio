@@ -192,6 +192,21 @@
       transform: translateY(0);
     }
   }
+
+  .button-scale {
+    transition: transform 200ms ease;
+    will-change: transform;
+  }
+
+  .button-scale:active {
+    transform: scale(0.97);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .button-scale:active {
+      transform: none;
+    }
+  }
 }
 
 @layer base {
