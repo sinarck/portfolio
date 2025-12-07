@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import posthog from "posthog-js";
 import { PostHogProvider } from "posthog-js/react";
 import { StrictMode } from "react";
@@ -17,6 +18,7 @@ createRoot(document.getElementById("root")!).render(
 	<StrictMode>
 		<PostHogProvider client={posthog}>
 			<App />
+			<SpeedInsights />
 		</PostHogProvider>
 	</StrictMode>,
 );
