@@ -1,5 +1,5 @@
+import { Github, Linkedin } from "lucide-react";
 import { usePostHog } from "posthog-js/react";
-import { GitHub, Linkedin } from "react-feather";
 import XIcon from "./icons/x";
 
 type FooterProps = {
@@ -34,7 +34,7 @@ export default function Footer({ email, socials }: FooterProps) {
 						href={social.link}
 						target="_blank"
 						rel="noreferrer"
-						className="text-muted-foreground hover:text-foreground transition-colors duration-200 ease-out active:scale-97"
+						className="text-muted-foreground hover:text-foreground transition-colors duration-200 ease-out button-scale"
 						aria-label={social.name}
 						onClick={() =>
 							posthog.capture(
@@ -47,7 +47,7 @@ export default function Footer({ email, socials }: FooterProps) {
 							)
 						}
 					>
-						{social.name === "github" && <GitHub className="size-4" />}
+						{social.name === "github" && <Github className="size-4" />}
 						{social.name === "linkedin" && <Linkedin className="size-4" />}
 						{social.name === "x" && <XIcon className="size-4" />}
 					</a>
