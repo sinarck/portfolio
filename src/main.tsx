@@ -14,7 +14,6 @@ if (POSTHOG_KEY) {
   posthog.init(POSTHOG_KEY, {
     api_host: "/pineapple-lemon/",
     ui_host: POSTHOG_HOST,
-    defaults: "2025-05-24",
   });
 }
 

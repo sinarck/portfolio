@@ -8,7 +8,7 @@ export type ExperienceItem = {
 export type ProjectItem = {
 	name: string;
 	description: string;
-	link: string;
+	link?: string;
 	date?: Date;
 };
 

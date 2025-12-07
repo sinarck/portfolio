@@ -12,21 +12,21 @@ export const portfolioData: PortfolioData = {
 			description:
 				"an attendance system for schools (and got a few users along the way). Not a fan of proprietary software.",
 			link: "https://github.com/sinarck/open-attendance",
-			date: new Date("01-01-2025"),
+			date: new Date(2025, 0, 1),
 		},
 		{
 			name: "Hand Wave",
 			description:
 				"Real-time ASL translation with Meta AI glasses. Presented @ texas school for the deaf.",
 			link: "https://github.com/sinarck/hand-wave",
-			date: new Date("02-01-2025"),
+			date: new Date(2025, 1, 1),
 		},
 		{
 			name: "Storm Shield",
 			description:
 				"A mobile app demo that connects volunteers with disaster relief efforts. Got to show off @ us capitol",
 			link: "https://www.stormshield.app",
-			date: new Date("01-01-2024"),
+			date: new Date(2024, 0, 1),
 		},
 	],
 	email: z.email().parse(import.meta.env.VITE_EMAIL),

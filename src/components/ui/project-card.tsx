@@ -17,7 +17,7 @@ export default function ProjectCard({
 	const posthog = usePostHog();
 
 	const content = (
-		<div className="group flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-4 py-2 transition-colors duration-200 ease-out cursor-pointer">
+		<div className="group flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-4 py-2 cursor-pointer">
 			<div className="space-y-1">
 				<h3 className="font-medium text-sm text-foreground flex items-center gap-1">
 					<span className="underline decoration-transparent group-hover:decoration-muted-foreground underline-offset-4 transition-all duration-300 ease-out">

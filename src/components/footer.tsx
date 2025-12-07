@@ -22,7 +22,7 @@ export default function Footer({ email, socials }: FooterProps) {
 						className="hover:text-foreground transition-colors duration-200 ease-out"
 					>
 						you can reach me at{" "}
-						{email.replace("@", " [at] ").replace(".", " [dot] ")}
+						{email.replaceAll("@", " [at] ").replaceAll(".", " [dot] ")}
 					</a>
 				)}
 			</div>

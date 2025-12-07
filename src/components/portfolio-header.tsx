@@ -7,7 +7,7 @@ type HeaderProps = {
 
 export default function PortfolioHeader({ name, headline }: HeaderProps) {
 	return (
-		<div className="space-y-1 animate-in-up" style={{ animationDelay: "0ms" }}>
+		<div className="space-y-1 animate-in-up">
 			<h1 className="text-lg font-medium tracking-tight text-foreground">
 				{name}
 			</h1>
