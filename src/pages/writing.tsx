@@ -4,9 +4,8 @@ export default function Writing() {
 	return (
 		<Section label="writing" delay="100ms">
 			<p className="text-sm text-muted-foreground leading-relaxed">
-				Writing coming soon.
+				coming soon!
 			</p>
 		</Section>
 	);
 }
-

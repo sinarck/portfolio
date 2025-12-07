@@ -1,8 +1,10 @@
 export type ExperienceItem = {
 	company: string;
 	role: string;
-	period: string;
-	highlights: string;
+	startDate: Date;
+	endDate?: Date;
+	description: string;
+	logo?: string;
 };
 
 export type ProjectItem = {

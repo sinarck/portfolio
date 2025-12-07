@@ -4,7 +4,22 @@ import type { PortfolioData } from "../types/portfolio";
 export const portfolioData: PortfolioData = {
 	name: "Hey, I'm Aadi Sanghvi",
 	headline: "i'm a high school student. currently building open attendance",
-	experience: [],
+	experience: [
+		{
+			company: "Doastly",
+			role: "Junior Software Engineer, Software Engineer Intern",
+			startDate: new Date(2024, 0, 1),
+			description: "Pet salon management startup",
+			logo: "/work/doastly.webp",
+		},
+		{
+			company: "Sonder Initiative",
+			role: "Founder",
+			startDate: new Date(2024, 7, 1),
+			description: "Freelance web development. Contact for more details.",
+			logo: "/work/sonder-placeholder.svg",
+		},
+	],
 	skills: [
 		"React",
 		"Next.js",
