@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
+import { portfolioData } from "../config/portfolio";
 import Footer from "./footer";
 import { ModeToggle } from "./mode-toggle";
 import PortfolioHeader from "./portfolio-header";
 import { ThemeProvider } from "./theme-provider";
-import { portfolioData } from "../config/portfolio";
 
 export default function Layout() {
 	return (
@@ -45,4 +45,3 @@ export default function Layout() {
 		</ThemeProvider>
 	);
 }
-

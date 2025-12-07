@@ -16,7 +16,10 @@ export default function ExperienceCard({
 	logo,
 }: ExperienceCardProps) {
 	const formatDate = (date: Date) => {
-		return date.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+		return date.toLocaleDateString("en-US", {
+			month: "short",
+			year: "numeric",
+		});
 	};
 
 	const period = endDate
@@ -57,4 +60,3 @@ export default function ExperienceCard({
 		</article>
 	);
 }
-

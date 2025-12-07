@@ -21,4 +21,3 @@ export default function Experiences({ items }: { items: ExperienceItem[] }) {
 		</ul>
 	);
 }
-
