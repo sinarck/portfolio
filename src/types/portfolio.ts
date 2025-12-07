@@ -17,7 +17,6 @@ export type PortfolioData = {
 	headline: string;
 	experience: ExperienceItem[];
 	projects: ProjectItem[];
-	skills: string[];
 	email: string;
 	socials: {
 		name: string;
