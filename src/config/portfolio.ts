@@ -6,6 +6,15 @@ export const portfolioData: PortfolioData = {
 	headline:
 		"i'm a high school student. currently building with react, next.js, and expo",
 	experience: [],
+	skills: [
+		"React",
+		"Next.js",
+		"TypeScript",
+		"Expo",
+		"Node.js",
+		"PostgreSQL",
+		"TailwindCSS",
+	],
 	projects: [
 		{
 			name: "Open Attendance",

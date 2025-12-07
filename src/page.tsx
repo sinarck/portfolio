@@ -3,6 +3,7 @@ import { ModeToggle } from "./components/mode-toggle";
 import PortfolioHeader from "./components/portfolio-header";
 import Projects from "./components/projects";
 import Section from "./components/section";
+import Skills from "./components/skills";
 import { ThemeProvider } from "./components/theme-provider";
 import { portfolioData } from "./config/portfolio";
 
@@ -34,9 +35,13 @@ export default function Page() {
 						<Projects items={portfolioData.projects} />
 					</Section>
 
+					<Section label="skills" delay="150ms">
+						<Skills items={portfolioData.skills} />
+					</Section>
+
 					<div
 						className="pt-4 animate-in-up"
-						style={{ animationDelay: "200ms" }}
+						style={{ animationDelay: "250ms" }}
 					>
 						<Footer
 							email={portfolioData.email}
