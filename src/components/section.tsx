@@ -1,26 +1,20 @@
 import type { ReactNode } from "react";
-import { cn } from "../lib/utils";
 
 type SectionProps = {
   label: string;
   children: ReactNode;
-  withDivider?: boolean;
+  delay?: string;
 };
 
-export default function Section({
-  label,
-  children,
-  withDivider = false,
-}: SectionProps) {
+export default function Section({ label, children, delay = "0ms" }: SectionProps) {
   return (
-    <section
-      className={cn(
-        "space-y-3",
-        withDivider &&
-          "pt-4 border-t dark:border-neutral-800/70 border-neutral-200/70",
-      )}
+    <section 
+      className="space-y-4 animate-in-up"
+      style={{ animationDelay: delay }}
     >
-      <h3 className="text-section-label">{label}</h3>
+      <h2 className="text-sm font-medium text-muted-foreground tracking-tight">
+        {label}
+      </h2>
       {children}
     </section>
   );

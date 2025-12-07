@@ -5,9 +5,13 @@ type HeaderProps = {
 
 export default function PortfolioHeader({ name, headline }: HeaderProps) {
   return (
-    <header className="space-y-1 sm:space-y-2 flex-1 min-w-0">
-      <h1 className="text-header truncate">{name}</h1>
-      <h2 className="text-subtitle">{headline}</h2>
-    </header>
+    <div className="space-y-1 animate-in-up" style={{ animationDelay: "0ms" }}>
+      <h1 className="text-lg font-medium tracking-tight text-foreground">
+        {name}
+      </h1>
+      <p className="text-sm text-muted-foreground leading-relaxed max-w-md">
+        {headline}
+      </p>
+    </div>
   );
 }

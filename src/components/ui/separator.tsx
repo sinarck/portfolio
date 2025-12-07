@@ -1,9 +1,13 @@
-export default function Separator() {
+import { type HTMLAttributes } from "react";
+import { cn } from "../../lib/utils";
+
+export default function Separator({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
   return (
     <div
       role="separator"
       aria-hidden
-      className="my-4 border-t dark:border-neutral-800/70 border-neutral-200/70"
+      className={cn("h-[1px] w-full bg-border/50", className)}
+      {...props}
     />
   );
 }

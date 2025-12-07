@@ -1,73 +1,66 @@
+import { ArrowUpRight } from "lucide-react";
 import { usePostHog } from "posthog-js/react";
-import { Card, CardTitle } from "./card";
 
 type ProjectCardProps = {
-  name: string;
-  description: string;
-  link?: string;
-  date?: Date;
+	name: string;
+	description: string;
+	link?: string;
+	date?: Date;
 };
 
-function formatDate(d?: Date): string | null {
-  if (!d || Number.isNaN(d.getTime())) return null;
-  try {
-    return new Intl.DateTimeFormat(undefined, {
-      year: "numeric",
-      month: "short",
-      timeZone: "UTC",
-    }).format(d);
-  } catch {
-    return d.toISOString().slice(0, 7);
-  }
-}
-
 export default function ProjectCard({
-  name,
-  description,
-  link,
-  date,
+	name,
+	description,
+	link,
+	date,
 }: ProjectCardProps) {
-  const posthog = usePostHog();
-  const content = (
-    <Card className="h-full p-3 sm:p-4 hover:border-muted-foreground/50 dark:hover:border-muted-foreground/50">
-      <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-2">
-        <CardTitle className="text-sm sm:text-base leading-tight">
-          {name}
-        </CardTitle>
-        {formatDate(date) && (
-          <div className="text-xs text-muted-foreground tabular-nums self-start sm:self-auto">
-            {formatDate(date)}
-          </div>
-        )}
-      </div>
-      <p className="mt-2 text-sm sm:text-sm leading-relaxed text-muted-foreground">
-        {description}
-      </p>
-    </Card>
-  );
+	const posthog = usePostHog();
 
-  if (link) {
-    return (
-      <a
-        href={link}
-        target="_blank"
-        rel="noreferrer"
-        className="block h-full focus:outline-none focus:ring-1 focus:ring-ring"
-        onClick={() =>
-          posthog.capture(
-            "project_click",
-            {
-              "project.name": name,
-              "project.url": link,
-            },
-            { send_instantly: true },
-          )
-        }
-      >
-        {content}
-      </a>
-    );
-  }
+	const content = (
+		<div className="group flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-4 py-2 transition-colors duration-200 ease-out cursor-pointer">
+			<div className="space-y-1">
+				<h3 className="font-medium text-sm text-foreground flex items-center gap-1">
+					<span className="underline decoration-transparent group-hover:decoration-muted-foreground underline-offset-4 transition-all duration-300 ease-out">
+						{name}
+					</span>
+					{link && (
+						<ArrowUpRight className="size-3 text-muted-foreground opacity-0 -translate-x-1 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0" />
+					)}
+				</h3>
+				<p className="text-sm text-muted-foreground leading-relaxed max-w-md">
+					{description}
+				</p>
+			</div>
+			{date && (
+				<span className="text-xs text-muted-foreground font-mono shrink-0">
+					{date.getFullYear()}
+				</span>
+			)}
+		</div>
+	);
 
-  return content;
+	if (link) {
+		return (
+			<a
+				href={link}
+				target="_blank"
+				rel="noreferrer"
+				className="block focus:outline-none"
+				onClick={() =>
+					posthog.capture(
+						"project_click",
+						{
+							"project.name": name,
+							"project.url": link,
+						},
+						{ send_instantly: true },
+					)
+				}
+			>
+				{content}
+			</a>
+		);
+	}
+
+	return content;
 }
