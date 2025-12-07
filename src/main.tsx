@@ -6,11 +6,9 @@ import "./index.css";
 import App from "./page.tsx";
 
 // Initialize PostHog with weird Vite env variable magic
-if (import.meta.env.VITE_POSTHOG_KEY) {
+if (import.meta.env.VITE_POSTHOG_KEY && import.meta.env.PROD) {
 	posthog.init(import.meta.env.VITE_POSTHOG_KEY, {
-		api_host: import.meta.env.PROD
-			? "/pineapple-lemon/"
-			: import.meta.env.VITE_POSTHOG_API_HOST,
+		api_host: "/pineapple-lemon/",
 		ui_host: import.meta.env.VITE_POSTHOG_API_HOST,
 	});
 }
