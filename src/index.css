@@ -1,9 +1,9 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "@toolwind/corner-shape";
 
 @custom-variant dark (&:is(.dark *));
 
-/* Self-hosted variable fonts */
 @font-face {
 	font-family: "Geist";
 	src: url("/fonts/Geist-VariableFont_wght.ttf") format("truetype-variations");
@@ -28,7 +28,6 @@
 	--font-sans: "Geist", sans-serif;
 	--font-mono: var(--font-geist-mono);
 
-	/* Custom Easings */
 	--ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 	--ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
 	--ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -55,9 +54,8 @@
 	font-family: var(--font-sans);
 	--radius: 0.5rem;
 
-	/* Clean, Warm-ish Light Theme */
 	--background: oklch(0.99 0 0);
-	--foreground: oklch(0.15 0.02 285); /* Softer black */
+	--foreground: oklch(0.15 0.02 285);
 	--card: oklch(1 0 0);
 	--card-foreground: oklch(0.15 0.02 285);
 	--popover: oklch(1 0 0);
@@ -121,9 +119,8 @@
 }
 
 .dark {
-	/* Sophisticated Dark Theme - Charcoal/Slate based */
 	--background: oklch(0.12 0.01 285);
-	--foreground: oklch(0.96 0.01 285); /* Slightly softer white */
+	--foreground: oklch(0.96 0.01 285);
 	--card: oklch(0.14 0.01 285);
 	--card-foreground: oklch(0.96 0.01 285);
 	--popover: oklch(0.14 0.01 285);
@@ -159,22 +156,6 @@
 	body {
 		@apply bg-background text-foreground font-sans antialiased selection:bg-primary/20 selection:text-primary lowercase;
 	}
-
-	/* Grain Texture */
-	body::before {
-		content: "";
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		pointer-events: none;
-		z-index: 50;
-		opacity: 0.03;
-		background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-		mix-blend-mode: overlay;
-	}
-
 	.dark body::before {
 		opacity: 0.04;
 	}
