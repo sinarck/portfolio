@@ -11,5 +11,15 @@ export default defineConfig(() => {
 				"@": path.resolve(__dirname, "./src"),
 			},
 		},
+		build: {
+			rollupOptions: {
+				output: {
+					manualChunks: {
+						"react-vendor": ["react", "react-dom", "react-router-dom"],
+						"analytics-vendor": ["posthog-js", "@vercel/speed-insights"],
+					},
+				},
+			},
+		},
 	};
 });
