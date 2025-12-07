@@ -5,16 +5,17 @@ export default function Projects({ items }: { items: ProjectItem[] }) {
 	if (!items.length) return null;
 
 	return (
-		<div className="flex flex-col gap-2">
+		<ul className="flex flex-col gap-2 list-none">
 			{items.map((project) => (
-				<ProjectCard
-					key={`${project.name}-${project.link ?? "nolink"}`}
-					name={project.name}
-					description={project.description}
-					link={project.link}
-					date={project.date}
-				/>
+				<li key={`${project.name}-${project.link ?? "nolink"}`}>
+					<ProjectCard
+						name={project.name}
+						description={project.description}
+						link={project.link}
+						date={project.date}
+					/>
+				</li>
 			))}
-		</div>
+		</ul>
 	);
 }

@@ -14,22 +14,26 @@ export default function PortfolioHeader({ name, headline }: HeaderProps) {
 			<p className="text-sm text-muted-foreground leading-relaxed w-full">
 				{headline}
 			</p>
-			<div className="flex gap-2 pt-2">
-				<Button
-					variant="outline"
-					size="sm"
-					className="button-scale min-h-8 px-3.5"
-				>
-					work
-				</Button>
-				<Button
-					variant="outline"
-					size="sm"
-					className="button-scale min-h-8 px-3.5"
-				>
-					writing
-				</Button>
-			</div>
+			<nav aria-label="Portfolio navigation">
+				<div className="flex gap-2 pt-2">
+					<Button
+						variant="outline"
+						size="sm"
+						className="button-scale min-h-8 px-3.5"
+						aria-label="View work projects"
+					>
+						work
+					</Button>
+					<Button
+						variant="outline"
+						size="sm"
+						className="button-scale min-h-8 px-3.5"
+						aria-label="View writing"
+					>
+						writing
+					</Button>
+				</div>
+			</nav>
 		</div>
 	);
 }

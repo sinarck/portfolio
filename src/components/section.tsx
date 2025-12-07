@@ -11,13 +11,19 @@ export default function Section({
 	children,
 	delay = "0ms",
 }: SectionProps) {
+	const capitalizedLabel = label.charAt(0).toUpperCase() + label.slice(1);
+
 	return (
 		<section
 			className="space-y-4 animate-in-up"
 			style={{ animationDelay: delay }}
+			aria-labelledby={`section-${label}`}
 		>
-			<h2 className="text-sm font-medium text-muted-foreground tracking-tight">
-				{label}
+			<h2
+				id={`section-${label}`}
+				className="text-sm font-medium text-muted-foreground tracking-tight"
+			>
+				{capitalizedLabel}
 			</h2>
 			{children}
 		</section>

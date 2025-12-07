@@ -24,43 +24,52 @@ export default function ProjectCard({
 						{name}
 					</span>
 					{link && (
-						<ArrowUpRight className="size-3 text-muted-foreground opacity-0 -translate-x-1 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0" />
+						<ArrowUpRight
+							className="size-3 text-muted-foreground opacity-0 -translate-x-1 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0"
+							aria-hidden="true"
+						/>
 					)}
 				</h3>
-				<p className="text-sm text-muted-foreground leading-relaxed max-w-md">
+				<p className="text-sm text-muted-foreground leading-relaxed">
 					{description}
 				</p>
 			</div>
 			{date && (
-				<span className="text-xs text-muted-foreground font-mono shrink-0">
+				<time
+					dateTime={date.toISOString()}
+					className="text-xs text-muted-foreground font-mono shrink-0"
+				>
 					{date.getFullYear()}
-				</span>
+				</time>
 			)}
 		</div>
 	);
 
 	if (link) {
 		return (
-			<a
-				href={link}
-				target="_blank"
-				rel="noreferrer"
-				className="block focus:outline-none"
-				onClick={() =>
-					posthog.capture(
-						"project_click",
-						{
-							"project.name": name,
-							"project.url": link,
-						},
-						{ send_instantly: true },
-					)
-				}
-			>
-				{content}
-			</a>
+			<article>
+				<a
+					href={link}
+					target="_blank"
+					rel="noreferrer noopener"
+					className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-lg"
+					aria-label={`${name}: ${description}. Opens in new tab`}
+					onClick={() =>
+						posthog.capture(
+							"project_click",
+							{
+								"project.name": name,
+								"project.url": link,
+							},
+							{ send_instantly: true },
+						)
+					}
+				>
+					{content}
+				</a>
+			</article>
 		);
 	}
 
-	return content;
+	return <article>{content}</article>;
 }

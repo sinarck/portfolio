@@ -156,9 +156,6 @@
 	body {
 		@apply bg-background text-foreground font-sans antialiased selection:bg-primary/20 selection:text-primary lowercase;
 	}
-	.dark body::before {
-		opacity: 0.04;
-	}
 }
 
 @layer utilities {
@@ -185,8 +182,45 @@
 	}
 
 	@media (prefers-reduced-motion: reduce) {
+		.animate-in-up {
+			animation: none;
+			opacity: 1;
+			transform: none;
+		}
+
 		.button-scale:active {
 			transform: none;
 		}
+
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+		}
+	}
+
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border-width: 0;
+	}
+
+	.focus\:not-sr-only:focus {
+		position: static;
+		width: auto;
+		height: auto;
+		padding: inherit;
+		margin: inherit;
+		overflow: visible;
+		clip: auto;
+		white-space: normal;
 	}
 }
