@@ -3,8 +3,12 @@ import posthog from "posthog-js";
 import { PostHogProvider } from "posthog-js/react";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Layout from "./components/layout";
 import "./index.css";
-import App from "./page.tsx";
+import Home from "./pages/home";
+import Work from "./pages/work";
+import Writing from "./pages/writing";
 
 // Initialize PostHog with weird Vite env variable magic
 if (import.meta.env.VITE_POSTHOG_KEY && import.meta.env.PROD) {
@@ -14,10 +18,31 @@ if (import.meta.env.VITE_POSTHOG_KEY && import.meta.env.PROD) {
 	});
 }
 
+const router = createBrowserRouter([
+	{
+		path: "/",
+		element: <Layout />,
+		children: [
+			{
+				index: true,
+				element: <Home />,
+			},
+			{
+				path: "work",
+				element: <Work />,
+			},
+			{
+				path: "writing",
+				element: <Writing />,
+			},
+		],
+	},
+]);
+
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
 		<PostHogProvider client={posthog}>
-			<App />
+			<RouterProvider router={router} />
 			<SpeedInsights />
 		</PostHogProvider>
 	</StrictMode>,
