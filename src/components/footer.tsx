@@ -33,7 +33,7 @@ export default function Footer({ email, socials }: FooterProps) {
 				</a>
 			</div>
 
-			<nav aria-label="Social media links">
+			<nav aria-label="Social media links" className="order-2">
 				<div className="flex items-center gap-2">
 					{socials.map((social) => (
 						<Button
