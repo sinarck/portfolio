@@ -15,11 +15,19 @@ export default function PortfolioHeader({ name, headline }: HeaderProps) {
 				{headline}
 			</p>
 			<div className="flex gap-2 pt-2">
-				<Button variant="outline" size="sm" className="button-scale">
+				<Button
+					variant="outline"
+					size="sm"
+					className="button-scale min-h-8 px-3.5"
+				>
 					work
 				</Button>
-				<Button variant="outline" size="sm" className="button-scale">
-					blog
+				<Button
+					variant="outline"
+					size="sm"
+					className="button-scale min-h-8 px-3.5"
+				>
+					writing
 				</Button>
 			</div>
 		</div>
