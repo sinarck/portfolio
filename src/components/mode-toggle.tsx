@@ -1,21 +1,37 @@
-import { Moon, Sun } from "lucide-react";
+import { Monitor, Moon, Sun } from "lucide-react";
 import { useTheme } from "./theme-provider";
-import { Button } from "./ui/button";
+import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 
 export function ModeToggle() {
 	const { theme, setTheme } = useTheme();
 
 	return (
-		<Button
-			variant="ghost"
-			size="icon"
-			onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-			className="h-8 w-8 text-muted-foreground hover:text-foreground transition-colors"
-			aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+		<Tabs
+			value={theme}
+			onValueChange={(value) => setTheme(value as "light" | "dark" | "system")}
 		>
-			<Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" aria-hidden="true" />
-			<Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" aria-hidden="true" />
-			<span className="sr-only">Toggle theme</span>
-		</Button>
+			<TabsList aria-label="Theme selector">
+				<TabsTrigger
+					value="light"
+					aria-label="Light mode"
+					className="size-7 p-0"
+				>
+					<Sun className="h-4 w-4" aria-hidden="true" />
+					<span className="sr-only">Light mode</span>
+				</TabsTrigger>
+				<TabsTrigger
+					value="system"
+					aria-label="System theme"
+					className="size-7 p-0"
+				>
+					<Monitor className="h-4 w-4" aria-hidden="true" />
+					<span className="sr-only">System theme</span>
+				</TabsTrigger>
+				<TabsTrigger value="dark" aria-label="Dark mode" className="size-7 p-0">
+					<Moon className="h-4 w-4" aria-hidden="true" />
+					<span className="sr-only">Dark mode</span>
+				</TabsTrigger>
+			</TabsList>
+		</Tabs>
 	);
 }
