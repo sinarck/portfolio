@@ -3,8 +3,7 @@ import type { PortfolioData } from "../types/portfolio";
 
 export const portfolioData: PortfolioData = {
 	name: "Hey, I'm Aadi Sanghvi",
-	headline:
-		"i'm a high school student. currently building with react, next.js, and expo",
+	headline: "i'm a high school student. currently building open attendance",
 	experience: [],
 	skills: [
 		"React",
