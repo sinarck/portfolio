@@ -1,3 +1,5 @@
+import SonderLogo from "./sonder-logo";
+
 type ExperienceCardProps = {
 	company: string;
 	role: string;
@@ -26,16 +28,22 @@ export default function ExperienceCard({
 		? `${formatDate(startDate)} — ${formatDate(endDate)}`
 		: `${formatDate(startDate)} — present`;
 
+	const isSonderPlaceholder = logo === "/work/sonder-placeholder.svg";
+
 	return (
 		<article className="flex gap-4 py-2">
 			{logo && (
 				<div className="shrink-0">
-					<img
-						src={logo}
-						alt={`${company} logo`}
-						className="size-12 rounded-lg object-cover"
-						aria-hidden="true"
-					/>
+					{isSonderPlaceholder ? (
+						<SonderLogo />
+					) : (
+						<img
+							src={logo}
+							alt={`${company} logo`}
+							className="size-12 rounded-lg object-cover"
+							aria-hidden="true"
+						/>
+					)}
 				</div>
 			)}
 			<div className="flex-1">
