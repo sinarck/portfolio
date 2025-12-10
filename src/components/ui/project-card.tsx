@@ -1,4 +1,5 @@
-import { ArrowUpRightIcon } from "@phosphor-icons/react";
+import { ArrowUpRight } from "lucide-react";
+import { parseISODate } from "../../lib/utils";
 import type { ProjectItem } from "../../types/portfolio";
 
 export default function ProjectCard({
@@ -7,7 +8,7 @@ export default function ProjectCard({
 	link,
 	date,
 }: ProjectItem) {
-	const year = new Date(date).getFullYear();
+	const year = parseISODate(date).getFullYear();
 
 	const content = (
 		<div className="group flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-4 py-2 cursor-pointer">
@@ -16,7 +17,7 @@ export default function ProjectCard({
 					<span className="text-foreground underline decoration-transparent group-hover:decoration-muted-foreground underline-offset-4 transition-[text-decoration-color] duration-300 ease-out">
 						{name}
 					</span>
-					<ArrowUpRightIcon
+					<ArrowUpRight
 						className="size-3 text-muted-foreground opacity-0 -translate-x-1 transition-[opacity,transform] duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-0"
 						aria-hidden="true"
 					/>

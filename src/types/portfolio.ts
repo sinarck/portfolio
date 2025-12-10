@@ -1,10 +1,11 @@
-import type { Icon } from "@phosphor-icons/react";
+import type { LucideIcon } from "lucide-react";
+import type { ISODate } from "../lib/utils";
 
 export type ExperienceItem = {
 	company: string;
 	role: string;
-	startDate: string;
-	endDate?: string;
+	startDate: ISODate;
+	endDate?: ISODate;
 	description: string;
 	logo: string;
 };
@@ -13,13 +14,13 @@ export type ProjectItem = {
 	name: string;
 	description: string;
 	link: string;
-	date: string;
+	date: ISODate;
 };
 
 export type SocialItem = {
 	name: string;
 	link: string;
-	icon: Icon;
+	icon: LucideIcon;
 };
 
 export type PortfolioData = {

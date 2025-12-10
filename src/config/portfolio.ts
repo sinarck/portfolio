@@ -1,25 +1,21 @@
-import {
-	GithubLogoIcon,
-	LinkedinLogoIcon,
-	XLogoIcon,
-} from "@phosphor-icons/react";
+import { Github, Linkedin, Twitter } from "lucide-react";
 import type { PortfolioData } from "../types/portfolio";
 
 export const portfolioData: PortfolioData = {
 	name: "Hey, I'm Aadi Sanghvi",
-	headline: "i'm a high school student. currently building open attendance",
+	headline: "I'm a high school student. Currently building Open Attendance",
 	experience: [
 		{
 			company: "Doastly",
 			role: "Junior SWE, SWE Intern",
-			startDate: "2023-12-01",
+			startDate: "2024-01-01",
 			description: "Pet salon management startup",
 			logo: "/work/doastly.webp",
 		},
 		{
 			company: "Sonder Initiative",
 			role: "Founder",
-			startDate: "2024-07-01",
+			startDate: "2024-08-01",
 			description: "Freelance web development. Contact for more details.",
 			logo: "/work/sonder-placeholder.svg",
 		},
@@ -61,17 +57,17 @@ export const portfolioData: PortfolioData = {
 		{
 			name: "github",
 			link: "https://github.com/sinarck",
-			icon: GithubLogoIcon,
+			icon: Github,
 		},
 		{
 			name: "linkedin",
 			link: "https://www.linkedin.com/in/aadisanghvi/",
-			icon: LinkedinLogoIcon,
+			icon: Linkedin,
 		},
 		{
 			name: "x",
 			link: "https://x.com/aadisanghvii",
-			icon: XLogoIcon,
+			icon: Twitter,
 		},
 	],
 };

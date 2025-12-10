@@ -32,12 +32,12 @@ export default function App() {
 						</div>
 					</div>
 
-					<Section label="projects">
-						<Projects items={portfolioData.projects} />
-					</Section>
-
 					<Section label="work">
 						<Experiences items={portfolioData.experience} />
+					</Section>
+
+					<Section label="projects">
+						<Projects items={portfolioData.projects} />
 					</Section>
 
 					<Section label="skills">
