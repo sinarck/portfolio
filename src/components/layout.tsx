@@ -19,7 +19,7 @@ export default function Layout() {
 				className="min-h-dvh w-full flex justify-center font-sans selection:bg-foreground selection:text-background"
 			>
 				<div className="w-full max-w-3xl mx-auto p-6 sm:p-12 space-y-8 mt-8 sm:mt-12">
-					<div className="flex flex-col gap-6 animate-in-up">
+					<div className="flex flex-col gap-6">
 						<div className="flex items-start justify-between gap-4">
 							<PortfolioHeader
 								name={portfolioData.name}
@@ -31,10 +31,7 @@ export default function Layout() {
 
 					<Outlet />
 
-					<div
-						className="pt-4 animate-in-up"
-						style={{ animationDelay: "250ms" }}
-					>
+					<div className="pt-4">
 						<Footer
 							email={portfolioData.email}
 							socials={portfolioData.socials}

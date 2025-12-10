@@ -1,15 +1,14 @@
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import posthog from "posthog-js";
 import { PostHogProvider } from "posthog-js/react";
-import { lazy, StrictMode, Suspense } from "react";
+import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/layout";
 import "./index.css";
-
-const Home = lazy(() => import("./pages/home"));
-const Work = lazy(() => import("./pages/work"));
-const Writing = lazy(() => import("./pages/writing"));
+import Home from "./pages/home";
+import Work from "./pages/work";
+import Writing from "./pages/writing";
 
 // Initialize PostHog with weird Vite env variable magic
 if (import.meta.env.VITE_POSTHOG_KEY && import.meta.env.PROD) {
@@ -26,27 +25,15 @@ const router = createBrowserRouter([
 		children: [
 			{
 				index: true,
-				element: (
-					<Suspense fallback={null}>
-						<Home />
-					</Suspense>
-				),
+				element: <Home />,
 			},
 			{
 				path: "work",
-				element: (
-					<Suspense fallback={null}>
-						<Work />
-					</Suspense>
-				),
+				element: <Work />,
 			},
 			{
 				path: "writing",
-				element: (
-					<Suspense fallback={null}>
-						<Writing />
-					</Suspense>
-				),
+				element: <Writing />,
 			},
 		],
 	},

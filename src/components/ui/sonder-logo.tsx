@@ -8,12 +8,7 @@ export default function SonderLogo() {
 			xmlns="http://www.w3.org/2000/svg"
 			className="rounded-lg"
 		>
-			<rect
-				width="48"
-				height="48"
-				rx="8"
-				className="fill-muted"
-			/>
+			<rect width="48" height="48" rx="8" className="fill-muted" />
 			<text
 				x="24"
 				y="32"
@@ -28,4 +23,3 @@ export default function SonderLogo() {
 		</svg>
 	);
 }
-

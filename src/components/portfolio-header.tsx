@@ -11,7 +11,7 @@ export default function PortfolioHeader({ name, headline }: HeaderProps) {
 	const isActive = (path: string) => location.pathname === path;
 
 	return (
-		<div className="space-y-1 animate-in-up">
+		<div className="space-y-1">
 			<Link to="/" className="block">
 				<h1 className="text-lg font-medium tracking-tight text-foreground hover:opacity-80 transition-opacity">
 					{name}

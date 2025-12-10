@@ -4,7 +4,7 @@ import { portfolioData } from "../config/portfolio";
 
 export default function Work() {
 	return (
-		<Section label="work" delay="100ms">
+		<Section label="work">
 			<Experiences items={portfolioData.experience} />
 		</Section>
 	);

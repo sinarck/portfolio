@@ -6,11 +6,11 @@ import { portfolioData } from "../config/portfolio";
 export default function Home() {
 	return (
 		<>
-			<Section label="projects" delay="100ms">
+			<Section label="projects">
 				<Projects items={portfolioData.projects} />
 			</Section>
 
-			<Section label="skills" delay="150ms">
+			<Section label="skills">
 				<Skills items={portfolioData.skills} />
 			</Section>
 		</>
