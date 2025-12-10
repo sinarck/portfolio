@@ -1,4 +1,4 @@
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { SiGithub, SiX } from "@icons-pack/react-simple-icons";
 import type { SocialItem } from "../types/portfolio";
 import { Button } from "./ui/button";
 
@@ -8,9 +8,8 @@ type FooterProps = {
 };
 
 const iconMap = {
-	github: Github,
-	linkedin: Linkedin,
-	x: Twitter,
+	github: SiGithub,
+	x: SiX,
 };
 
 export default function Footer({ email, socials }: FooterProps) {

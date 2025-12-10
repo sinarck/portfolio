@@ -4,7 +4,6 @@ import { ModeToggle } from "./components/mode-toggle";
 import PortfolioHeader from "./components/portfolio-header";
 import Projects from "./components/projects";
 import Section from "./components/section";
-import Skills from "./components/skills";
 import { ThemeProvider } from "./components/theme-provider";
 import { portfolioData } from "./config/portfolio";
 
@@ -38,10 +37,6 @@ export default function App() {
 
 					<Section label="projects">
 						<Projects items={portfolioData.projects} />
-					</Section>
-
-					<Section label="skills">
-						<Skills items={portfolioData.skills} />
 					</Section>
 
 					<div className="pt-4">

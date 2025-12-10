@@ -19,7 +19,7 @@ export type ProjectItem = {
 export type SocialItem = {
 	name: string;
 	link: string;
-	iconName: "github" | "linkedin" | "x";
+	iconName: "github" | "x";
 };
 
 export type PortfolioData = {
@@ -27,7 +27,6 @@ export type PortfolioData = {
 	headline: string;
 	experience: ExperienceItem[];
 	projects: ProjectItem[];
-	skills: string[];
 	email: string;
 	socials: SocialItem[];
 };
