@@ -1,13 +1,5 @@
-import SonderLogo from "./sonder-logo";
-
-type ExperienceCardProps = {
-	company: string;
-	role: string;
-	startDate: Date;
-	endDate?: Date;
-	description: string;
-	logo?: string;
-};
+import { formatDate } from "../../lib/utils";
+import type { ExperienceItem } from "../../types/portfolio";
 
 export default function ExperienceCard({
 	company,
@@ -16,49 +8,36 @@ export default function ExperienceCard({
 	endDate,
 	description,
 	logo,
-}: ExperienceCardProps) {
-	const formatDate = (date: Date) => {
-		return date.toLocaleDateString("en-US", {
-			month: "short",
-			year: "numeric",
-		});
-	};
-
+}: ExperienceItem) {
 	const period = endDate
 		? `${formatDate(startDate)} — ${formatDate(endDate)}`
 		: `${formatDate(startDate)} — present`;
 
-	const isSonderPlaceholder = logo === "/work/sonder-placeholder.svg";
-
 	return (
 		<article className="flex gap-4 py-2">
-			{logo && (
-				<div className="shrink-0">
-					{isSonderPlaceholder ? (
-						<SonderLogo />
-					) : (
-						<img
-							src={logo}
-							alt={`${company} logo`}
-							className="size-12 rounded-lg object-cover"
-							aria-hidden="true"
-						/>
-					)}
-				</div>
-			)}
-			<div className="flex-1">
-				<div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-4">
-					<div className="flex flex-wrap items-baseline gap-1.5">
-						<h3 className="font-medium text-sm text-foreground">{company}</h3>
-						<span className="text-sm text-muted-foreground font-normal">
-							({role})
-						</span>
-						<span className="text-sm text-muted-foreground leading-relaxed">
+			<div className="shrink-0">
+				<img
+					src={logo}
+					alt={`${company} logo`}
+					className="size-12 rounded-lg object-cover"
+					aria-hidden="true"
+				/>
+			</div>
+			<div className="flex-1 min-w-0">
+				<div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-4">
+					<div className="flex flex-col gap-1 min-w-0">
+						<div className="flex flex-wrap items-baseline gap-1.5">
+							<h3 className="font-medium text-sm text-foreground">{company}</h3>
+							<span className="text-sm text-muted-foreground font-normal">
+								({role})
+							</span>
+						</div>
+						<p className="text-sm text-muted-foreground leading-relaxed">
 							{description}
-						</span>
+						</p>
 					</div>
 					<time
-						dateTime={startDate.toISOString()}
+						dateTime={startDate}
 						className="hidden sm:block text-xs text-muted-foreground font-mono shrink-0"
 					>
 						{period}

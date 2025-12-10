@@ -1,19 +1,12 @@
-import { Github, Linkedin } from "lucide-react";
-import { usePostHog } from "posthog-js/react";
-import XIcon from "./icons/x";
+import type { SocialItem } from "../types/portfolio";
 import { Button } from "./ui/button";
 
 type FooterProps = {
 	email: string;
-	socials: {
-		name: string;
-		link: string;
-	}[];
+	socials: SocialItem[];
 };
 
 export default function Footer({ email, socials }: FooterProps) {
-	const posthog = usePostHog();
-
 	return (
 		<footer className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 text-sm text-muted-foreground pt-8 border-t border-dashed border-border">
 			<div className="order-1">
@@ -21,9 +14,6 @@ export default function Footer({ email, socials }: FooterProps) {
 					href={`mailto:${email}`}
 					className="hover:text-foreground transition-colors duration-200 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
 					aria-label={`Email me at ${email}`}
-					onClick={() =>
-						posthog.capture("email_click", { email }, { send_instantly: true })
-					}
 				>
 					you can reach me at{" "}
 					<span aria-hidden="true">
@@ -34,43 +24,27 @@ export default function Footer({ email, socials }: FooterProps) {
 			</div>
 
 			<nav aria-label="Social media links" className="order-2">
-				<div className="flex items-center gap-2">
-					{socials.map((social) => (
-						<Button
-							key={social.name}
-							variant="ghost"
-							size="icon"
-							render={(props) => (
-								<a
-									{...props}
-									href={social.link}
-									target="_blank"
-									rel="noreferrer noopener"
-									aria-label={`Visit my ${social.name} profile (opens in new tab)`}
-									onClick={() =>
-										posthog.capture(
-											"social_click",
-											{
-												"social.name": social.name,
-												"social.url": social.link,
-											},
-											{ send_instantly: true },
-										)
-									}
-								/>
-							)}
-						>
-							{social.name === "github" && (
-								<Github className="size-4" aria-hidden="true" />
-							)}
-							{social.name === "linkedin" && (
-								<Linkedin className="size-4" aria-hidden="true" />
-							)}
-							{social.name === "x" && (
-								<XIcon className="size-4" aria-hidden="true" />
-							)}
-						</Button>
-					))}
+				<div className="flex items-center gap-1">
+					{socials.map((social) => {
+						return (
+							<Button
+								key={social.name}
+								variant="ghost"
+								size="icon"
+								render={(props) => (
+									<a
+										{...props}
+										href={social.link}
+										target="_blank"
+										rel="noreferrer noopener"
+										aria-label={`Visit my ${social.name} profile (opens in new tab)`}
+									/>
+								)}
+							>
+								<social.icon className="size-4" aria-hidden="true" />
+							</Button>
+						);
+					})}
 				</div>
 			</nav>
 		</footer>

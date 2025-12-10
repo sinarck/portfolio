@@ -1,4 +1,4 @@
-import { Monitor, Moon, Sun } from "lucide-react";
+import { MonitorIcon, MoonIcon, SunIcon } from "@phosphor-icons/react";
 import { useTheme } from "./theme-provider";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 
@@ -16,7 +16,7 @@ export function ModeToggle() {
 					aria-label="Light mode"
 					className="size-7 p-0"
 				>
-					<Sun className="h-4 w-4" aria-hidden="true" />
+					<SunIcon className="size-4" aria-hidden="true" />
 					<span className="sr-only">Light mode</span>
 				</TabsTrigger>
 				<TabsTrigger
@@ -24,11 +24,11 @@ export function ModeToggle() {
 					aria-label="System theme"
 					className="size-7 p-0"
 				>
-					<Monitor className="h-4 w-4" aria-hidden="true" />
+					<MonitorIcon className="size-4" aria-hidden="true" />
 					<span className="sr-only">System theme</span>
 				</TabsTrigger>
 				<TabsTrigger value="dark" aria-label="Dark mode" className="size-7 p-0">
-					<Moon className="h-4 w-4" aria-hidden="true" />
+					<MoonIcon className="size-4" aria-hidden="true" />
 					<span className="sr-only">Dark mode</span>
 				</TabsTrigger>
 			</TabsList>

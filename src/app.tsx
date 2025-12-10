@@ -1,11 +1,14 @@
-import { Outlet } from "react-router-dom";
-import { portfolioData } from "../config/portfolio";
-import Footer from "./footer";
-import { ModeToggle } from "./mode-toggle";
-import PortfolioHeader from "./portfolio-header";
-import { ThemeProvider } from "./theme-provider";
+import Experiences from "./components/experiences";
+import Footer from "./components/footer";
+import { ModeToggle } from "./components/mode-toggle";
+import PortfolioHeader from "./components/portfolio-header";
+import Projects from "./components/projects";
+import Section from "./components/section";
+import Skills from "./components/skills";
+import { ThemeProvider } from "./components/theme-provider";
+import { portfolioData } from "./config/portfolio";
 
-export default function Layout() {
+export default function App() {
 	return (
 		<ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
 			<a
@@ -29,7 +32,17 @@ export default function Layout() {
 						</div>
 					</div>
 
-					<Outlet />
+					<Section label="projects">
+						<Projects items={portfolioData.projects} />
+					</Section>
+
+					<Section label="work">
+						<Experiences items={portfolioData.experience} />
+					</Section>
+
+					<Section label="skills">
+						<Skills items={portfolioData.skills} />
+					</Section>
 
 					<div className="pt-4">
 						<Footer

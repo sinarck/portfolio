@@ -1,4 +1,8 @@
-import z from "zod";
+import {
+	GithubLogoIcon,
+	LinkedinLogoIcon,
+	XLogoIcon,
+} from "@phosphor-icons/react";
 import type { PortfolioData } from "../types/portfolio";
 
 export const portfolioData: PortfolioData = {
@@ -7,15 +11,15 @@ export const portfolioData: PortfolioData = {
 	experience: [
 		{
 			company: "Doastly",
-			role: "Junior Software Engineer, Software Engineer Intern",
-			startDate: new Date(2024, 0, 1),
+			role: "Junior SWE, SWE Intern",
+			startDate: "2023-12-01",
 			description: "Pet salon management startup",
 			logo: "/work/doastly.webp",
 		},
 		{
 			company: "Sonder Initiative",
 			role: "Founder",
-			startDate: new Date(2024, 7, 1),
+			startDate: "2024-07-01",
 			description: "Freelance web development. Contact for more details.",
 			logo: "/work/sonder-placeholder.svg",
 		},
@@ -35,36 +39,39 @@ export const portfolioData: PortfolioData = {
 			description:
 				"an attendance system for schools (and got a few users along the way). Not a fan of proprietary software.",
 			link: "https://github.com/sinarck/open-attendance",
-			date: new Date(2025, 0, 1),
+			date: "2025-01-01",
 		},
 		{
 			name: "Hand Wave",
 			description:
 				"Real-time ASL translation with Meta AI glasses. Presented @ texas school for the deaf.",
 			link: "https://github.com/sinarck/hand-wave",
-			date: new Date(2025, 1, 1),
+			date: "2025-02-01",
 		},
 		{
 			name: "Storm Shield",
 			description:
 				"A mobile app demo that connects volunteers with disaster relief efforts. Got to show off @ us capitol",
 			link: "https://www.stormshield.app",
-			date: new Date(2024, 0, 1),
+			date: "2024-01-01",
 		},
 	],
-	email: z.email().parse(import.meta.env.VITE_EMAIL),
+	email: import.meta.env.VITE_EMAIL,
 	socials: [
 		{
 			name: "github",
 			link: "https://github.com/sinarck",
+			icon: GithubLogoIcon,
 		},
 		{
 			name: "linkedin",
 			link: "https://www.linkedin.com/in/aadisanghvi/",
+			icon: LinkedinLogoIcon,
 		},
 		{
 			name: "x",
 			link: "https://x.com/aadisanghvii",
+			icon: XLogoIcon,
 		},
 	],
 };
