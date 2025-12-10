@@ -1,3 +1,4 @@
+import type { SocialIconName } from "../lib/social-icons";
 import type { ISODate } from "../lib/utils";
 
 export type ExperienceItem = {
@@ -19,7 +20,7 @@ export type ProjectItem = {
 export type SocialItem = {
 	name: string;
 	link: string;
-	iconName: "github" | "x";
+	iconName: SocialIconName;
 };
 
 export type PortfolioData = {

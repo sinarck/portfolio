@@ -1,15 +1,10 @@
-import { SiGithub, SiX } from "@icons-pack/react-simple-icons";
+import { iconMap } from "../lib/social-icons";
 import type { SocialItem } from "../types/portfolio";
 import { Button } from "./ui/button";
 
 type FooterProps = {
 	email: string;
 	socials: SocialItem[];
-};
-
-const iconMap = {
-	github: SiGithub,
-	x: SiX,
 };
 
 export default function Footer({ email, socials }: FooterProps) {
