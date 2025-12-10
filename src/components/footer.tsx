@@ -1,16 +1,10 @@
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { iconMap } from "../lib/social-icons";
 import type { SocialItem } from "../types/portfolio";
 import { Button } from "./ui/button";
 
 type FooterProps = {
 	email: string;
 	socials: SocialItem[];
-};
-
-const iconMap = {
-	github: Github,
-	linkedin: Linkedin,
-	x: Twitter,
 };
 
 export default function Footer({ email, socials }: FooterProps) {

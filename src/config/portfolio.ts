@@ -19,15 +19,6 @@ export const portfolioData: PortfolioData = {
 			logo: "/work/sonder-placeholder.svg",
 		},
 	],
-	skills: [
-		"React",
-		"Next.js",
-		"TypeScript",
-		"Expo",
-		"Node.js",
-		"PostgreSQL",
-		"TailwindCSS",
-	],
 	projects: [
 		{
 			name: "Open Attendance",
@@ -57,11 +48,6 @@ export const portfolioData: PortfolioData = {
 			name: "github",
 			link: "https://github.com/sinarck",
 			iconName: "github",
-		},
-		{
-			name: "linkedin",
-			link: "https://www.linkedin.com/in/aadisanghvi/",
-			iconName: "linkedin",
 		},
 		{
 			name: "x",
