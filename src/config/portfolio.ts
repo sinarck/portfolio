@@ -1,4 +1,3 @@
-import { Github, Linkedin, Twitter } from "lucide-react";
 import type { PortfolioData } from "../types/portfolio";
 
 export const portfolioData: PortfolioData = {
@@ -57,17 +56,17 @@ export const portfolioData: PortfolioData = {
 		{
 			name: "github",
 			link: "https://github.com/sinarck",
-			icon: Github,
+			iconName: "github",
 		},
 		{
 			name: "linkedin",
 			link: "https://www.linkedin.com/in/aadisanghvi/",
-			icon: Linkedin,
+			iconName: "linkedin",
 		},
 		{
 			name: "x",
 			link: "https://x.com/aadisanghvii",
-			icon: Twitter,
+			iconName: "x",
 		},
 	],
 };

@@ -1,9 +1,16 @@
+import { Github, Linkedin, Twitter } from "lucide-react";
 import type { SocialItem } from "../types/portfolio";
 import { Button } from "./ui/button";
 
 type FooterProps = {
 	email: string;
 	socials: SocialItem[];
+};
+
+const iconMap = {
+	github: Github,
+	linkedin: Linkedin,
+	x: Twitter,
 };
 
 export default function Footer({ email, socials }: FooterProps) {
@@ -26,6 +33,8 @@ export default function Footer({ email, socials }: FooterProps) {
 			<nav aria-label="Social media links" className="order-2">
 				<div className="flex items-center gap-1">
 					{socials.map((social) => {
+						const Icon = iconMap[social.iconName];
+
 						return (
 							<Button
 								key={social.name}
@@ -41,7 +50,7 @@ export default function Footer({ email, socials }: FooterProps) {
 									/>
 								)}
 							>
-								<social.icon className="size-4" aria-hidden="true" />
+								<Icon className="size-4" aria-hidden="true" />
 							</Button>
 						);
 					})}

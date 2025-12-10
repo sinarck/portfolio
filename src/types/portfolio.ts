@@ -1,4 +1,3 @@
-import type { LucideIcon } from "lucide-react";
 import type { ISODate } from "../lib/utils";
 
 export type ExperienceItem = {
@@ -20,7 +19,7 @@ export type ProjectItem = {
 export type SocialItem = {
 	name: string;
 	link: string;
-	icon: LucideIcon;
+	iconName: "github" | "linkedin" | "x";
 };
 
 export type PortfolioData = {
