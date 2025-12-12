@@ -8,7 +8,8 @@
 		"build": "tsc -b && vite build",
 		"lint": "biome check .",
 		"preview": "vite preview",
-		"format": "biome format --write ."
+		"format": "biome format --write .",
+		"type-check": "tsc --noEmit"
 	},
 	"dependencies": {
 		"@base-ui-components/react": "^1.0.0-rc.0",
