@@ -53,7 +53,7 @@
 	--border: oklch(0.92 0 0);
 	--input: oklch(0.92 0 0);
 	--ring: oklch(0.15 0.02 285);
-	--destructive-foreground: var(--color-red-700);
+	--destructive-foreground: oklch(0.98 0 0);
 }
 
 @theme inline {
@@ -101,7 +101,7 @@
 	--border: oklch(0.22 0.01 285);
 	--input: oklch(0.18 0.01 285);
 	--ring: oklch(0.8 0 0);
-	--destructive-foreground: var(--color-red-400);
+	--destructive-foreground: oklch(0.98 0 0);
 }
 
 @layer base {

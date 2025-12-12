@@ -23,7 +23,7 @@ export const portfolioData: PortfolioData = {
 		{
 			name: "Open Attendance",
 			description:
-				"An attendance system for schools (and got a few users along the way). Not a fan of proprietary software.",
+				"Built an attendance system for schools (and got a few users along the way). Not a fan of proprietary software.",
 			link: "https://github.com/sinarck/open-attendance",
 			date: "2025-01-01",
 		},
