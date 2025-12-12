@@ -9,10 +9,6 @@ import { ThemeProvider } from "./components/theme-provider";
 import { ErrorFallback } from "./components/ui/error-fallback";
 import { portfolioData } from "./config/portfolio";
 
-function ThrowError({ message }: { message: string }): never {
-	throw new Error(message);
-}
-
 export default function App() {
 	return (
 		<ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
@@ -38,7 +34,6 @@ export default function App() {
 							</div>
 						</div>
 
-						<ThrowError message="testing error boundaries" />
 						<Section label="work">
 							<Experiences items={portfolioData.experience} />
 						</Section>
