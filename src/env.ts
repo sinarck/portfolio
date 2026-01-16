@@ -8,6 +8,7 @@ export const env = createEnv({
 	clientPrefix: "VITE_",
 	client: {
 		VITE_APP_TITLE: z.string().min(1).optional(),
+		VITE_EMAIL: z.string().email().optional(),
 	},
 	runtimeEnv: import.meta.env,
 	emptyStringAsUndefined: true,
