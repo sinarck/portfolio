@@ -4,37 +4,34 @@ import Footer from "@/components/footer";
 import PortfolioHeader from "@/components/portfolio-header";
 import Projects from "@/components/projects";
 import Section from "@/components/section";
-import { portfolioData } from "@/config/portfolio";
+import { portfolioData } from "@/config";
 
 export const Route = createFileRoute("/")({ component: HomePage });
 
 function HomePage() {
 	return (
-		<main className="min-h-dvh w-full font-mono">
-			{/* Subtle grid background */}
-			<div className="fixed inset-0 te-grid opacity-30 pointer-events-none" />
+		<main id="main-content" className="min-h-dvh w-full">
+			{/* Grid background */}
+			<div className="fixed inset-0 bg-grid opacity-30 pointer-events-none" />
 
-			<div className="relative z-10 w-full max-w-2xl mx-auto px-6 py-16 sm:py-24">
-				{/* Header section */}
-				<header
-					className="mb-16 animate-in-up"
-					style={{ animationDelay: "0ms" }}
-				>
+			<div className="relative z-elevated w-full max-w-container-md mx-auto px-6 py-16 sm:py-24">
+				{/* Header */}
+				<header className="mb-16 animate-in-up delay-0">
 					<PortfolioHeader
 						name={portfolioData.name}
 						headline={portfolioData.headline}
 					/>
 				</header>
 
-				{/* Main content */}
+				{/* Sections */}
 				<div className="space-y-16">
-					<div className="animate-in-up" style={{ animationDelay: "100ms" }}>
+					<div className="animate-in-up delay-1">
 						<Section label="work" index={1}>
 							<Experiences items={portfolioData.experience} />
 						</Section>
 					</div>
 
-					<div className="animate-in-up" style={{ animationDelay: "200ms" }}>
+					<div className="animate-in-up delay-2">
 						<Section label="projects" index={2}>
 							<Projects items={portfolioData.projects} />
 						</Section>
@@ -42,10 +39,7 @@ function HomePage() {
 				</div>
 
 				{/* Footer */}
-				<div
-					className="mt-16 pt-8 animate-in-up"
-					style={{ animationDelay: "300ms" }}
-				>
+				<div className="mt-16 pt-8 animate-in-up delay-3">
 					<Footer email={portfolioData.email} socials={portfolioData.socials} />
 				</div>
 			</div>

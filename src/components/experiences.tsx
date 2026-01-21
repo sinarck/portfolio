@@ -1,11 +1,15 @@
 import ExperienceCard from "@/components/ui/experience-card";
-import type { ExperienceItem } from "@/types/portfolio";
+import type { ExperienceItem } from "@/types";
 
-export default function Experiences({ items }: { items: ExperienceItem[] }) {
+type ExperiencesProps = {
+	items: ExperienceItem[];
+};
+
+export default function Experiences({ items }: ExperiencesProps) {
 	return (
-		<ul className="flex flex-col gap-2 list-none">
-			{items.map((experience, index) => (
-				<li key={`${experience.company}-${index}`}>
+		<ul className="flex flex-col gap-3 list-none">
+			{items.map((experience) => (
+				<li key={experience.company}>
 					<ExperienceCard {...experience} />
 				</li>
 			))}

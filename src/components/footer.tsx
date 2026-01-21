@@ -1,5 +1,5 @@
-import { iconMap } from "@/lib/social-icons";
-import type { SocialItem } from "@/types/portfolio";
+import SocialLink from "@/components/ui/social-link";
+import type { SocialItem } from "@/types";
 
 type FooterProps = {
 	email: string;
@@ -9,15 +9,13 @@ type FooterProps = {
 export default function Footer({ email, socials }: FooterProps) {
 	return (
 		<footer className="border-t border-border pt-8 space-y-6">
-			{/* Contact section */}
+			{/* Contact */}
 			<div className="space-y-2">
-				<span className="text-xs font-mono text-muted-foreground uppercase tracking-wider">
-					contact
-				</span>
+				<span className="label">contact</span>
 				<div>
 					<a
 						href={`mailto:${email}`}
-						className="text-sm font-mono text-foreground hover:text-primary transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+						className="text-sm link"
 						aria-label={`Email me at ${email}`}
 					>
 						{email}
@@ -26,35 +24,19 @@ export default function Footer({ email, socials }: FooterProps) {
 			</div>
 
 			{/* Social links */}
-			<div className="flex items-center gap-1">
-				{socials.map((social) => {
-					const Icon = iconMap[social.iconName];
+			<nav aria-label="Social links" className="flex items-center gap-1">
+				{socials.map((social) => (
+					<SocialLink key={social.name} {...social} />
+				))}
+			</nav>
 
-					return (
-						<a
-							key={social.name}
-							href={social.link}
-							target="_blank"
-							rel="noreferrer noopener"
-							aria-label={`${social.name} (opens in new tab)`}
-							className="group p-2 border border-transparent hover:border-border te-border-glow transition-colors"
-						>
-							<Icon
-								className="size-4 text-muted-foreground group-hover:text-primary transition-colors"
-								aria-hidden="true"
-							/>
-						</a>
-					);
-				})}
-			</div>
-
-			{/* Technical footer */}
-			<div className="pt-6 border-t border-border/50 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-xs font-mono text-muted-foreground/50">
-				<div className="flex items-center gap-2">
+			{/* Tech stack */}
+			<div className="pt-6 border-t border-border/50 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+				<div className="flex items-center gap-2 meta opacity-50">
 					<span className="size-1.5 bg-primary" />
 					<span>built with care</span>
 				</div>
-				<div className="flex items-center gap-4">
+				<div className="flex items-center gap-4 meta opacity-50">
 					<span>react</span>
 					<span className="text-primary/50">+</span>
 					<span>tanstack</span>

@@ -1,5 +1,6 @@
+import CornerAccents from "@/components/ui/corner-accents";
 import { formatDate } from "@/lib/utils";
-import type { ExperienceItem } from "@/types/portfolio";
+import type { ExperienceItem } from "@/types";
 
 export default function ExperienceCard({
 	company,
@@ -15,19 +16,17 @@ export default function ExperienceCard({
 
 	return (
 		<article className="group relative">
-			<div className="flex gap-4 p-4 border border-border bg-card/50 te-border-glow transition-colors">
-				{/* Logo with industrial frame */}
+			<div className="flex gap-4 card-interactive">
+				{/* Logo */}
 				<div className="shrink-0">
 					<div className="relative">
 						<img
 							src={logo}
 							alt=""
-							className="size-10 object-cover grayscale group-hover:grayscale-0 transition-[filter] duration-300"
+							className="size-10 object-cover grayscale group-hover:grayscale-0 transition-[filter] duration-slow"
 							aria-hidden="true"
 						/>
-						{/* Corner accents */}
-						<div className="absolute -top-px -left-px w-2 h-2 border-t border-l border-primary opacity-0 group-hover:opacity-100 transition-opacity" />
-						<div className="absolute -bottom-px -right-px w-2 h-2 border-b border-r border-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+						<CornerAccents size="sm" />
 					</div>
 				</div>
 
@@ -39,7 +38,7 @@ export default function ExperienceCard({
 								<h3 className="text-sm font-medium text-foreground">
 									{company}
 								</h3>
-								<span className="text-xs text-primary font-mono">{role}</span>
+								<span className="text-xs text-primary">{role}</span>
 							</div>
 							<p className="text-xs text-muted-foreground leading-relaxed">
 								{description}
@@ -47,7 +46,7 @@ export default function ExperienceCard({
 						</div>
 						<time
 							dateTime={startDate}
-							className="hidden sm:block text-xs text-muted-foreground font-mono shrink-0 tabular-nums"
+							className="hidden sm:block meta shrink-0"
 						>
 							{period}
 						</time>

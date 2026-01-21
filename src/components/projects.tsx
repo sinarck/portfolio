@@ -1,11 +1,15 @@
 import ProjectCard from "@/components/ui/project-card";
-import type { ProjectItem } from "@/types/portfolio";
+import type { ProjectItem } from "@/types";
 
-export default function Projects({ items }: { items: ProjectItem[] }) {
+type ProjectsProps = {
+	items: ProjectItem[];
+};
+
+export default function Projects({ items }: ProjectsProps) {
 	return (
-		<ul className="flex flex-col gap-2 list-none">
+		<ul className="flex flex-col gap-3 list-none">
 			{items.map((project) => (
-				<li key={`${project.name}-${project.link}`}>
+				<li key={project.name}>
 					<ProjectCard {...project} />
 				</li>
 			))}

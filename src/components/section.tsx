@@ -12,12 +12,9 @@ export default function Section({ label, index, children }: SectionProps) {
 	return (
 		<section className="space-y-6" aria-labelledby={`section-${label}`}>
 			<div className="flex items-center gap-3">
-				<span className="text-primary text-xs font-mono">{formattedIndex}</span>
+				<span className="text-primary text-xs">{formattedIndex}</span>
 				<div className="h-px flex-1 bg-border" />
-				<h2
-					id={`section-${label}`}
-					className="text-xs font-mono uppercase tracking-widest text-muted-foreground"
-				>
+				<h2 id={`section-${label}`} className="label">
 					{label}
 				</h2>
 			</div>
