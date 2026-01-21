@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { iconMap } from "@/lib/social-icons";
 import type { SocialItem } from "@/types/portfolio";
 
@@ -9,47 +8,60 @@ type FooterProps = {
 
 export default function Footer({ email, socials }: FooterProps) {
 	return (
-		<footer className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 text-sm text-muted-foreground pt-8 border-t border-dashed border-border">
-			<div className="order-1">
-				<a
-					href={`mailto:${email}`}
-					className="hover:text-foreground transition-colors duration-200 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
-					aria-label={`Email me at ${email}`}
-				>
-					you can reach me at{" "}
-					<span aria-hidden="true">
-						{email.replaceAll("@", " [at] ").replaceAll(".", " [dot] ")}
-					</span>
-					<span className="sr-only">{email}</span>
-				</a>
+		<footer className="border-t border-border pt-8 space-y-6">
+			{/* Contact section */}
+			<div className="space-y-2">
+				<span className="text-xs font-mono text-muted-foreground uppercase tracking-wider">
+					contact
+				</span>
+				<div>
+					<a
+						href={`mailto:${email}`}
+						className="text-sm font-mono text-foreground hover:text-primary transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+						aria-label={`Email me at ${email}`}
+					>
+						{email}
+					</a>
+				</div>
 			</div>
 
-			<nav aria-label="Social media links" className="order-2">
-				<div className="flex items-center gap-1">
-					{socials.map((social) => {
-						const Icon = iconMap[social.iconName];
+			{/* Social links */}
+			<div className="flex items-center gap-1">
+				{socials.map((social) => {
+					const Icon = iconMap[social.iconName];
 
-						return (
-							<Button
-								key={social.name}
-								variant="ghost"
-								size="icon"
-								render={(props) => (
-									<a
-										{...props}
-										href={social.link}
-										target="_blank"
-										rel="noreferrer noopener"
-										aria-label={`Visit my ${social.name} profile (opens in new tab)`}
-									/>
-								)}
-							>
-								<Icon className="size-4" aria-hidden="true" />
-							</Button>
-						);
-					})}
+					return (
+						<a
+							key={social.name}
+							href={social.link}
+							target="_blank"
+							rel="noreferrer noopener"
+							aria-label={`${social.name} (opens in new tab)`}
+							className="group p-2 border border-transparent hover:border-border te-border-glow transition-colors"
+						>
+							<Icon
+								className="size-4 text-muted-foreground group-hover:text-primary transition-colors"
+								aria-hidden="true"
+							/>
+						</a>
+					);
+				})}
+			</div>
+
+			{/* Technical footer */}
+			<div className="pt-6 border-t border-border/50 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-xs font-mono text-muted-foreground/50">
+				<div className="flex items-center gap-2">
+					<span className="size-1.5 bg-primary" />
+					<span>built with care</span>
 				</div>
-			</nav>
+				<div className="flex items-center gap-4">
+					<span>react</span>
+					<span className="text-primary/50">+</span>
+					<span>tanstack</span>
+					<span className="text-primary/50">+</span>
+					<span>tailwind</span>
+				</div>
+			</div>
 		</footer>
 	);
 }

@@ -6,7 +6,6 @@ import {
 	Scripts,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
-import { ThemeProvider } from "@/components/theme-provider";
 import appCss from "../styles.css?url";
 
 export const Route = createRootRoute({
@@ -14,7 +13,7 @@ export const Route = createRootRoute({
 		meta: [
 			{ charSet: "utf-8" },
 			{ name: "viewport", content: "width=device-width, initial-scale=1" },
-			{ name: "theme-color", content: "#ffffff" },
+			{ name: "theme-color", content: "#0a0a0a" },
 			{ title: "Aadi Sanghvi — Portfolio" },
 			{
 				name: "description",
@@ -37,6 +36,7 @@ export const Route = createRootRoute({
 					"High school student building Open Attendance. Software engineer and founder.",
 			},
 			{ name: "twitter:image", content: "/og-image.png" },
+			{ name: "color-scheme", content: "dark" },
 		],
 		links: [
 			{ rel: "stylesheet", href: appCss },
@@ -54,32 +54,18 @@ function RootComponent() {
 
 function RootDocument({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang="en" suppressHydrationWarning>
+		<html lang="en">
 			<head>
 				<HeadContent />
-				<script
-					dangerouslySetInnerHTML={{
-						__html: `
-							(function() {
-								const theme = localStorage.getItem('portfolio-theme') || 'system';
-								const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-								const isDark = theme === 'dark' || (theme === 'system' && systemDark);
-								document.documentElement.classList.add(isDark ? 'dark' : 'light');
-							})();
-						`,
-					}}
-				/>
 			</head>
 			<body>
-				<ThemeProvider defaultTheme="system" storageKey="portfolio-theme">
-					<a
-						href="#main-content"
-						className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-lg focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-none"
-					>
-						Skip to main content
-					</a>
-					{children}
-				</ThemeProvider>
+				<a
+					href="#main-content"
+					className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-none"
+				>
+					Skip to main content
+				</a>
+				{children}
 				<TanStackDevtools
 					config={{ position: "bottom-right" }}
 					plugins={[

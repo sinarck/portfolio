@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import Experiences from "@/components/experiences";
 import Footer from "@/components/footer";
-import { ModeToggle } from "@/components/mode-toggle";
 import PortfolioHeader from "@/components/portfolio-header";
 import Projects from "@/components/projects";
 import Section from "@/components/section";
@@ -11,30 +10,42 @@ export const Route = createFileRoute("/")({ component: HomePage });
 
 function HomePage() {
 	return (
-		<main
-			id="main-content"
-			className="min-h-dvh w-full flex justify-center font-sans selection:bg-foreground selection:text-background"
-		>
-			<div className="w-full max-w-3xl mx-auto p-6 sm:p-12 space-y-8 mt-8 sm:mt-12">
-				<div className="flex flex-col gap-6">
-					<div className="flex items-start justify-between gap-4">
-						<PortfolioHeader
-							name={portfolioData.name}
-							headline={portfolioData.headline}
-						/>
-						<ModeToggle />
+		<main className="min-h-dvh w-full font-mono">
+			{/* Subtle grid background */}
+			<div className="fixed inset-0 te-grid opacity-30 pointer-events-none" />
+
+			<div className="relative z-10 w-full max-w-2xl mx-auto px-6 py-16 sm:py-24">
+				{/* Header section */}
+				<header
+					className="mb-16 animate-in-up"
+					style={{ animationDelay: "0ms" }}
+				>
+					<PortfolioHeader
+						name={portfolioData.name}
+						headline={portfolioData.headline}
+					/>
+				</header>
+
+				{/* Main content */}
+				<div className="space-y-16">
+					<div className="animate-in-up" style={{ animationDelay: "100ms" }}>
+						<Section label="work" index={1}>
+							<Experiences items={portfolioData.experience} />
+						</Section>
+					</div>
+
+					<div className="animate-in-up" style={{ animationDelay: "200ms" }}>
+						<Section label="projects" index={2}>
+							<Projects items={portfolioData.projects} />
+						</Section>
 					</div>
 				</div>
 
-				<Section label="work">
-					<Experiences items={portfolioData.experience} />
-				</Section>
-
-				<Section label="projects">
-					<Projects items={portfolioData.projects} />
-				</Section>
-
-				<div className="pt-4">
+				{/* Footer */}
+				<div
+					className="mt-16 pt-8 animate-in-up"
+					style={{ animationDelay: "300ms" }}
+				>
 					<Footer email={portfolioData.email} socials={portfolioData.socials} />
 				</div>
 			</div>
