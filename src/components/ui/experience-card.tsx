@@ -23,7 +23,7 @@ export default function ExperienceCard({
 						<img
 							src={logo}
 							alt=""
-							className="size-10 object-cover grayscale group-hover:grayscale-0 transition-[filter] duration-slow"
+							className="size-10 object-cover grayscale-hover"
 							aria-hidden="true"
 						/>
 						<CornerAccents size="sm" />

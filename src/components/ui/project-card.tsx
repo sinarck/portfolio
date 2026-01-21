@@ -31,7 +31,7 @@ export default function ProjectCard({
 									{name}
 								</h3>
 								<ArrowUpRight
-									className="size-3 text-muted-foreground opacity-0 -translate-x-1 -translate-y-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-normal"
+									className="size-3 text-muted-foreground arrow-reveal"
 									aria-hidden="true"
 								/>
 							</div>

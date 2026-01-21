@@ -16,18 +16,16 @@
 }
 
 /* =============================================================================
-   DESIGN TOKENS - Tailwind Theme
-   Using 8pt grid system for spacing
-   Type scale: 12/14/16/24/32 (xs/sm/base/lg/xl)
+   DESIGN TOKENS
    ============================================================================= */
 
 @theme {
-	/* Typography - Monospace only */
+	/* Typography */
 	--font-mono:
 		"Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
 		"Liberation Mono", "Courier New", monospace;
 
-	/* 8pt Grid Spacing System */
+	/* 8pt Grid Spacing */
 	--spacing-0: 0px;
 	--spacing-1: 4px;
 	--spacing-2: 8px;
@@ -60,18 +58,42 @@
 	--tracking-wide: 0.05em;
 	--tracking-wider: 0.1em;
 
-	/* Font Weights */
-	--font-weight-normal: 400;
-	--font-weight-medium: 500;
+	/* =========================================================================
+	   ANIMATION SYSTEM
+	   Based on Emil Kowalski's animations.dev principles
+	   ========================================================================= */
 
-	/* Animation Easings */
+	/* Easing Curves - ease-out (enter/exit, most common)
+	   Sorted from weak to strong */
+	--ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	--ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
 	--ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
-	--ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+	--ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+	--ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 
-	/* Transition Durations */
+	/* Easing Curves - ease-in-out (on-screen movement) */
+	--ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+	--ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+	--ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
+
+	/* Durations
+	   - Micro-interactions: 100-150ms
+	   - Standard UI: 150-250ms
+	   - Modals/drawers: 200-300ms
+	   - Page transitions: 300-400ms */
+	--duration-instant: 0ms;
+	--duration-micro: 100ms;
 	--duration-fast: 150ms;
 	--duration-normal: 200ms;
 	--duration-slow: 300ms;
+	--duration-slower: 400ms;
+
+	/* Animation delays for stagger */
+	--delay-0: 0ms;
+	--delay-1: 50ms;
+	--delay-2: 100ms;
+	--delay-3: 150ms;
+	--delay-4: 200ms;
 
 	/* Z-Index Scale */
 	--z-base: 0;
@@ -81,12 +103,6 @@
 	/* Container Widths */
 	--container-sm: 640px;
 	--container-md: 672px;
-
-	/* Icon Sizes */
-	--icon-xs: 12px;
-	--icon-sm: 16px;
-	--icon-md: 20px;
-	--icon-lg: 24px;
 
 	/* Grid Size */
 	--grid-size: 24px;
@@ -192,19 +208,27 @@
 		padding: var(--spacing-4);
 	}
 
-	/* Interactive card with hover glow */
+	/* Interactive card with hover glow
+	   Uses ease-out for enter/exit feel, will-change for GPU acceleration */
 	.card-interactive {
 		border: 1px solid var(--border);
 		background-color: color-mix(in srgb, var(--card) 50%, transparent);
 		padding: var(--spacing-4);
+		will-change: transform, box-shadow;
 		transition:
-			box-shadow var(--duration-normal) ease,
-			border-color var(--duration-normal) ease;
+			transform var(--duration-fast) var(--ease-out-quart),
+			box-shadow var(--duration-normal) var(--ease-out-cubic),
+			border-color var(--duration-normal) var(--ease-out-cubic);
 	}
 
 	.card-interactive:hover {
 		box-shadow: 0 0 0 1px var(--primary);
 		border-color: var(--primary);
+	}
+
+	/* Press feedback - scale down slightly */
+	.card-interactive:active {
+		transform: scale(0.98);
 	}
 
 	/* Section label */
@@ -222,14 +246,32 @@
 		color: var(--muted-foreground);
 	}
 
-	/* Link */
+	/* Link with smooth color transition */
 	.link {
 		color: var(--foreground);
-		transition: color var(--duration-fast) ease;
+		transition: color var(--duration-fast) var(--ease-out-quad);
 	}
 
 	.link:hover {
 		color: var(--primary);
+	}
+
+	/* Interactive link with press feedback */
+	.link-interactive {
+		color: var(--foreground);
+		display: inline-block;
+		will-change: transform;
+		transition:
+			color var(--duration-fast) var(--ease-out-quad),
+			transform var(--duration-micro) var(--ease-out-quart);
+	}
+
+	.link-interactive:hover {
+		color: var(--primary);
+	}
+
+	.link-interactive:active {
+		transform: scale(0.97);
 	}
 }
 
@@ -238,43 +280,140 @@
    ============================================================================= */
 
 @layer utilities {
-	/* Entrance animation */
+	/* =========================================================================
+	   ENTRANCE ANIMATIONS
+	   Uses opacity + scale + translate for natural "balloon" appearance
+	   Never start from scale(0) - use scale(0.97) minimum
+	   ========================================================================= */
+
 	.animate-in-up {
-		animation: in-up 500ms var(--ease-out-expo) forwards;
+		animation: in-up var(--duration-slow) var(--ease-out-expo) forwards;
 		opacity: 0;
-		transform: translateY(var(--spacing-2));
+		transform: translateY(var(--spacing-3)) scale(0.98);
 	}
 
 	@keyframes in-up {
 		to {
 			opacity: 1;
-			transform: translateY(0);
+			transform: translateY(0) scale(1);
 		}
 	}
 
-	/* Animation delays */
+	/* Fade in with subtle scale */
+	.animate-fade-in {
+		animation: fade-in var(--duration-normal) var(--ease-out-quart) forwards;
+		opacity: 0;
+		transform: scale(0.97);
+	}
+
+	@keyframes fade-in {
+		to {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+
+	/* Animation delays for staggered entrance */
 	.delay-0 {
-		animation-delay: 0ms;
+		animation-delay: var(--delay-0);
 	}
 	.delay-1 {
-		animation-delay: 100ms;
+		animation-delay: var(--delay-2);
 	}
 	.delay-2 {
-		animation-delay: 200ms;
+		animation-delay: calc(var(--delay-2) * 2);
 	}
 	.delay-3 {
-		animation-delay: 300ms;
+		animation-delay: calc(var(--delay-2) * 3);
+	}
+	.delay-4 {
+		animation-delay: calc(var(--delay-2) * 4);
 	}
 
-	/* Grid background */
-	.bg-grid {
-		background-image:
-			linear-gradient(var(--border) 1px, transparent 1px),
-			linear-gradient(90deg, var(--border) 1px, transparent 1px);
-		background-size: var(--grid-size) var(--grid-size);
+	/* =========================================================================
+	   HOVER ANIMATIONS
+	   Only apply on devices that support hover (not touch)
+	   ========================================================================= */
+
+	/* Corner accent reveal with staggered timing */
+	.corner-accent {
+		opacity: 0;
+		transform: scale(0.5);
+		will-change: opacity, transform;
+		transition:
+			opacity var(--duration-fast) var(--ease-out-quart),
+			transform var(--duration-fast) var(--ease-out-quart);
 	}
 
-	/* Status pulse */
+	/* Stagger the corners for a ripple effect */
+	.corner-accent-tl {
+		transition-delay: 0ms;
+	}
+	.corner-accent-tr {
+		transition-delay: 25ms;
+	}
+	.corner-accent-br {
+		transition-delay: 50ms;
+	}
+	.corner-accent-bl {
+		transition-delay: 75ms;
+	}
+
+	/* Arrow reveal animation - starts slightly offset, moves to position */
+	.arrow-reveal {
+		opacity: 0;
+		transform: translate(-2px, 2px);
+		will-change: opacity, transform;
+		transition:
+			opacity var(--duration-fast) var(--ease-out-quart),
+			transform var(--duration-normal) var(--ease-out-expo);
+	}
+
+	/* Grayscale to color transition */
+	.grayscale-hover {
+		filter: grayscale(1);
+		will-change: filter;
+		transition: filter var(--duration-slow) var(--ease-out-cubic);
+	}
+
+	/* Hover states only on devices that support hover (not touch) */
+	@media (hover: hover) {
+		.group:hover .corner-accent {
+			opacity: 1;
+			transform: scale(1);
+		}
+
+		.group:hover .arrow-reveal {
+			opacity: 1;
+			transform: translate(0, 0);
+		}
+
+		.group:hover .grayscale-hover {
+			filter: grayscale(0);
+		}
+	}
+
+	/* On touch devices, show elements by default */
+	@media (hover: none) {
+		.corner-accent {
+			opacity: 1;
+			transform: scale(1);
+		}
+
+		.arrow-reveal {
+			opacity: 1;
+			transform: translate(0, 0);
+		}
+
+		.grayscale-hover {
+			filter: grayscale(0);
+		}
+	}
+
+	/* =========================================================================
+	   STATUS ANIMATIONS
+	   ========================================================================= */
+
 	.pulse-dot {
 		position: relative;
 	}
@@ -285,7 +424,7 @@
 		inset: 0;
 		border-radius: 9999px;
 		background-color: var(--primary);
-		animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+		animation: pulse 2s var(--ease-in-out-cubic) infinite;
 	}
 
 	@keyframes pulse {
@@ -296,8 +435,40 @@
 		}
 		50% {
 			opacity: 0;
-			transform: scale(2);
+			transform: scale(2.5);
 		}
+	}
+
+	/* =========================================================================
+	   BACKGROUND EFFECTS
+	   ========================================================================= */
+
+	.bg-grid {
+		background-image:
+			linear-gradient(var(--border) 1px, transparent 1px),
+			linear-gradient(90deg, var(--border) 1px, transparent 1px);
+		background-size: var(--grid-size) var(--grid-size);
+	}
+
+	/* =========================================================================
+	   ACCESSIBILITY
+	   ========================================================================= */
+
+	/* Touch-friendly hit area (44px minimum per WCAG) */
+	.touch-hitbox {
+		position: relative;
+	}
+
+	.touch-hitbox::before {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 100%;
+		height: 100%;
+		min-width: 44px;
+		min-height: 44px;
 	}
 
 	/* Screen reader only */
@@ -313,9 +484,14 @@
 		border-width: 0;
 	}
 
-	/* Reduced motion */
+	/* =========================================================================
+	   REDUCED MOTION
+	   Respect user preferences - disable all animations
+	   ========================================================================= */
+
 	@media (prefers-reduced-motion: reduce) {
-		.animate-in-up {
+		.animate-in-up,
+		.animate-fade-in {
 			animation: none;
 			opacity: 1;
 			transform: none;
@@ -323,6 +499,28 @@
 
 		.pulse-dot::before {
 			animation: none;
+			opacity: 0.75;
+		}
+
+		.corner-accent {
+			transition: none;
+		}
+
+		.arrow-reveal {
+			transition: none;
+		}
+
+		.grayscale-hover {
+			transition: none;
+		}
+
+		.card-interactive {
+			transition: none;
+		}
+
+		.link,
+		.link-interactive {
+			transition: none;
 		}
 
 		*,
