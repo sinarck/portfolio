@@ -450,6 +450,15 @@
 		background-size: var(--grid-size) var(--grid-size);
 	}
 
+	/* Blueprint canvas background */
+	.blueprint-canvas {
+		position: fixed;
+		inset: 0;
+		z-index: var(--z-base);
+		pointer-events: none;
+		opacity: 0.6;
+	}
+
 	/* =========================================================================
 	   ACCESSIBILITY
 	   ========================================================================= */

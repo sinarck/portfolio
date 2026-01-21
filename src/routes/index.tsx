@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import BlueprintBackground from "@/components/blueprint-background";
 import Experiences from "@/components/experiences";
 import Footer from "@/components/footer";
 import PortfolioHeader from "@/components/portfolio-header";
@@ -10,9 +11,10 @@ export const Route = createFileRoute("/")({ component: HomePage });
 
 function HomePage() {
 	return (
+		// biome-ignore lint/correctness/useUniqueElementIds: main-content ID is intentional for skip-link accessibility
 		<main id="main-content" className="min-h-dvh w-full">
-			{/* Grid background */}
-			<div className="fixed inset-0 bg-grid opacity-30 pointer-events-none" />
+			{/* Blueprint grid background */}
+			<BlueprintBackground />
 
 			<div className="relative z-elevated w-full max-w-container-md mx-auto px-6 py-16 sm:py-24">
 				{/* Header */}
