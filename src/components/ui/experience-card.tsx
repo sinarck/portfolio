@@ -13,14 +13,14 @@ export default function ExperienceCard({
 	const end = endDate ? formatDate(endDate) : "—";
 
 	return (
-		<article className="group py-4 border-b border-border/30 last:border-b-0">
+		<article className="group py-5 border-b border-border/30 last:border-b-0">
 			<div className="flex gap-4">
 				{/* Logo */}
 				<div className="shrink-0 pt-0.5">
 					<img
 						src={logo}
 						alt=""
-						className="size-8 object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+						className="size-10 object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
 					/>
 				</div>
 

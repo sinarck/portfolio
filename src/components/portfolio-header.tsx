@@ -10,9 +10,9 @@ export default function PortfolioHeader({
 	return (
 		<div className="space-y-8">
 			<div className="flex items-start justify-between">
-				<div className="space-y-1">
-					<h1 className="text-lg font-medium tracking-tight">{name}</h1>
-					<p className="text-sm text-muted-foreground max-w-sm">{headline}</p>
+				<div className="space-y-2">
+					<h1 className="text-xl font-medium tracking-tight">{name}</h1>
+					<p className="text-base text-muted-foreground max-w-sm">{headline}</p>
 				</div>
 				<StatusIndicator />
 			</div>

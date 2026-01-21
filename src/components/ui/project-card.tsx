@@ -16,7 +16,7 @@ export default function ProjectCard({
 				href={link}
 				target="_blank"
 				rel="noreferrer noopener"
-				className="block py-4 border-b border-border/30 last:border-b-0 focus:outline-none focus-visible:bg-primary/5"
+				className="block py-5 border-b border-border/30 last:border-b-0 focus:outline-none focus-visible:bg-primary/5"
 				aria-label={`${name}: ${description}. Opens in new tab`}
 			>
 				<div className="flex items-baseline justify-between gap-4">

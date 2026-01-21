@@ -10,7 +10,7 @@ type KnobProps = {
 };
 
 export default function Knob({
-	size = 48,
+	size = 52,
 	value: controlledValue,
 	min = 0,
 	max = 100,
@@ -18,10 +18,11 @@ export default function Knob({
 	label,
 }: KnobProps) {
 	const [internalValue, setInternalValue] = useState(50);
+	const [isDraggingState, setIsDraggingState] = useState(false);
 	const value = controlledValue ?? internalValue;
 	const knobRef = useRef<HTMLDivElement>(null);
 	const isDragging = useRef(false);
-	const startY = useRef(0);
+	const startAngle = useRef(0);
 	const startValue = useRef(0);
 
 	// Convert value to rotation (-135deg to 135deg, 270deg range)
@@ -39,9 +40,20 @@ export default function Knob({
 		[min, max, onChange],
 	);
 
+	const getAngleFromEvent = (e: React.PointerEvent) => {
+		if (!knobRef.current) return 0;
+		const rect = knobRef.current.getBoundingClientRect();
+		const centerX = rect.left + rect.width / 2;
+		const centerY = rect.top + rect.height / 2;
+		return (
+			Math.atan2(e.clientY - centerY, e.clientX - centerX) * (180 / Math.PI)
+		);
+	};
+
 	const handlePointerDown = (e: React.PointerEvent) => {
 		isDragging.current = true;
-		startY.current = e.clientY;
+		setIsDraggingState(true);
+		startAngle.current = getAngleFromEvent(e);
 		startValue.current = value;
 		(e.target as HTMLElement).setPointerCapture(e.pointerId);
 	};
@@ -49,14 +61,22 @@ export default function Knob({
 	const handlePointerMove = (e: React.PointerEvent) => {
 		if (!isDragging.current) return;
 
-		const deltaY = startY.current - e.clientY;
-		const sensitivity = (max - min) / 100;
-		const newValue = startValue.current + deltaY * sensitivity;
+		const currentAngle = getAngleFromEvent(e);
+		let deltaAngle = currentAngle - startAngle.current;
+
+		// Handle wrap-around at ±180°
+		if (deltaAngle > 180) deltaAngle -= 360;
+		if (deltaAngle < -180) deltaAngle += 360;
+
+		// Map angle delta to value (270° range = full value range)
+		const sensitivity = (max - min) / 270;
+		const newValue = startValue.current + deltaAngle * sensitivity;
 		updateValue(newValue);
 	};
 
 	const handlePointerUp = () => {
 		isDragging.current = false;
+		setIsDraggingState(false);
 	};
 
 	// Keyboard support
@@ -76,7 +96,7 @@ export default function Knob({
 			{label && <span className="knob-label">{label}</span>}
 			<div
 				ref={knobRef}
-				className="knob"
+				className={`knob ${isDraggingState ? "is-dragging" : ""}`}
 				style={{ width: size, height: size }}
 				onPointerDown={handlePointerDown}
 				onPointerMove={handlePointerMove}

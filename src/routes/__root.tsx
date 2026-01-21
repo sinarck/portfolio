@@ -6,6 +6,7 @@ import {
 	Scripts,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+import NotFound from "@/components/not-found";
 import { siteConfig } from "@/config";
 import appCss from "../styles.css?url";
 
@@ -33,6 +34,7 @@ export const Route = createRootRoute({
 			{ rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
 		],
 	}),
+	notFoundComponent: () => <NotFound />,
 	component: RootComponent,
 	shellComponent: RootDocument,
 });

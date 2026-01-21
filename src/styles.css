@@ -40,12 +40,12 @@
 	--spacing-20: 80px;
 	--spacing-24: 96px;
 
-	/* Type Scale */
+	/* Type Scale - Moderate scaling */
 	--text-xs: 0.75rem;
-	--text-sm: 0.875rem;
-	--text-base: 1rem;
-	--text-lg: 1.5rem;
-	--text-xl: 2rem;
+	--text-sm: 0.9375rem;
+	--text-base: 1.0625rem;
+	--text-lg: 1.75rem;
+	--text-xl: 2.25rem;
 
 	/* Line Heights */
 	--leading-tight: 1.25;
@@ -108,21 +108,21 @@
 	--grid-size: 24px;
 
 	/* Device Frame */
-	--device-margin: 24px;
+	--device-margin: 20px;
 	--device-bezel: 1px;
 	--device-radius: 2px;
-	--device-footer-height: 32px;
+	--device-footer-height: 36px;
 }
 
 /* Responsive device margins */
 @media (width >= 640px) {
 	:root {
-		--device-margin: 32px;
+		--device-margin: 28px;
 	}
 }
 @media (width >= 1024px) {
 	:root {
-		--device-margin: 48px;
+		--device-margin: 40px;
 	}
 }
 
@@ -317,7 +317,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 6px 12px;
+		padding: 8px 16px;
 		background-color: #080808;
 		border-bottom: 1px solid var(--border);
 	}
@@ -337,11 +337,11 @@
 			var(--border) 80%,
 			transparent
 		);
-		margin: 0 16px;
+		margin: 0 20px;
 	}
 
 	.device-marking {
-		font-size: 8px;
+		font-size: 9px;
 		letter-spacing: 0.15em;
 		color: var(--muted-foreground);
 		opacity: 0.6;
@@ -386,19 +386,19 @@
 	/* Control panel sidebar */
 	.device-controls {
 		display: none;
-		width: 72px;
+		width: 88px;
 		background-color: #080808;
 		border-left: 1px solid var(--border);
-		padding: 16px 0;
+		padding: 20px 0;
 	}
 
 	.device-controls-inner {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 24px;
+		gap: 28px;
 		position: sticky;
-		top: 16px;
+		top: 20px;
 	}
 
 	/* Show controls on larger screens */
@@ -408,35 +408,134 @@
 		}
 	}
 
+	/* Mobile control bar */
+	.device-controls-mobile {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+		padding: 10px 16px;
+		background-color: #080808;
+		border-top: 1px solid var(--border);
+	}
+
+	@media (width >= 768px) {
+		.device-controls-mobile {
+			display: none;
+		}
+	}
+
+	.mobile-control {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		flex: 1;
+	}
+
+	.mobile-control-label {
+		font-size: 9px;
+		letter-spacing: 0.15em;
+		color: var(--muted-foreground);
+		text-transform: uppercase;
+	}
+
+	.mobile-control-value {
+		font-size: 10px;
+		color: var(--muted-foreground);
+		min-width: 20px;
+		text-align: right;
+		font-variant-numeric: tabular-nums;
+	}
+
+	.mobile-slider {
+		flex: 1;
+		height: 4px;
+		-webkit-appearance: none;
+		appearance: none;
+		background: var(--border);
+		border-radius: 2px;
+		outline: none;
+		cursor: pointer;
+	}
+
+	.mobile-slider::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 14px;
+		height: 14px;
+		background: var(--primary);
+		border-radius: 50%;
+		cursor: pointer;
+		transition: transform 0.1s ease-out;
+	}
+
+	.mobile-slider::-moz-range-thumb {
+		width: 14px;
+		height: 14px;
+		background: var(--primary);
+		border-radius: 50%;
+		border: none;
+		cursor: pointer;
+	}
+
+	.mobile-slider:active::-webkit-slider-thumb {
+		transform: scale(1.15);
+	}
+
+	.mobile-toggle {
+		padding: 6px 12px;
+		font-size: 9px;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: var(--muted-foreground);
+		background: transparent;
+		border: 1px solid var(--border);
+		cursor: pointer;
+		transition:
+			color 0.15s ease-out,
+			border-color 0.15s ease-out,
+			background-color 0.15s ease-out;
+	}
+
+	.mobile-toggle-on {
+		color: var(--primary);
+		border-color: var(--primary);
+		background-color: rgba(255, 85, 0, 0.1);
+	}
+
+	.mobile-toggle:active {
+		transform: scale(0.97);
+	}
+
 	/* Bottom specs bar */
 	.device-specs-left,
 	.device-specs-right {
 		display: flex;
 		align-items: center;
-		gap: 8px;
+		gap: 10px;
 	}
 
 	.device-spec-item {
-		font-size: 8px;
+		font-size: 9px;
 		letter-spacing: 0.1em;
 		color: var(--muted-foreground);
 		opacity: 0.5;
 	}
 
 	.device-spec-dot {
-		width: 2px;
-		height: 2px;
+		width: 3px;
+		height: 3px;
 		background-color: var(--muted-foreground);
 		opacity: 0.3;
 	}
 
 	.device-compliance {
-		font-size: 7px;
+		font-size: 8px;
 		font-weight: 600;
 		letter-spacing: 0.05em;
 		color: var(--muted-foreground);
 		opacity: 0.4;
-		padding: 1px 3px;
+		padding: 2px 4px;
 		border: 1px solid currentColor;
 	}
 
@@ -447,7 +546,7 @@
 		top: 50%;
 		transform: translateX(50%) rotate(90deg);
 		transform-origin: center;
-		font-size: 9px;
+		font-size: 10px;
 		letter-spacing: 0.3em;
 		color: var(--muted-foreground);
 		opacity: 0.25;
@@ -463,28 +562,29 @@
 
 	/* =========================================================================
 	   KNOB COMPONENT
-	   Interactive rotary control
+	   Interactive rotary control with animations
 	   ========================================================================= */
 
 	.knob-container {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 4px;
+		gap: 6px;
 	}
 
 	.knob-label {
-		font-size: 7px;
+		font-size: 9px;
 		text-transform: uppercase;
 		letter-spacing: 0.15em;
 		color: var(--muted-foreground);
 	}
 
 	.knob-value {
-		font-size: 8px;
+		font-size: 10px;
 		font-variant-numeric: tabular-nums;
 		color: var(--muted-foreground);
 		opacity: 0.6;
+		transition: color 0.15s ease-out;
 	}
 
 	.knob {
@@ -501,7 +601,7 @@
 
 	.knob:focus-visible {
 		outline: 1px solid var(--primary);
-		outline-offset: 4px;
+		outline-offset: 6px;
 	}
 
 	.knob-ring {
@@ -515,11 +615,32 @@
 			#0d0d0d 50%,
 			#1a1a1a 100%
 		);
+		transition:
+			border-color 0.15s var(--ease-out-quad),
+			transform 0.15s var(--ease-out-quart),
+			box-shadow 0.2s var(--ease-out-cubic);
+	}
+
+	.knob:hover .knob-ring {
+		border-color: var(--muted-foreground);
+		transform: scale(1.03);
+	}
+
+	.knob:active .knob-ring,
+	.knob.is-dragging .knob-ring {
+		border-color: var(--primary);
+		box-shadow: 0 0 12px rgba(255, 85, 0, 0.4);
+		transform: scale(1.03);
+	}
+
+	.knob:active .knob-value,
+	.knob.is-dragging ~ .knob-value {
+		color: var(--primary);
 	}
 
 	.knob-cap {
 		position: absolute;
-		inset: 4px;
+		inset: 5px;
 		border-radius: 50%;
 		background: linear-gradient(
 			145deg,
@@ -528,26 +649,32 @@
 			#0f0f0f 100%
 		);
 		border: 1px solid #333;
-		transition: transform 0.05s ease-out;
+		transition: transform 0.1s var(--ease-out-quart);
 	}
 
 	.knob-indicator {
 		position: absolute;
-		top: 4px;
+		top: 5px;
 		left: 50%;
 		width: 2px;
-		height: 8px;
+		height: 10px;
 		background-color: var(--primary);
 		transform: translateX(-50%);
 		border-radius: 1px;
+		transition: box-shadow 0.15s ease-out;
+	}
+
+	.knob:active .knob-indicator,
+	.knob.is-dragging .knob-indicator {
+		box-shadow: 0 0 6px var(--primary);
 	}
 
 	.knob-center {
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		width: 6px;
-		height: 6px;
+		width: 8px;
+		height: 8px;
 		background-color: #0a0a0a;
 		border: 1px solid #333;
 		border-radius: 50%;
@@ -591,8 +718,8 @@
 	}
 
 	.toggle-track {
-		width: 20px;
-		height: 32px;
+		width: 24px;
+		height: 40px;
 		background: linear-gradient(
 			180deg,
 			#0a0a0a 0%,
@@ -602,22 +729,31 @@
 		border: 1px solid var(--border);
 		border-radius: 2px;
 		position: relative;
-		transition: border-color 0.15s ease-out;
+		transition:
+			border-color 0.15s var(--ease-out-quad),
+			transform 0.15s var(--ease-out-quart),
+			box-shadow 0.2s var(--ease-out-cubic);
 	}
 
 	.toggle-switch:hover .toggle-track {
 		border-color: var(--muted-foreground);
+		transform: scale(1.03);
+	}
+
+	.toggle-switch:active .toggle-track {
+		transform: scale(0.97);
 	}
 
 	.toggle-switch-on .toggle-track {
 		border-color: var(--primary);
+		box-shadow: 0 0 10px rgba(255, 85, 0, 0.3);
 	}
 
 	.toggle-thumb {
 		position: absolute;
-		left: 2px;
-		right: 2px;
-		height: 12px;
+		left: 3px;
+		right: 3px;
+		height: 14px;
 		background: linear-gradient(
 			180deg,
 			#3a3a3a 0%,
@@ -626,22 +762,24 @@
 		);
 		border: 1px solid #444;
 		border-radius: 1px;
-		bottom: 2px;
+		bottom: 3px;
 		transition:
-			bottom 0.1s ease-out,
-			top 0.1s ease-out,
-			background 0.15s ease-out;
+			bottom 0.15s var(--ease-out-quart),
+			top 0.15s var(--ease-out-quart),
+			background 0.15s ease-out,
+			box-shadow 0.15s ease-out;
 	}
 
 	.toggle-switch-on .toggle-thumb {
 		bottom: auto;
-		top: 2px;
+		top: 3px;
 		background: linear-gradient(
 			180deg,
 			var(--primary) 0%,
 			#cc4400 100%
 		);
 		border-color: var(--primary);
+		box-shadow: 0 0 6px var(--primary);
 	}
 
 	.toggle-state {
@@ -657,6 +795,37 @@
 		color: var(--primary);
 		opacity: 1;
 	}
+
+	/* =========================================================================
+	   ASCII PATTERN COMPONENT
+	   Decorative noise texture for footer
+	   ========================================================================= */
+
+	.ascii-pattern {
+		font-family: var(--font-mono);
+		font-size: 8px;
+		line-height: 1.2;
+		color: var(--muted-foreground);
+		opacity: 0.1;
+		user-select: none;
+		pointer-events: none;
+		white-space: pre;
+		overflow: hidden;
+		mask-image: linear-gradient(
+			90deg,
+			transparent 0%,
+			black 15%,
+			black 85%,
+			transparent 100%
+		);
+		-webkit-mask-image: linear-gradient(
+			90deg,
+			transparent 0%,
+			black 15%,
+			black 85%,
+			transparent 100%
+		);
+	}
 }
 
 /* =============================================================================
@@ -671,12 +840,14 @@
 	   ========================================================================= */
 
 	.animate-in-up {
-		animation: in-up var(--duration-slow) var(--ease-out-expo) forwards;
-		opacity: 0;
-		transform: translateY(var(--spacing-3)) scale(0.98);
+		animation: in-up var(--duration-slow) var(--ease-out-expo) both;
 	}
 
 	@keyframes in-up {
+		from {
+			opacity: 0;
+			transform: translateY(var(--spacing-3)) scale(0.98);
+		}
 		to {
 			opacity: 1;
 			transform: translateY(0) scale(1);
@@ -685,12 +856,14 @@
 
 	/* Fade in with subtle scale */
 	.animate-fade-in {
-		animation: fade-in var(--duration-normal) var(--ease-out-quart) forwards;
-		opacity: 0;
-		transform: scale(0.97);
+		animation: fade-in var(--duration-normal) var(--ease-out-quart) both;
 	}
 
 	@keyframes fade-in {
+		from {
+			opacity: 0;
+			transform: scale(0.97);
+		}
 		to {
 			opacity: 1;
 			transform: scale(1);
@@ -891,8 +1064,6 @@
 		.animate-in-up,
 		.animate-fade-in {
 			animation: none;
-			opacity: 1;
-			transform: none;
 		}
 
 		.pulse-dot::before {

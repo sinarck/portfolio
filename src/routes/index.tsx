@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { createServerFn } from "@tanstack/react-start";
 import DeviceFrame from "@/components/device-frame";
 import Experiences from "@/components/experiences";
 import Footer from "@/components/footer";
@@ -7,14 +8,23 @@ import Projects from "@/components/projects";
 import Section from "@/components/section";
 import { portfolioData } from "@/config";
 
-export const Route = createFileRoute("/")({ component: HomePage });
+const getYear = createServerFn().handler(async () => {
+	return new Date().getFullYear();
+});
+
+export const Route = createFileRoute("/")({
+	loader: () => getYear(),
+	component: HomePage,
+});
 
 function HomePage() {
+	const year = Route.useLoaderData();
+
 	return (
 		<DeviceFrame>
-			<main className="w-full max-w-container-md mx-auto px-6 py-16 sm:py-24">
+			<main className="w-full max-w-container-md mx-auto px-6 py-12 sm:py-16">
 				{/* Header */}
-				<header className="mb-16 animate-in-up delay-0">
+				<header className="mb-12 animate-in-up delay-0">
 					<PortfolioHeader
 						name={portfolioData.name}
 						headline={portfolioData.headline}
@@ -22,7 +32,7 @@ function HomePage() {
 				</header>
 
 				{/* Sections */}
-				<div className="space-y-16">
+				<div className="space-y-12">
 					<div className="animate-in-up delay-1">
 						<Section label="work" index={1}>
 							<Experiences items={portfolioData.experience} />
@@ -37,8 +47,12 @@ function HomePage() {
 				</div>
 
 				{/* Footer */}
-				<div className="mt-16 pt-8 animate-in-up delay-3">
-					<Footer email={portfolioData.email} socials={portfolioData.socials} />
+				<div className="mt-12 animate-in-up delay-3">
+					<Footer
+						email={portfolioData.email}
+						socials={portfolioData.socials}
+						year={year}
+					/>
 				</div>
 			</main>
 		</DeviceFrame>

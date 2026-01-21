@@ -8,7 +8,7 @@ type DeviceFrameProps = {
 };
 
 export default function DeviceFrame({ children }: DeviceFrameProps) {
-	const [brightness, setBrightness] = useState(70);
+	const [brightness, setBrightness] = useState(85);
 	const [gridVisible, setGridVisible] = useState(true);
 	const [scanlines, setScanlines] = useState(false);
 
@@ -43,12 +43,12 @@ export default function DeviceFrame({ children }: DeviceFrameProps) {
 						</div>
 					</div>
 
-					{/* Control panel - right side */}
+					{/* Control panel - right side (desktop only) */}
 					<aside className="device-controls">
 						<div className="device-controls-inner">
 							{/* Brightness knob */}
 							<Knob
-								size={40}
+								size={52}
 								value={brightness}
 								onChange={setBrightness}
 								min={20}
@@ -71,6 +71,39 @@ export default function DeviceFrame({ children }: DeviceFrameProps) {
 							/>
 						</div>
 					</aside>
+				</div>
+
+				{/* Mobile control bar (bottom) */}
+				<div className="device-controls-mobile">
+					<div className="mobile-control">
+						<span className="mobile-control-label">BRT</span>
+						<input
+							type="range"
+							min={20}
+							max={100}
+							value={brightness}
+							onChange={(e) => setBrightness(Number(e.target.value))}
+							className="mobile-slider"
+							aria-label="Brightness"
+						/>
+						<span className="mobile-control-value">{brightness}</span>
+					</div>
+					<button
+						type="button"
+						className={`mobile-toggle ${gridVisible ? "mobile-toggle-on" : ""}`}
+						onClick={() => setGridVisible(!gridVisible)}
+						aria-label="Toggle grid"
+					>
+						GRID
+					</button>
+					<button
+						type="button"
+						className={`mobile-toggle ${scanlines ? "mobile-toggle-on" : ""}`}
+						onClick={() => setScanlines(!scanlines)}
+						aria-label="Toggle CRT effect"
+					>
+						CRT
+					</button>
 				</div>
 
 				{/* Bottom edge - technical specs */}

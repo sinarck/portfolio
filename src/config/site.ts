@@ -1,6 +1,6 @@
 export const siteConfig = {
 	name: "Aadi Sanghvi",
-	title: "Aadi Sanghvi — Portfolio",
+	title: "Aadi Sanghvi",
 	description:
 		"High school student building Open Attendance. Software engineer and founder.",
 	url: "https://aadisanghvi.com",
