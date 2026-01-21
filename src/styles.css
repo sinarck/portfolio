@@ -106,6 +106,24 @@
 
 	/* Grid Size */
 	--grid-size: 24px;
+
+	/* Device Frame */
+	--device-margin: 24px;
+	--device-bezel: 1px;
+	--device-radius: 2px;
+	--device-footer-height: 32px;
+}
+
+/* Responsive device margins */
+@media (width >= 640px) {
+	:root {
+		--device-margin: 32px;
+	}
+}
+@media (width >= 1024px) {
+	:root {
+		--device-margin: 48px;
+	}
 }
 
 /* =============================================================================
@@ -272,6 +290,372 @@
 
 	.link-interactive:active {
 		transform: scale(0.97);
+	}
+
+	/* =========================================================================
+	   DEVICE FRAME
+	   Hardware-style enclosure with technical markings
+	   ========================================================================= */
+
+	.device-outer {
+		min-height: 100dvh;
+		padding: var(--device-margin);
+		background-color: #030303;
+		position: relative;
+	}
+
+	.device-shell {
+		display: flex;
+		flex-direction: column;
+		min-height: calc(100dvh - var(--device-margin) * 2);
+		background-color: var(--background);
+		border: 1px solid var(--border);
+	}
+
+	/* Edge markings - like hardware labels */
+	.device-edge {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 6px 12px;
+		background-color: #080808;
+		border-bottom: 1px solid var(--border);
+	}
+
+	.device-edge-bottom {
+		border-bottom: none;
+		border-top: 1px solid var(--border);
+	}
+
+	.device-edge-line {
+		flex: 1;
+		height: 1px;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			var(--border) 20%,
+			var(--border) 80%,
+			transparent
+		);
+		margin: 0 16px;
+	}
+
+	.device-marking {
+		font-size: 8px;
+		letter-spacing: 0.15em;
+		color: var(--muted-foreground);
+		opacity: 0.6;
+	}
+
+	/* Main content area - screen + controls */
+	.device-main {
+		display: flex;
+		flex: 1;
+		min-height: 0;
+	}
+
+	/* Screen area */
+	.device-screen {
+		position: relative;
+		flex: 1;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+
+	.device-viewport {
+		position: relative;
+		z-index: var(--z-elevated);
+		transition: opacity 0.15s ease-out;
+	}
+
+	/* CRT scanlines effect */
+	.device-scanlines {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		background: repeating-linear-gradient(
+			0deg,
+			transparent,
+			transparent 2px,
+			rgba(0, 0, 0, 0.15) 2px,
+			rgba(0, 0, 0, 0.15) 4px
+		);
+		z-index: var(--z-overlay);
+	}
+
+	/* Control panel sidebar */
+	.device-controls {
+		display: none;
+		width: 72px;
+		background-color: #080808;
+		border-left: 1px solid var(--border);
+		padding: 16px 0;
+	}
+
+	.device-controls-inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 24px;
+		position: sticky;
+		top: 16px;
+	}
+
+	/* Show controls on larger screens */
+	@media (width >= 768px) {
+		.device-controls {
+			display: block;
+		}
+	}
+
+	/* Bottom specs bar */
+	.device-specs-left,
+	.device-specs-right {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.device-spec-item {
+		font-size: 8px;
+		letter-spacing: 0.1em;
+		color: var(--muted-foreground);
+		opacity: 0.5;
+	}
+
+	.device-spec-dot {
+		width: 2px;
+		height: 2px;
+		background-color: var(--muted-foreground);
+		opacity: 0.3;
+	}
+
+	.device-compliance {
+		font-size: 7px;
+		font-weight: 600;
+		letter-spacing: 0.05em;
+		color: var(--muted-foreground);
+		opacity: 0.4;
+		padding: 1px 3px;
+		border: 1px solid currentColor;
+	}
+
+	/* Side label - rotated model number */
+	.device-side-label {
+		position: fixed;
+		right: calc(var(--device-margin) / 2);
+		top: 50%;
+		transform: translateX(50%) rotate(90deg);
+		transform-origin: center;
+		font-size: 9px;
+		letter-spacing: 0.3em;
+		color: var(--muted-foreground);
+		opacity: 0.25;
+		white-space: nowrap;
+	}
+
+	/* Hide side label on mobile */
+	@media (width < 768px) {
+		.device-side-label {
+			display: none;
+		}
+	}
+
+	/* =========================================================================
+	   KNOB COMPONENT
+	   Interactive rotary control
+	   ========================================================================= */
+
+	.knob-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 4px;
+	}
+
+	.knob-label {
+		font-size: 7px;
+		text-transform: uppercase;
+		letter-spacing: 0.15em;
+		color: var(--muted-foreground);
+	}
+
+	.knob-value {
+		font-size: 8px;
+		font-variant-numeric: tabular-nums;
+		color: var(--muted-foreground);
+		opacity: 0.6;
+	}
+
+	.knob {
+		position: relative;
+		cursor: grab;
+		touch-action: none;
+		user-select: none;
+		outline: none;
+	}
+
+	.knob:active {
+		cursor: grabbing;
+	}
+
+	.knob:focus-visible {
+		outline: 1px solid var(--primary);
+		outline-offset: 4px;
+	}
+
+	.knob-ring {
+		position: absolute;
+		inset: 0;
+		border-radius: 50%;
+		border: 1px solid var(--border);
+		background: linear-gradient(
+			135deg,
+			#1a1a1a 0%,
+			#0d0d0d 50%,
+			#1a1a1a 100%
+		);
+	}
+
+	.knob-cap {
+		position: absolute;
+		inset: 4px;
+		border-radius: 50%;
+		background: linear-gradient(
+			145deg,
+			#2a2a2a 0%,
+			#1a1a1a 50%,
+			#0f0f0f 100%
+		);
+		border: 1px solid #333;
+		transition: transform 0.05s ease-out;
+	}
+
+	.knob-indicator {
+		position: absolute;
+		top: 4px;
+		left: 50%;
+		width: 2px;
+		height: 8px;
+		background-color: var(--primary);
+		transform: translateX(-50%);
+		border-radius: 1px;
+	}
+
+	.knob-center {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 6px;
+		height: 6px;
+		background-color: #0a0a0a;
+		border: 1px solid #333;
+		border-radius: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	/* =========================================================================
+	   TOGGLE SWITCH COMPONENT
+	   Hardware-style toggle
+	   ========================================================================= */
+
+	.toggle-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 4px;
+	}
+
+	.toggle-label {
+		font-size: 7px;
+		text-transform: uppercase;
+		letter-spacing: 0.15em;
+		color: var(--muted-foreground);
+	}
+
+	.toggle-switch {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 4px;
+		background: none;
+		border: none;
+		padding: 0;
+		cursor: pointer;
+		outline: none;
+	}
+
+	.toggle-switch:focus-visible .toggle-track {
+		outline: 1px solid var(--primary);
+		outline-offset: 2px;
+	}
+
+	.toggle-track {
+		width: 20px;
+		height: 32px;
+		background: linear-gradient(
+			180deg,
+			#0a0a0a 0%,
+			#1a1a1a 50%,
+			#0a0a0a 100%
+		);
+		border: 1px solid var(--border);
+		border-radius: 2px;
+		position: relative;
+		transition: border-color 0.15s ease-out;
+	}
+
+	.toggle-switch:hover .toggle-track {
+		border-color: var(--muted-foreground);
+	}
+
+	.toggle-switch-on .toggle-track {
+		border-color: var(--primary);
+	}
+
+	.toggle-thumb {
+		position: absolute;
+		left: 2px;
+		right: 2px;
+		height: 12px;
+		background: linear-gradient(
+			180deg,
+			#3a3a3a 0%,
+			#2a2a2a 50%,
+			#1a1a1a 100%
+		);
+		border: 1px solid #444;
+		border-radius: 1px;
+		bottom: 2px;
+		transition:
+			bottom 0.1s ease-out,
+			top 0.1s ease-out,
+			background 0.15s ease-out;
+	}
+
+	.toggle-switch-on .toggle-thumb {
+		bottom: auto;
+		top: 2px;
+		background: linear-gradient(
+			180deg,
+			var(--primary) 0%,
+			#cc4400 100%
+		);
+		border-color: var(--primary);
+	}
+
+	.toggle-state {
+		font-size: 7px;
+		font-weight: 500;
+		letter-spacing: 0.1em;
+		color: var(--muted-foreground);
+		opacity: 0.5;
+		transition: opacity 0.15s ease-out;
+	}
+
+	.toggle-switch-on .toggle-state {
+		color: var(--primary);
+		opacity: 1;
 	}
 }
 
@@ -451,11 +835,16 @@
 	}
 
 	/* Blueprint canvas background */
-	.blueprint-canvas {
-		position: fixed;
+	.blueprint-container {
+		position: absolute;
 		inset: 0;
 		z-index: var(--z-base);
 		pointer-events: none;
+		overflow: hidden;
+	}
+
+	.blueprint-canvas {
+		display: block;
 		opacity: 0.6;
 	}
 

@@ -1,5 +1,4 @@
 import { ArrowUpRight } from "lucide-react";
-import CornerAccents from "@/components/ui/corner-accents";
 import { parseISODate } from "@/lib/utils";
 import type { ProjectItem } from "@/types";
 
@@ -17,44 +16,26 @@ export default function ProjectCard({
 				href={link}
 				target="_blank"
 				rel="noreferrer noopener"
-				className="block focus:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+				className="block py-4 border-b border-border/30 last:border-b-0 focus:outline-none focus-visible:bg-primary/5"
 				aria-label={`${name}: ${description}. Opens in new tab`}
 			>
-				<div className="relative card-interactive">
-					<CornerAccents />
-
-					<div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 sm:gap-4">
-						<div className="space-y-2 flex-1">
-							{/* Project name */}
-							<div className="flex items-center gap-2">
-								<h3 className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
-									{name}
-								</h3>
-								<ArrowUpRight
-									className="size-3 text-muted-foreground arrow-reveal"
-									aria-hidden="true"
-								/>
-							</div>
-							<p className="text-xs text-muted-foreground leading-relaxed">
-								{description}
-							</p>
-						</div>
-
-						{/* Year badge */}
-						<time
-							dateTime={date}
-							className="meta shrink-0 px-2 py-1 border border-border group-hover:border-primary/50 transition-colors"
-						>
-							{year}
-						</time>
+				<div className="flex items-baseline justify-between gap-4">
+					<div className="flex items-baseline gap-2 min-w-0">
+						<h3 className="text-sm text-foreground group-hover:text-primary transition-colors truncate">
+							{name}
+						</h3>
+						<ArrowUpRight
+							className="size-3 text-muted-foreground/40 group-hover:text-primary transition-colors shrink-0"
+							aria-hidden="true"
+						/>
 					</div>
-
-					{/* Link indicator */}
-					<div className="mt-3 pt-3 border-t border-border/50 flex items-center gap-2 meta opacity-50">
-						<span className="size-1 bg-primary/50 group-hover:bg-primary transition-colors" />
-						<span>external link</span>
-					</div>
+					<span className="text-[10px] tabular-nums text-muted-foreground/40 shrink-0">
+						{year}
+					</span>
 				</div>
+				<p className="mt-1 text-xs text-muted-foreground/70 leading-relaxed">
+					{description}
+				</p>
 			</a>
 		</article>
 	);

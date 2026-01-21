@@ -1,4 +1,3 @@
-import CornerAccents from "@/components/ui/corner-accents";
 import { formatDate } from "@/lib/utils";
 import type { ExperienceItem } from "@/types";
 
@@ -10,47 +9,35 @@ export default function ExperienceCard({
 	description,
 	logo,
 }: ExperienceItem) {
-	const period = endDate
-		? `${formatDate(startDate)} — ${formatDate(endDate)}`
-		: `${formatDate(startDate)} — now`;
+	const start = formatDate(startDate);
+	const end = endDate ? formatDate(endDate) : "—";
 
 	return (
-		<article className="group relative">
-			<div className="flex gap-4 card-interactive">
+		<article className="group py-4 border-b border-border/30 last:border-b-0">
+			<div className="flex gap-4">
 				{/* Logo */}
-				<div className="shrink-0">
-					<div className="relative">
-						<img
-							src={logo}
-							alt=""
-							className="size-10 object-cover grayscale-hover"
-							aria-hidden="true"
-						/>
-						<CornerAccents size="sm" />
-					</div>
+				<div className="shrink-0 pt-0.5">
+					<img
+						src={logo}
+						alt=""
+						className="size-8 object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+					/>
 				</div>
 
 				{/* Content */}
-				<div className="flex-1 min-w-0 space-y-1">
-					<div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-4">
-						<div className="space-y-1">
-							<div className="flex flex-wrap items-center gap-2">
-								<h3 className="text-sm font-medium text-foreground">
-									{company}
-								</h3>
-								<span className="text-xs text-primary">{role}</span>
-							</div>
-							<p className="text-xs text-muted-foreground leading-relaxed">
-								{description}
-							</p>
+				<div className="flex-1 min-w-0">
+					<div className="flex items-baseline justify-between gap-4">
+						<div className="flex items-baseline gap-2 min-w-0">
+							<h3 className="text-sm text-foreground truncate">{company}</h3>
+							<span className="text-[10px] text-primary shrink-0">{role}</span>
 						</div>
-						<time
-							dateTime={startDate}
-							className="hidden sm:block meta shrink-0"
-						>
-							{period}
+						<time className="text-[10px] tabular-nums text-muted-foreground/60 shrink-0 hidden sm:block">
+							{start} → {end}
 						</time>
 					</div>
+					<p className="mt-1 text-xs text-muted-foreground/80 leading-relaxed">
+						{description}
+					</p>
 				</div>
 			</div>
 		</article>

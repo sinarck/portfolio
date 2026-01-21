@@ -8,22 +8,13 @@ export default function PortfolioHeader({
 	headline,
 }: PortfolioHeaderProps) {
 	return (
-		<div className="space-y-6">
-			<StatusIndicator />
-
-			<div className="space-y-2">
-				<h1 className="text-xl font-medium tracking-tight text-foreground">
-					{name}
-				</h1>
-				<p className="text-sm text-muted-foreground leading-relaxed max-w-md">
-					{headline}
-				</p>
-			</div>
-
-			<div className="flex items-center gap-2 meta opacity-50">
-				<span>sys.version</span>
-				<span className="text-primary">{"/"}</span>
-				<span>2025.01</span>
+		<div className="space-y-8">
+			<div className="flex items-start justify-between">
+				<div className="space-y-1">
+					<h1 className="text-lg font-medium tracking-tight">{name}</h1>
+					<p className="text-sm text-muted-foreground max-w-sm">{headline}</p>
+				</div>
+				<StatusIndicator />
 			</div>
 		</div>
 	);

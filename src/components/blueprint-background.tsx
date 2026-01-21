@@ -22,23 +22,27 @@ const MAJOR_MARKER_HOLLOW = 2; // Hollow center radius
 
 export default function BlueprintBackground() {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
+	const containerRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
 		// SSR safety
 		if (typeof window === "undefined") return;
 
 		const canvas = canvasRef.current;
-		if (!canvas) return;
+		const container = containerRef.current;
+		if (!canvas || !container) return;
 
 		const ctx = canvas.getContext("2d");
 		if (!ctx) return;
 
 		let resizeTimeout: ReturnType<typeof setTimeout>;
+		let resizeObserver: ResizeObserver;
 
 		const draw = () => {
 			const dpr = window.devicePixelRatio || 1;
-			const width = window.innerWidth;
-			const height = window.innerHeight;
+			const rect = container.getBoundingClientRect();
+			const width = rect.width;
+			const height = rect.height;
 
 			// Set canvas size with device pixel ratio for crisp lines
 			canvas.width = width * dpr;
@@ -199,19 +203,22 @@ export default function BlueprintBackground() {
 		// Initial draw
 		draw();
 
-		// Debounced resize handler
-		const handleResize = () => {
+		// Use ResizeObserver for container-based resizing
+		resizeObserver = new ResizeObserver(() => {
 			clearTimeout(resizeTimeout);
 			resizeTimeout = setTimeout(draw, 100);
-		};
-
-		window.addEventListener("resize", handleResize);
+		});
+		resizeObserver.observe(container);
 
 		return () => {
-			window.removeEventListener("resize", handleResize);
+			resizeObserver.disconnect();
 			clearTimeout(resizeTimeout);
 		};
 	}, []);
 
-	return <canvas ref={canvasRef} className="blueprint-canvas" />;
+	return (
+		<div ref={containerRef} className="blueprint-container">
+			<canvas ref={canvasRef} className="blueprint-canvas" />
+		</div>
+	);
 }

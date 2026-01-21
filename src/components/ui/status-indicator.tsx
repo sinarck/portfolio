@@ -1,17 +1,26 @@
 type StatusIndicatorProps = {
-	label?: string;
+	status?: "active" | "idle" | "offline";
 };
 
 export default function StatusIndicator({
-	label = "available for work",
+	status = "active",
 }: StatusIndicatorProps) {
 	return (
-		<div className="flex items-center gap-2">
-			<span className="relative flex size-2">
-				<span className="pulse-dot size-2 rounded-full" />
-				<span className="relative rounded-full size-2 bg-primary" />
+		<div className="flex items-center gap-3">
+			<div className="flex items-center gap-1.5">
+				<span
+					className={`size-1.5 rounded-full ${status === "active" ? "bg-primary" : "bg-muted-foreground/30"}`}
+				/>
+				<span
+					className={`size-1.5 rounded-full ${status === "idle" ? "bg-primary" : "bg-muted-foreground/30"}`}
+				/>
+				<span
+					className={`size-1.5 rounded-full ${status === "offline" ? "bg-primary" : "bg-muted-foreground/30"}`}
+				/>
+			</div>
+			<span className="text-[9px] uppercase tracking-[0.15em] text-muted-foreground">
+				{status}
 			</span>
-			<span className="label">{label}</span>
 		</div>
 	);
 }
