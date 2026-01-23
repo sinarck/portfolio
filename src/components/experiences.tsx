@@ -1,13 +1,9 @@
+import { formatDate } from "@/lib/utils";
 import type { ExperienceItem } from "@/types";
 
 type ExperiencesProps = {
 	items: ExperienceItem[];
 };
-
-function formatDate(dateString: string): string {
-	const date = new Date(dateString);
-	return date.toLocaleDateString("en-US", { month: "short", year: "numeric" });
-}
 
 export default function Experiences({ items }: ExperiencesProps) {
 	return (
