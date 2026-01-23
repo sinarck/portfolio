@@ -15,11 +15,7 @@ export const portfolioData: PortfolioData = {
 		},
 		{
 			type: "listening",
-			title: "Daft Punk",
-		},
-		{
-			type: "reading",
-			title: "The Design of Everyday Things",
+			title: "Weston Estate",
 		},
 		{
 			type: "watching",

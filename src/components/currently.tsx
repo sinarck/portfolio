@@ -18,11 +18,12 @@ const typeIcons: Record<CurrentlyItem["type"], typeof HammerIcon> = {
 };
 
 export default function Currently({ items }: CurrentlyProps) {
-	if (items.length === 0) return null;
+	const validItems = items.filter((item) => item.title);
+	if (validItems.length === 0) return null;
 
 	return (
 		<div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
-			{items.map((item) => {
+			{validItems.map((item) => {
 				const Icon = typeIcons[item.type];
 				return (
 					<span
@@ -35,7 +36,7 @@ export default function Currently({ items }: CurrentlyProps) {
 								href={item.link}
 								target="_blank"
 								rel="noreferrer noopener"
-								className="text-foreground hover:text-muted-foreground transition-colors duration-150 ease"
+								className="text-foreground hover:text-muted-foreground transition-colors duration-150 ease rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
 							>
 								{item.title}
 							</a>
