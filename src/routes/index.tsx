@@ -16,6 +16,7 @@ function HomePage() {
 	return (
 		<>
 			<EasterEgg />
+			{/* biome-ignore lint/correctness/useUniqueElementIds: intentional static ID for skip-link accessibility */}
 			<main
 				id="main-content"
 				className="max-w-2xl mx-auto px-6 min-h-dvh flex flex-col justify-center py-12"
