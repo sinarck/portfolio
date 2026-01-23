@@ -73,6 +73,11 @@ export const portfolioData: PortfolioData = {
 			iconName: "github",
 		},
 		{
+			name: "LinkedIn",
+			link: "https://linkedin.com/in/aadisanghvi",
+			iconName: "linkedin",
+		},
+		{
 			name: "X",
 			link: "https://x.com/aadisanghvii",
 			iconName: "x",
