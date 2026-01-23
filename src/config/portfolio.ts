@@ -2,20 +2,43 @@ import type { PortfolioData } from "@/types/portfolio";
 
 export const portfolioData: PortfolioData = {
 	name: "Hey, I'm Aadi Sanghvi",
-	headline: "I'm a high school student. Currently building Open Attendance",
+	headline: "High school student, currently building Open Attendance.",
+	availability: {
+		status: "open",
+		message: "Open to opportunities",
+	},
+	currently: [
+		{
+			type: "building",
+			title: "Open Attendance",
+			link: "https://github.com/sinarck/open-attendance",
+		},
+		{
+			type: "listening",
+			title: "Daft Punk",
+		},
+		{
+			type: "reading",
+			title: "The Design of Everyday Things",
+		},
+		{
+			type: "watching",
+			title: "Mr. Robot",
+		},
+	],
 	experience: [
 		{
 			company: "Doastly",
 			role: "Junior SWE, SWE Intern",
 			startDate: "2024-01-01",
-			description: "Pet salon management startup",
+			description: "Pet salon management startup.",
 			logo: "/work/doastly.webp",
 		},
 		{
 			company: "Sonder Initiative",
 			role: "Founder",
 			startDate: "2024-08-01",
-			description: "Freelance web development. Contact for more details.",
+			description: "Freelance web development. Reach out for details.",
 			logo: "/work/sonder-placeholder.svg",
 		},
 	],
@@ -23,34 +46,34 @@ export const portfolioData: PortfolioData = {
 		{
 			name: "Open Attendance",
 			description:
-				"An attendance system for schools (with a few users). Not a fan of proprietary software.",
+				"An open-source attendance system for schools. Not a fan of proprietary software.",
 			link: "https://github.com/sinarck/open-attendance",
 			date: "2025-01-01",
 		},
 		{
 			name: "Hand Wave",
 			description:
-				"Real-time ASL translation with Meta AI glasses. Presented @ The Texas School for the Deaf.",
+				"Real-time ASL translation with Meta AI glasses. Presented at The Texas School for the Deaf.",
 			link: "https://github.com/sinarck/hand-wave",
 			date: "2025-02-01",
 		},
 		{
 			name: "Storm Shield",
 			description:
-				"A mobile app demo that connects volunteers with disaster relief efforts. Got to show off @ US Capitol",
+				"Mobile app connecting volunteers with disaster relief efforts. Demoed at the US Capitol.",
 			link: "https://www.stormshield.app",
 			date: "2024-01-01",
 		},
 	],
-	email: import.meta.env.VITE_EMAIL ?? "",
+	email: "placeholder@example.com",
 	socials: [
 		{
-			name: "github",
+			name: "GitHub",
 			link: "https://github.com/sinarck",
 			iconName: "github",
 		},
 		{
-			name: "x",
+			name: "X",
 			link: "https://x.com/aadisanghvii",
 			iconName: "x",
 		},
