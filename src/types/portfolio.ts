@@ -1,5 +1,7 @@
-import type { ISODate } from "./date";
 import type { SocialItem } from "./social";
+
+/** ISO Date string format: YYYY-MM-DD */
+export type ISODate = `${number}-${number}-${number}`;
 
 export type ExperienceItem = {
 	company: string;
@@ -28,10 +30,7 @@ export type CurrentlyItem = {
 export type PortfolioData = {
 	name: string;
 	headline: string;
-	availability?: {
-		status: AvailabilityStatus;
-		message?: string;
-	};
+	availability?: { status: AvailabilityStatus; message?: string };
 	currently?: CurrentlyItem[];
 	experience: ExperienceItem[];
 	projects: ProjectItem[];
@@ -39,6 +38,4 @@ export type PortfolioData = {
 	socials: SocialItem[];
 };
 
-// Re-export for convenience
-export type { ISODate } from "./date";
 export type { SocialIconName, SocialItem } from "./social";
