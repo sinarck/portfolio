@@ -1,6 +1,11 @@
-import { SiGithub, SiX } from "@icons-pack/react-simple-icons";
+import {
+	GithubLogoIcon,
+	LinkedinLogoIcon,
+	XLogoIcon,
+} from "@phosphor-icons/react";
 
 export const iconMap = {
-	github: SiGithub,
-	x: SiX,
+	github: GithubLogoIcon,
+	linkedin: LinkedinLogoIcon,
+	x: XLogoIcon,
 } as const;

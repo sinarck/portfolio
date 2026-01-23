@@ -1,15 +1,20 @@
-import { Book, Hammer, Headphones, Tv } from "lucide-react";
+import {
+	BookIcon,
+	HammerIcon,
+	HeadphonesIcon,
+	TelevisionIcon,
+} from "@phosphor-icons/react";
 import type { CurrentlyItem } from "@/types";
 
 type CurrentlyProps = {
 	items: CurrentlyItem[];
 };
 
-const typeIcons: Record<CurrentlyItem["type"], typeof Hammer> = {
-	building: Hammer,
-	reading: Book,
-	listening: Headphones,
-	watching: Tv,
+const typeIcons: Record<CurrentlyItem["type"], typeof HammerIcon> = {
+	building: HammerIcon,
+	reading: BookIcon,
+	listening: HeadphonesIcon,
+	watching: TelevisionIcon,
 };
 
 export default function Currently({ items }: CurrentlyProps) {
@@ -30,7 +35,7 @@ export default function Currently({ items }: CurrentlyProps) {
 								href={item.link}
 								target="_blank"
 								rel="noreferrer noopener"
-								className="text-foreground hover:text-muted-foreground transition-colors duration-150 ease-out"
+								className="text-foreground hover:text-muted-foreground transition-colors duration-150 ease"
 							>
 								{item.title}
 							</a>
