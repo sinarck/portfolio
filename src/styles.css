@@ -26,6 +26,7 @@
   --color-foreground: var(--foreground);
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
+  --color-ring: var(--ring);
 }
 
 :root {
@@ -33,6 +34,7 @@
   --foreground: #fafafa;
   --muted-foreground: #a1a1a1;
   --border: #262626;
+  --ring: #525252;
 
   /* Easing curves - ease-out for entrances */
   --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
