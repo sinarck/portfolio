@@ -15,7 +15,7 @@ export default function PortfolioHeader({
 			{availability && (
 				<span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground mb-3 animate-in">
 					<span
-						className="size-1.5 rounded-full bg-emerald-500 animate-pulse"
+						className="size-1.5 rounded-full bg-emerald-500 animate-subtle-pulse"
 						aria-hidden="true"
 					/>
 					{availability.message}

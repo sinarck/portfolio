@@ -77,9 +77,12 @@
 
 @layer utilities {
   @media (prefers-reduced-motion: reduce) {
-    * {
-      animation-duration: 0.01ms !important;
-      transition-duration: 0.01ms !important;
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms;
+      animation-iteration-count: 1;
+      transition-duration: 0.01ms;
     }
   }
 
@@ -87,7 +90,7 @@
   @keyframes fade-in-up {
     from {
       opacity: 0;
-      filter: blur(8px);
+      filter: blur(4px);
       transform: translateY(8px);
     }
     to {
@@ -98,13 +101,27 @@
   }
 
   .animate-in {
-    animation: fade-in-up 500ms var(--ease-out-quart) both;
+    animation: fade-in-up 400ms var(--ease-out-quart) both;
   }
 
   .delay-1 { animation-delay: 50ms; }
   .delay-2 { animation-delay: 100ms; }
   .delay-3 { animation-delay: 150ms; }
   .delay-4 { animation-delay: 200ms; }
+
+  /* Subtle status pulse - gentler than Tailwind's default */
+  @keyframes subtle-pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+
+  .animate-subtle-pulse {
+    animation: subtle-pulse 3s ease-in-out infinite;
+  }
 
   /* Confetti animation */
   @keyframes confetti {
@@ -136,5 +153,26 @@
 
   .animate-blur-in {
     animation: blur-fade-in 200ms var(--ease-out-cubic) both;
+  }
+
+  /* Touch device hover guard - only show hover effects with precise pointer */
+  @media (hover: hover) and (pointer: fine) {
+    .hover-slide-in {
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: opacity 150ms ease-out, transform 150ms ease-out;
+    }
+
+    .group:hover .hover-slide-in {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Hide on touch devices */
+  @media not all and (hover: hover) and (pointer: fine) {
+    .hover-slide-in {
+      display: none;
+    }
   }
 }
