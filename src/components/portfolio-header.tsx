@@ -1,22 +1,32 @@
 import type { PortfolioData } from "@/types";
 
-type PortfolioHeaderProps = Pick<PortfolioData, "name" | "headline" | "email">;
+type PortfolioHeaderProps = Pick<
+	PortfolioData,
+	"name" | "headline" | "availability"
+>;
 
 export default function PortfolioHeader({
 	name,
 	headline,
-	email,
+	availability,
 }: PortfolioHeaderProps) {
 	return (
-		<header className="mb-16">
-			<h1 className="text-xl font-semibold tracking-tight">{name}</h1>
-			<p className="mt-3 text-muted-foreground leading-relaxed">{headline}</p>
-			<a
-				href={`mailto:${email}`}
-				className="inline-block mt-4 text-sm text-muted-foreground hover:text-foreground transition-colors"
-			>
-				{email}
-			</a>
+		<header className="mb-10">
+			{availability && (
+				<span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground mb-3 animate-in">
+					<span
+						className="size-1.5 rounded-full bg-emerald-500 animate-pulse"
+						aria-hidden="true"
+					/>
+					{availability.message}
+				</span>
+			)}
+			<h1 className="text-xl font-semibold tracking-tight text-pretty animate-in delay-1">
+				{name}
+			</h1>
+			<p className="mt-3 text-muted-foreground leading-relaxed text-pretty animate-in delay-2">
+				{headline}
+			</p>
 		</header>
 	);
 }
