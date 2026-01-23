@@ -17,9 +17,22 @@ export type ProjectItem = {
 	date: ISODate;
 };
 
+export type AvailabilityStatus = "available" | "busy" | "open";
+
+export type CurrentlyItem = {
+	type: "building" | "reading" | "listening" | "watching";
+	title: string;
+	link?: string;
+};
+
 export type PortfolioData = {
 	name: string;
 	headline: string;
+	availability?: {
+		status: AvailabilityStatus;
+		message?: string;
+	};
+	currently?: CurrentlyItem[];
 	experience: ExperienceItem[];
 	projects: ProjectItem[];
 	email: string;
