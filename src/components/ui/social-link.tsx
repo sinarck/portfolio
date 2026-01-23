@@ -1,9 +1,7 @@
 import { iconMap } from "@/config/social-icons";
 import type { SocialItem } from "@/types";
 
-type SocialLinkProps = SocialItem;
-
-export default function SocialLink({ name, link, iconName }: SocialLinkProps) {
+export default function SocialLink({ name, link, iconName }: SocialItem) {
 	const Icon = iconMap[iconName];
 
 	return (
@@ -12,12 +10,9 @@ export default function SocialLink({ name, link, iconName }: SocialLinkProps) {
 			target="_blank"
 			rel="noreferrer noopener"
 			aria-label={`${name} (opens in new tab)`}
-			className="group p-2 border border-transparent hover:border-border card-interactive touch-hitbox"
+			className="text-muted-foreground hover:text-foreground transition-colors"
 		>
-			<Icon
-				className="size-4 text-muted-foreground group-hover:text-primary transition-colors"
-				aria-hidden="true"
-			/>
+			<Icon className="size-4" aria-hidden="true" />
 		</a>
 	);
 }
