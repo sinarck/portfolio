@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import Currently from "@/components/currently";
+import EasterEgg from "@/components/easter-egg";
 import Experiences from "@/components/experiences";
 import Footer from "@/components/footer";
 import PortfolioHeader from "@/components/portfolio-header";
@@ -12,22 +14,34 @@ export const Route = createFileRoute("/")({
 
 function HomePage() {
 	return (
-		<main className="max-w-2xl mx-auto px-6 py-16 sm:py-24">
-			<PortfolioHeader
-				name={portfolioData.name}
-				headline={portfolioData.headline}
-				email={portfolioData.email}
-			/>
+		<>
+			<EasterEgg />
+			<main
+				id="main-content"
+				className="max-w-2xl mx-auto px-6 min-h-dvh flex flex-col justify-center py-12"
+			>
+				<PortfolioHeader
+					name={portfolioData.name}
+					headline={portfolioData.headline}
+					availability={portfolioData.availability}
+				/>
 
-			<Section label="work">
-				<Experiences items={portfolioData.experience} />
-			</Section>
+				{portfolioData.currently && portfolioData.currently.length > 0 && (
+					<Section label="currently" delay="delay-2">
+						<Currently items={portfolioData.currently} />
+					</Section>
+				)}
 
-			<Section label="projects">
-				<Projects items={portfolioData.projects} />
-			</Section>
+				<Section label="work" delay="delay-2">
+					<Experiences items={portfolioData.experience} />
+				</Section>
 
-			<Footer socials={portfolioData.socials} />
-		</main>
+				<Section label="projects" delay="delay-3">
+					<Projects items={portfolioData.projects} />
+				</Section>
+
+				<Footer socials={portfolioData.socials} email={portfolioData.email} />
+			</main>
+		</>
 	);
 }
