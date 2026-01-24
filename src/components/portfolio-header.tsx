@@ -1,16 +1,31 @@
-import type { PortfolioData } from "../types/portfolio";
+type PortfolioHeaderProps = {
+	name: string;
+	headline: string;
+	availability?: { status: string; message?: string };
+};
 
-type HeaderProps = Pick<PortfolioData, "name" | "headline">;
-
-export default function PortfolioHeader({ name, headline }: HeaderProps) {
+export default function PortfolioHeader({
+	name,
+	headline,
+	availability,
+}: PortfolioHeaderProps) {
 	return (
-		<div className="space-y-1">
-			<h1 className="text-lg font-medium tracking-tight text-foreground">
+		<header className="mb-10">
+			{availability && (
+				<span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground mb-3 animate-in">
+					<span
+						className="size-1.5 rounded-full bg-emerald-500 animate-subtle-pulse"
+						aria-hidden="true"
+					/>
+					{availability.message}
+				</span>
+			)}
+			<h1 className="text-xl font-semibold tracking-tight text-pretty animate-in delay-1">
 				{name}
 			</h1>
-			<p className="text-sm text-muted-foreground leading-relaxed w-full">
+			<p className="mt-3 text-muted-foreground leading-relaxed text-pretty animate-in delay-2">
 				{headline}
 			</p>
-		</div>
+		</header>
 	);
 }

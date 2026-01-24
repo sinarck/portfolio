@@ -1,95 +1,35 @@
 {
-	"$schema": "https://biomejs.dev/schemas/2.3.7/schema.json",
-	"vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
-	"files": { "includes": ["**", "!!**/dist"] },
-	"formatter": { "enabled": true, "indentStyle": "tab" },
+	"$schema": "https://biomejs.dev/schemas/2.2.4/schema.json",
+	"vcs": {
+		"enabled": false,
+		"clientKind": "git",
+		"useIgnoreFile": false
+	},
+	"files": {
+		"ignoreUnknown": false,
+		"includes": [
+			"**/src/**/*",
+			"**/.vscode/**/*",
+			"**/index.html",
+			"**/vite.config.ts",
+			"!**/src/routeTree.gen.ts",
+			"!**/src/styles.css"
+		]
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab"
+	},
+	"assist": { "actions": { "source": { "organizeImports": "on" } } },
 	"linter": {
 		"enabled": true,
-		"rules": { "recommended": false },
-		"includes": ["**", "!dist"]
-	},
-	"javascript": { "formatter": { "quoteStyle": "double" } },
-	"css": {
-		"parser": {
-			"tailwindDirectives": true
+		"rules": {
+			"recommended": true
 		}
 	},
-	"overrides": [
-		{
-			"includes": ["**/*.{ts,tsx}"],
-			"linter": {
-				"rules": {
-					"complexity": {
-						"noAdjacentSpacesInRegex": "error",
-						"noArguments": "error",
-						"noExtraBooleanCast": "error",
-						"noUselessCatch": "error",
-						"noUselessEscapeInRegex": "error",
-						"noUselessTypeConstraint": "error"
-					},
-					"correctness": {
-						"noConstantCondition": "error",
-						"noEmptyCharacterClassInRegex": "error",
-						"noEmptyPattern": "error",
-						"noNonoctalDecimalEscape": "error",
-						"noPrecisionLoss": "error",
-						"noSelfAssign": "error",
-						"noSwitchDeclarations": "error",
-						"noUnreachable": "error",
-						"noUnsafeFinally": "error",
-						"noUnsafeOptionalChaining": "error",
-						"noUnusedLabels": "error",
-						"noUnusedPrivateClassMembers": "error",
-						"noUnusedVariables": "error",
-						"useExhaustiveDependencies": "warn",
-						"useHookAtTopLevel": "error",
-						"useIsNan": "error",
-						"useValidForDirection": "error",
-						"useValidTypeof": "error",
-						"useYield": "error"
-					},
-					"style": {
-						"noCommonJs": "error",
-						"noNamespace": "error",
-						"useArrayLiterals": "error",
-						"useAsConstAssertion": "error",
-						"useConst": "error"
-					},
-					"suspicious": {
-						"noAsyncPromiseExecutor": "error",
-						"noCatchAssign": "error",
-						"noCompareNegZero": "error",
-						"noConstantBinaryExpressions": "error",
-						"noControlCharactersInRegex": "error",
-						"noDebugger": "error",
-						"noDuplicateCase": "error",
-						"noDuplicateElseIf": "error",
-						"noEmptyBlockStatements": "error",
-						"noExplicitAny": "error",
-						"noExtraNonNullAssertion": "error",
-						"noFallthroughSwitchClause": "error",
-						"noGlobalAssign": "error",
-						"noIrregularWhitespace": "error",
-						"noMisleadingCharacterClass": "error",
-						"noMisleadingInstantiator": "error",
-						"noNonNullAssertedOptionalChain": "error",
-						"noPrototypeBuiltins": "error",
-						"noShadowRestrictedNames": "error",
-						"noSparseArray": "error",
-						"noUnsafeDeclarationMerging": "error",
-						"noUnsafeNegation": "error",
-						"noUselessRegexBackrefs": "error",
-						"noVar": "error",
-						"noWith": "error",
-						"useGetterReturn": "error",
-						"useNamespaceKeyword": "error"
-					}
-				}
-			}
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "double"
 		}
-	],
-	"assist": {
-		"enabled": true,
-		"actions": { "source": { "organizeImports": "on" } }
 	}
 }

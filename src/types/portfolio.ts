@@ -1,5 +1,5 @@
-import type { SocialIconName } from "../lib/social-icons";
-import type { ISODate } from "../lib/utils";
+/** ISO Date string format: YYYY-MM-DD */
+export type ISODate = `${number}-${number}-${number}`;
 
 export type ExperienceItem = {
 	company: string;
@@ -14,20 +14,11 @@ export type ProjectItem = {
 	name: string;
 	description: string;
 	link: string;
-	date: ISODate;
 };
 
-export type SocialItem = {
-	name: string;
-	link: string;
-	iconName: SocialIconName;
-};
+export type AvailabilityStatus = "available" | "busy" | "open";
 
-export type PortfolioData = {
-	name: string;
-	headline: string;
-	experience: ExperienceItem[];
-	projects: ProjectItem[];
-	email: string;
-	socials: SocialItem[];
+export type CurrentlyItem = {
+	type: "building" | "reading" | "listening" | "watching";
+	title: string;
 };
