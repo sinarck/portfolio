@@ -1,2 +1,0 @@
-# stop loading env variables (vite takes care of this)
-env=false
