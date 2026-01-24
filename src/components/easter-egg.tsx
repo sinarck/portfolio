@@ -9,6 +9,7 @@ type Particle = {
 	rotation: number;
 	scale: number;
 };
+
 const COLORS = ["#fafafa", "#a1a1a1", "#10b981", "#3b82f6", "#f59e0b"];
 
 export default function EasterEgg() {

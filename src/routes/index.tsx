@@ -1,12 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { lazy, Suspense } from "react";
 import Currently from "@/components/currently";
-import EasterEgg from "@/components/easter-egg";
 import Experiences from "@/components/experiences";
 import Footer from "@/components/footer";
 import PortfolioHeader from "@/components/portfolio-header";
 import Projects from "@/components/projects";
 import Section from "@/components/section";
 import { portfolioData } from "@/config";
+
+const EasterEgg = lazy(() => import("@/components/easter-egg"));
 
 export const Route = createFileRoute("/")({
 	component: HomePage,
@@ -15,7 +17,9 @@ export const Route = createFileRoute("/")({
 function HomePage() {
 	return (
 		<>
-			<EasterEgg />
+			<Suspense fallback={null}>
+				<EasterEgg />
+			</Suspense>
 			{/* biome-ignore lint/correctness/useUniqueElementIds: intentional static ID for skip-link accessibility */}
 			<main
 				id="main-content"

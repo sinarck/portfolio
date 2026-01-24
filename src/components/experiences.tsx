@@ -15,6 +15,8 @@ export default function Experiences({ items }: ExperiencesProps) {
 						alt=""
 						width={40}
 						height={40}
+						loading="lazy"
+						decoding="async"
 						className="size-10 rounded object-contain shrink-0"
 					/>
 					<div className="min-w-0 flex-1">
