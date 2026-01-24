@@ -1,6 +1,6 @@
 # Portfolio
 
-Personal portfolio website built with TanStack Start and Tailwind CSS.
+An extremely simple personal website website built with TanStack Start and Tailwind CSS.
 
 ## Development
 
@@ -13,5 +13,5 @@ bun dev
 
 ```bash
 bun run build
-node .output/server/index.mjs
+bun preview
 ```
