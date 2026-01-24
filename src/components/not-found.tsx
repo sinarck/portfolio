@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 
 export default function NotFound() {
 	return (
-		<main className="max-w-xl mx-auto px-6 py-20 sm:py-28 min-h-[60vh] flex items-center justify-center">
+		<main className="max-w-xl mx-auto px-6 min-h-dvh flex items-center justify-center">
 			<div className="text-center space-y-6">
 				<div className="space-y-2">
 					<span className="text-xs text-muted-foreground tracking-widest">

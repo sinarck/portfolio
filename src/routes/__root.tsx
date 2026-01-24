@@ -7,7 +7,7 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import NotFound from "@/components/not-found";
-import { siteConfig } from "@/config";
+import { site } from "@/config";
 import appCss from "../styles.css?url";
 
 export const Route = createRootRoute({
@@ -15,17 +15,17 @@ export const Route = createRootRoute({
 		meta: [
 			{ charSet: "utf-8" },
 			{ name: "viewport", content: "width=device-width, initial-scale=1" },
-			{ name: "theme-color", content: siteConfig.themeColor },
-			{ title: siteConfig.title },
-			{ name: "description", content: siteConfig.description },
-			{ property: "og:title", content: siteConfig.title },
-			{ property: "og:description", content: siteConfig.description },
-			{ property: "og:image", content: siteConfig.ogImage },
+			{ name: "theme-color", content: site.themeColor },
+			{ title: site.title },
+			{ name: "description", content: site.description },
+			{ property: "og:title", content: site.title },
+			{ property: "og:description", content: site.description },
+			{ property: "og:image", content: site.ogImage },
 			{ property: "og:type", content: "website" },
 			{ name: "twitter:card", content: "summary_large_image" },
-			{ name: "twitter:title", content: siteConfig.title },
-			{ name: "twitter:description", content: siteConfig.description },
-			{ name: "twitter:image", content: siteConfig.ogImage },
+			{ name: "twitter:title", content: site.title },
+			{ name: "twitter:description", content: site.description },
+			{ name: "twitter:image", content: site.ogImage },
 			{ name: "color-scheme", content: "dark" },
 		],
 		links: [

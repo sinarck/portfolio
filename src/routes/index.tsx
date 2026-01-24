@@ -6,7 +6,7 @@ import Footer from "@/components/footer";
 import PortfolioHeader from "@/components/portfolio-header";
 import Projects from "@/components/projects";
 import Section from "@/components/section";
-import { portfolioData } from "@/config";
+import { portfolio } from "@/config";
 
 const EasterEgg = lazy(() => import("@/components/easter-egg"));
 
@@ -26,26 +26,26 @@ function HomePage() {
 				className="max-w-2xl mx-auto px-6 min-h-dvh flex flex-col justify-center py-12"
 			>
 				<PortfolioHeader
-					name={portfolioData.name}
-					headline={portfolioData.headline}
-					availability={portfolioData.availability}
+					name={portfolio.name}
+					headline={portfolio.headline}
+					availability={portfolio.availability}
 				/>
 
-				{portfolioData.currently && portfolioData.currently.length > 0 && (
-					<Section label="currently" delay="delay-2">
-						<Currently items={portfolioData.currently} />
+				{portfolio.currently && portfolio.currently.length > 0 && (
+					<Section label="currently">
+						<Currently items={portfolio.currently} />
 					</Section>
 				)}
 
-				<Section label="work" delay="delay-2">
-					<Experiences items={portfolioData.experience} />
+				<Section label="work">
+					<Experiences items={portfolio.experience} />
 				</Section>
 
-				<Section label="projects" delay="delay-3">
-					<Projects items={portfolioData.projects} />
+				<Section label="projects">
+					<Projects items={portfolio.projects} />
 				</Section>
 
-				<Footer socials={portfolioData.socials} email={portfolioData.email} />
+				<Footer socials={portfolio.socials} email={portfolio.email} />
 			</main>
 		</>
 	);

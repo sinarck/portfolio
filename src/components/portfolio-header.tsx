@@ -1,9 +1,8 @@
-import type { PortfolioData } from "@/types";
-
-type PortfolioHeaderProps = Pick<
-	PortfolioData,
-	"name" | "headline" | "availability"
->;
+type PortfolioHeaderProps = {
+	name: string;
+	headline: string;
+	availability?: { status: string; message?: string };
+};
 
 export default function PortfolioHeader({
 	name,

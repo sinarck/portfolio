@@ -34,7 +34,7 @@ export default function EasterEgg() {
 
 	return (
 		<div
-			className="fixed inset-0 pointer-events-none z-[10000]"
+			className="fixed inset-0 pointer-events-none z-10000"
 			aria-hidden="true"
 		>
 			{particles.map((particle) => (

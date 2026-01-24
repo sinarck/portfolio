@@ -10,10 +10,7 @@
 }
 
 @theme {
-  --font-sans:
-    "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, sans-serif;
-
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -35,8 +32,6 @@
   --muted-foreground: #a1a1a1;
   --border: #262626;
   --ring: #525252;
-
-  /* Easing curves - ease-out for entrances */
   --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
   --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
 }
@@ -58,7 +53,7 @@
     touch-action: manipulation;
   }
 
-  /* Noise texture overlay - high fidelity tiled */
+  /* Film grain texture */
   body::before {
     content: "";
     position: fixed;
@@ -78,17 +73,16 @@
 }
 
 @layer utilities {
+  /* Respect reduced motion preferences */
   @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
+    *, *::before, *::after {
       animation-duration: 0.01ms;
       animation-iteration-count: 1;
       transition-duration: 0.01ms;
     }
   }
 
-  /* Staggered fade-in animation with blur */
+  /* Page load entrance animation */
   @keyframes fade-in-up {
     from {
       opacity: 0;
@@ -109,30 +103,30 @@
 
   .delay-1 { animation-delay: 50ms; }
   .delay-2 { animation-delay: 100ms; }
-  .delay-3 { animation-delay: 150ms; }
-  .delay-4 { animation-delay: 200ms; }
 
-  /* Subtle status pulse - gentler than Tailwind's default */
+  /* Stagger sections on page load */
+  #main-content > section:nth-child(1) { animation-delay: 100ms; }
+  #main-content > section:nth-child(2) { animation-delay: 150ms; }
+  #main-content > section:nth-child(3) { animation-delay: 200ms; }
+  #main-content > section:nth-child(4) { animation-delay: 250ms; }
+
+  /* Availability badge pulse */
   @keyframes subtle-pulse {
-    0%, 100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.6;
-    }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
   }
 
   .animate-subtle-pulse {
     animation: subtle-pulse 3s ease-in-out infinite;
   }
 
-  /* Confetti animation */
+  /* Easter egg confetti */
   @keyframes confetti {
-    0% {
+    from {
       opacity: 1;
       transform: translateY(0) rotate(0deg);
     }
-    100% {
+    to {
       opacity: 0;
       transform: translateY(100vh) rotate(720deg);
     }
@@ -142,23 +136,7 @@
     animation: confetti 2s var(--ease-out-cubic) forwards;
   }
 
-  /* Text swap animation for copy feedback */
-  @keyframes blur-fade-in {
-    from {
-      opacity: 0;
-      filter: blur(4px);
-    }
-    to {
-      opacity: 1;
-      filter: blur(0);
-    }
-  }
-
-  .animate-blur-in {
-    animation: blur-fade-in 200ms var(--ease-out-cubic) both;
-  }
-
-  /* Touch device hover guard - only show hover effects with precise pointer */
+  /* Arrow icon that slides in on hover (desktop only) */
   @media (hover: hover) and (pointer: fine) {
     .hover-slide-in {
       opacity: 0;
@@ -172,7 +150,7 @@
     }
   }
 
-  /* Hide on touch devices */
+  /* Hide hover elements on touch devices */
   @media not all and (hover: hover) and (pointer: fine) {
     .hover-slide-in {
       display: none;

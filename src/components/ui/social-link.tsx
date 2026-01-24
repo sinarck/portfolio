@@ -1,8 +1,7 @@
-import { iconMap } from "@/config/social-icons";
-import type { SocialItem } from "@/types";
+import { type SocialItem, socialIcons } from "@/config";
 
-export default function SocialLink({ name, link, iconName }: SocialItem) {
-	const Icon = iconMap[iconName];
+export default function SocialLink({ name, link, icon }: SocialItem) {
+	const Icon = socialIcons[icon];
 
 	return (
 		<a
