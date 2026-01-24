@@ -104,6 +104,7 @@
 
   .animate-in {
     animation: fade-in-up 400ms var(--ease-out-quart) both;
+    will-change: transform, opacity, filter;
   }
 
   .delay-1 { animation-delay: 50ms; }
