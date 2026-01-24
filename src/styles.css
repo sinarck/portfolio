@@ -120,22 +120,6 @@
     animation: subtle-pulse 3s ease-in-out infinite;
   }
 
-  /* Easter egg confetti */
-  @keyframes confetti {
-    from {
-      opacity: 1;
-      transform: translateY(0) rotate(0deg);
-    }
-    to {
-      opacity: 0;
-      transform: translateY(100vh) rotate(720deg);
-    }
-  }
-
-  .animate-confetti {
-    animation: confetti 2s var(--ease-out-cubic) forwards;
-  }
-
   /* Arrow icon that slides in on hover (desktop only) */
   @media (hover: hover) and (pointer: fine) {
     .hover-slide-in {

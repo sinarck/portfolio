@@ -57,9 +57,9 @@ export const portfolio: {
 		message: "Open to opportunities",
 	},
 	currently: [
-		{ type: "building", title: "Open Attendance" },
 		{ type: "listening", title: "Weston Estate" },
-		{ type: "watching", title: "Mr. Robot" },
+		{ type: "watching", title: "Inception" },
+		{ type: "reading", title: "The Way of Kings" },
 	],
 	experience: [
 		{
@@ -73,7 +73,7 @@ export const portfolio: {
 			company: "Sonder Initiative",
 			role: "Founder",
 			startDate: "2024-08-01",
-			description: "Freelance web development. Reach out for details.",
+			description: "Freelance web development.",
 			logo: "/work/sonder-placeholder.svg",
 		},
 	],
@@ -81,23 +81,20 @@ export const portfolio: {
 		{
 			name: "Open Attendance",
 			description:
-				"An open-source attendance system for schools. Not a fan of proprietary software.",
+				"An open-source attendance system for any kind of event (used by my school)",
 			link: "https://github.com/sinarck/open-attendance",
-			date: "2025-01-01",
 		},
 		{
 			name: "Hand Wave",
 			description:
-				"Real-time ASL translation with Meta AI glasses. Presented at The Texas School for the Deaf.",
+				"Real-time ASL translation with Meta AI glasses. Presented to students at the Texas School for the Deaf.",
 			link: "https://github.com/sinarck/hand-wave",
-			date: "2025-02-01",
 		},
 		{
 			name: "Storm Shield",
 			description:
-				"Mobile app connecting volunteers with disaster relief efforts. Demoed at the US Capitol.",
+				"Mobile app connecting volunteers with disaster relief efforts. Got to demo at the US Capitol to my congressmen.",
 			link: "https://www.stormshield.app",
-			date: "2024-01-01",
 		},
 	],
 	email: env.VITE_EMAIL,

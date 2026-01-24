@@ -14,7 +14,6 @@ export type ProjectItem = {
 	name: string;
 	description: string;
 	link: string;
-	date: ISODate;
 };
 
 export type AvailabilityStatus = "available" | "busy" | "open";
