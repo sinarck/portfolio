@@ -51,6 +51,10 @@
     line-height: 1.6;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
+
+    @media (min-width: 1024px) {
+      font-size: var(--text-base);
+    }
   }
 
   /* Film grain texture */
