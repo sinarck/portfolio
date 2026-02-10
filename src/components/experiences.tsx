@@ -12,7 +12,7 @@ export default function Experiences({ items }: ExperiencesProps) {
 				<li key={exp.company} className="flex gap-4">
 					<img
 						src={exp.logo}
-						alt=""
+						alt={`${exp.company} logo`}
 						width={40}
 						height={40}
 						loading="lazy"

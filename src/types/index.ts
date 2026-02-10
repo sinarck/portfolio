@@ -1,2 +1,8 @@
 export type { SocialIconName, SocialItem } from "@/config";
-export * from "./portfolio";
+export type {
+	AvailabilityStatus,
+	CurrentlyItem,
+	ExperienceItem,
+	ISODate,
+	ProjectItem,
+} from "./portfolio";

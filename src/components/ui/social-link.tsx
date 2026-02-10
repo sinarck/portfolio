@@ -1,4 +1,15 @@
-import { type SocialItem, socialIcons } from "@/config";
+import {
+	GithubLogoIcon,
+	LinkedinLogoIcon,
+	XLogoIcon,
+} from "@phosphor-icons/react";
+import type { SocialItem } from "@/config";
+
+const socialIcons = {
+	github: GithubLogoIcon,
+	linkedin: LinkedinLogoIcon,
+	x: XLogoIcon,
+} as const;
 
 export default function SocialLink({ name, link, icon }: SocialItem) {
 	const Icon = socialIcons[icon];

@@ -1,8 +1,3 @@
-import {
-	GithubLogoIcon,
-	LinkedinLogoIcon,
-	XLogoIcon,
-} from "@phosphor-icons/react";
 import { env } from "@/env";
 import type {
 	CurrentlyItem,
@@ -10,14 +5,7 @@ import type {
 	ProjectItem,
 } from "@/types/portfolio";
 
-// Icon mapping for social links
-export const socialIcons = {
-	github: GithubLogoIcon,
-	linkedin: LinkedinLogoIcon,
-	x: XLogoIcon,
-} as const;
-
-export type SocialIconName = keyof typeof socialIcons;
+export type SocialIconName = "github" | "linkedin" | "x";
 
 export type SocialItem = {
 	name: string;
