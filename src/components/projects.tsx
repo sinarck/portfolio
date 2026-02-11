@@ -7,18 +7,19 @@ type ProjectsProps = {
 
 export default function Projects({ items }: ProjectsProps) {
 	return (
-		<ul className="space-y-6">
+		<ul className="-mx-3 space-y-1">
 			{items.map((project) => (
 				<li key={project.name}>
 					<a
 						href={project.link}
 						target="_blank"
 						rel="noreferrer noopener"
-						className="group block pl-4 border-l-2 border-border hover:border-accent transition-colors duration-150 ease rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+						className="group block px-3 py-3 -outline-offset-2 rounded-md hover:bg-[#ffffff08] transition-colors duration-150 ease active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
 					>
 						<div className="flex items-center gap-1.5">
-							<span className="text-foreground group-hover:text-muted-foreground transition-colors duration-150 ease">
+							<span className="relative text-foreground">
 								{project.name}
+								<span className="absolute left-0 -bottom-px h-px w-full origin-left scale-x-0 bg-current transition-transform duration-200 ease-out group-hover:scale-x-100" />
 							</span>
 							<ArrowUpRightIcon
 								className="size-3.5 text-muted-foreground hover-slide-in"
