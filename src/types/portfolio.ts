@@ -16,8 +16,6 @@ export type ProjectItem = {
 	link: string;
 };
 
-export type AvailabilityStatus = "available" | "busy" | "open";
-
 export type CurrentlyItem = {
 	type: "building" | "reading" | "listening" | "watching";
 	title: string;
