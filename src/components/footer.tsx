@@ -5,7 +5,7 @@ type FooterProps = { socials: SocialItem[]; email: string };
 
 export default function Footer({ socials, email }: FooterProps) {
 	return (
-		<footer className="pt-10 border-t border-border animate-in">
+		<footer className="pt-10 lg:pt-8 border-t border-border animate-in">
 			<div className="flex items-center justify-between">
 				<a
 					href={`mailto:${email}`}

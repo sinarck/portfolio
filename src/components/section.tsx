@@ -11,7 +11,7 @@ export default function Section({
 }) {
 	return (
 		<section
-			className="mb-10 animate-in stagger-in"
+			className="mb-10 lg:mb-8 animate-in stagger-in"
 			style={{ "--stagger-index": staggerIndex } as React.CSSProperties}
 		>
 			<h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">

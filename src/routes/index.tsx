@@ -24,7 +24,7 @@ function HomePage() {
 		// biome-ignore lint/correctness/useUniqueElementIds: intentional static ID for skip-link accessibility
 		<main
 			id="main-content"
-			className="max-w-2xl lg:max-w-3xl mx-auto px-6 min-h-dvh flex flex-col justify-center py-12"
+			className="max-w-2xl lg:max-w-3xl mx-auto px-6 min-h-dvh flex flex-col justify-center py-12 lg:py-8"
 		>
 			<PortfolioHeader
 				name={portfolio.name}

@@ -10,7 +10,7 @@ export default function PortfolioHeader({
 	availability,
 }: PortfolioHeaderProps) {
 	return (
-		<header className="mb-10">
+		<header className="mb-10 lg:mb-8">
 			{availability && (
 				<span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground mb-3 animate-in">
 					<span
