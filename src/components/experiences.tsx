@@ -31,7 +31,7 @@ export default function Experiences({ items }: ExperiencesProps) {
 								{formatDate(exp.startDate)}
 							</time>
 						</div>
-						<p className="mt-1 text-sm text-muted-foreground line-clamp-2">
+						<p className="mt-1 text-sm text-muted-foreground sm:line-clamp-2">
 							{exp.description}
 						</p>
 					</div>

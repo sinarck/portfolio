@@ -17,7 +17,6 @@
   --color-foreground: var(--foreground);
   --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
-  --color-accent: var(--accent);
   --color-ring: var(--ring);
 }
 
@@ -25,11 +24,9 @@
   --background: #0a0a0a;
   --foreground: #fafafa;
   --muted-foreground: #a1a1a1;
-  --accent: #e2c074;
   --border: #262626;
   --ring: #525252;
   --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
-  --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 @layer base {
@@ -53,7 +50,7 @@
     }
   }
 
-  /* Film grain texture */
+  /* Film grain texture — disabled on mobile for performance */
   body::before {
     content: "";
     position: fixed;
@@ -61,9 +58,13 @@
     z-index: 9999;
     pointer-events: none;
     opacity: 0.035;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
     background-repeat: repeat;
-    background-size: 256px 256px;
+    background-size: 512px 512px;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 
   ::selection {
@@ -130,7 +131,7 @@
     animation: subtle-pulse 3s ease-in-out infinite;
   }
 
-  /* Arrow icon that slides in on hover (desktop only) */
+  /* Desktop-only hover interactions */
   @media (hover: hover) and (pointer: fine) {
     .hover-slide-in {
       opacity: 0;
@@ -143,6 +144,20 @@
     .group:hover .hover-slide-in {
       opacity: 1;
       transform: translateX(0);
+    }
+
+    .hover-bg:hover {
+      background-color: #ffffff08;
+    }
+
+    .hover-underline {
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 200ms ease-out;
+    }
+
+    .group:hover .hover-underline {
+      transform: scaleX(1);
     }
   }
 

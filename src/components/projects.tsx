@@ -14,19 +14,19 @@ export default function Projects({ items }: ProjectsProps) {
 						href={project.link}
 						target="_blank"
 						rel="noreferrer noopener"
-						className="group block px-3 py-3 -outline-offset-2 rounded-md hover:bg-[#ffffff08] transition-colors duration-150 ease active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+						className="group block px-3 py-3 -outline-offset-2 rounded-md hover-bg transition-colors duration-150 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
 					>
 						<div className="flex items-center gap-1.5">
 							<span className="relative text-foreground">
 								{project.name}
-								<span className="absolute left-0 -bottom-px h-px w-full origin-left scale-x-0 bg-current transition-transform duration-200 ease-out group-hover:scale-x-100" />
+								<span className="absolute left-0 -bottom-px h-px w-full bg-current hover-underline" />
 							</span>
 							<ArrowUpRightIcon
 								className="size-3.5 text-muted-foreground hover-slide-in"
 								aria-hidden="true"
 							/>
 						</div>
-						<p className="mt-1 text-sm text-muted-foreground line-clamp-2">
+						<p className="mt-1 text-sm text-muted-foreground sm:line-clamp-2">
 							{project.description}
 						</p>
 					</a>
