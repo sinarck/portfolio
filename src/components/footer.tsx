@@ -1,11 +1,22 @@
 import SocialLink from "@/components/ui/social-link";
 import type { SocialItem } from "@/types";
 
-type FooterProps = { socials: SocialItem[]; email: string };
+type FooterProps = {
+	socials: SocialItem[];
+	email: string;
+	staggerIndex?: number;
+};
 
-export default function Footer({ socials, email }: FooterProps) {
+export default function Footer({
+	socials,
+	email,
+	staggerIndex = 0,
+}: FooterProps) {
 	return (
-		<footer className="pt-10 lg:pt-8 border-t border-border animate-in">
+		<footer
+			className="pt-10 lg:pt-8 border-t border-border animate-in stagger-in"
+			style={{ "--stagger-index": staggerIndex } as React.CSSProperties}
+		>
 			<div className="flex items-center justify-between">
 				<a
 					href={`mailto:${email}`}

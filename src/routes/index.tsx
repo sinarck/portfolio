@@ -46,7 +46,11 @@ function HomePage() {
 				<Projects items={portfolio.projects} />
 			</Section>
 
-			<Footer socials={portfolio.socials} email={portfolio.email} />
+			<Footer
+				socials={portfolio.socials}
+				email={portfolio.email}
+				staggerIndex={sectionIndex++}
+			/>
 		</main>
 	);
 }
