@@ -17,7 +17,7 @@ export default function Projects({ items }: ProjectsProps) {
 						className="group block px-3 py-3 -outline-offset-2 rounded-md hover-bg transition-colors duration-150 ease focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
 					>
 						<div className="flex items-center gap-1.5">
-							<span className="relative text-foreground">
+							<span className="relative text-foreground inline-flex items-center">
 								{project.name}
 								<span className="absolute left-0 -bottom-px h-px w-full bg-current hover-underline" />
 							</span>
