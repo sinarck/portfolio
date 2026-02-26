@@ -69,7 +69,7 @@ export const portfolio: {
 		{
 			name: "Open Attendance",
 			description:
-				"An open-source attendance system for any kind of event (used by my school).",
+				"An open-source attendance system for any kind of event (500+ users, including school).",
 			link: "https://github.com/sinarck/open-attendance",
 		},
 		{
@@ -81,7 +81,7 @@ export const portfolio: {
 		{
 			name: "Storm Shield",
 			description:
-				"Mobile app connecting volunteers with disaster relief efforts. Got to demo at the US Capitol to my congressmen.",
+				"Mobile app connecting volunteers with disaster relief efforts. Got to demo at the US Capitol to my congressman and senator.",
 			link: "https://www.stormshield.app",
 		},
 	],
