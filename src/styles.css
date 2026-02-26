@@ -35,6 +35,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color-scheme: dark;
+    text-decoration-skip-ink: auto;
+    overscroll-behavior: none;
   }
 
   body {
