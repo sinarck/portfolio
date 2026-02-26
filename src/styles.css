@@ -85,20 +85,19 @@
   }
 
   .animate-in {
-    animation: fade-in-up 400ms var(--ease-out-quart) both;
-    will-change: transform, opacity, filter;
+    animation: fade-in-up 600ms var(--ease-out-quart) both;
   }
 
   .delay-1 {
-    animation-delay: 50ms;
+    animation-delay: 80ms;
   }
   .delay-2 {
-    animation-delay: 100ms;
+    animation-delay: 160ms;
   }
 
   /* Stagger sections on page load — use --stagger-index set via inline style */
   .stagger-in {
-    animation-delay: calc(var(--stagger-index, 0) * 50ms + 100ms);
+    animation-delay: calc(var(--stagger-index, 0) * 80ms + 200ms);
   }
 
   /* Availability badge pulse */
