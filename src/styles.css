@@ -26,7 +26,12 @@
   --muted-foreground: #a1a1a1;
   --border: #262626;
   --ring: #525252;
-  --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --hover-overlay: #ffffff08;
+
+  /* Animation tokens */
+  --duration-fast: 200ms;
+  --duration-entrance: 600ms;
+  --ease-out: cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 @layer base {
@@ -53,6 +58,10 @@
   }
 
   /* Film grain texture — disabled for now */
+
+  h1, h2, h3, p {
+    text-wrap: balance;
+  }
 
   ::selection {
     background-color: var(--foreground);
@@ -87,7 +96,7 @@
   }
 
   .animate-in {
-    animation: fade-in-up 600ms var(--ease-out-quart) both;
+    animation: fade-in-up var(--duration-entrance) var(--ease-out) both;
   }
 
   .delay-1 {
@@ -117,6 +126,12 @@
     animation: subtle-pulse 3s ease-in-out infinite;
   }
 
+  /* Standard interactive transition — used on all hoverable elements */
+  .interactive {
+    transition: color var(--duration-fast) var(--ease-out),
+      background-color var(--duration-fast) var(--ease-out);
+  }
+
   /* Desktop-only hover interactions */
   @media (hover: hover) and (pointer: fine) {
     .hover-slide-in {
@@ -124,9 +139,9 @@
       transform: scale(0.5);
       filter: blur(4px);
       transition:
-        opacity 200ms ease-out,
-        transform 200ms ease-out,
-        filter 200ms ease-out;
+        opacity var(--duration-fast) var(--ease-out),
+        transform var(--duration-fast) var(--ease-out),
+        filter var(--duration-fast) var(--ease-out);
     }
 
     .group:hover .hover-slide-in {
@@ -136,13 +151,13 @@
     }
 
     .hover-bg:hover {
-      background-color: #ffffff08;
+      background-color: var(--hover-overlay);
     }
 
     .hover-underline {
       transform: scaleX(0);
       transform-origin: left;
-      transition: transform 200ms ease-out;
+      transition: transform var(--duration-fast) var(--ease-out);
     }
 
     .group:hover .hover-underline {

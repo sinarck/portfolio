@@ -20,7 +20,7 @@ export default function Footer({
 			<div className="flex items-center justify-between">
 				<a
 					href={`mailto:${email}`}
-					className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-150 ease rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+					className="text-sm text-muted-foreground hover:text-foreground interactive rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
 				>
 					{email.replace("@", " [at] ").replace(/\./g, " [dot] ")}
 				</a>

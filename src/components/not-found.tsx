@@ -15,7 +15,7 @@ export default function NotFound() {
 				</p>
 				<Link
 					to="/"
-					className="inline-block text-sm text-muted-foreground hover:text-foreground transition-colors duration-150 ease rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+					className="inline-block text-sm text-muted-foreground hover:text-foreground interactive rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
 				>
 					Return home
 				</Link>

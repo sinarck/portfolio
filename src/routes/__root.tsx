@@ -29,7 +29,7 @@ function RootErrorComponent({ error, reset }: ErrorComponentProps) {
 				<button
 					type="button"
 					onClick={reset}
-					className="inline-block text-sm text-muted-foreground hover:text-foreground transition-colors duration-150 ease cursor-pointer rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+					className="inline-block text-sm text-muted-foreground hover:text-foreground interactive cursor-pointer rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
 				>
 					Try again
 				</button>
