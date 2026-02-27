@@ -58,11 +58,11 @@ export const portfolio: {
 			logo: "/work/doastly.webp",
 		},
 		{
-			company: "Space Studio",
+			company: "Spare Studio",
 			role: "Founder",
 			startDate: "2024-08-01",
 			description: "Freelance web development.",
-			logo: "/work/space-studio.svg",
+			logo: "/work/spare-studio.svg",
 		},
 	],
 	projects: [
