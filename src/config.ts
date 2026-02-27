@@ -69,7 +69,7 @@ export const portfolio: {
 		{
 			name: "Open Attendance",
 			description:
-				"An open-source attendance system for any kind of event (500+ users, including school).",
+				"An open-source attendance system for any kind of event (500+ users, including my school).",
 			link: "https://github.com/sinarck/open-attendance",
 		},
 		{
