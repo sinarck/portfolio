@@ -41,7 +41,6 @@
     -moz-osx-font-smoothing: grayscale;
     color-scheme: dark;
     text-decoration-skip-ink: auto;
-    overscroll-behavior: none;
   }
 
   body {
@@ -59,7 +58,7 @@
 
   /* Film grain texture — disabled for now */
 
-  h1, h2, h3, p {
+  h1, h2, h3 {
     text-wrap: balance;
   }
 
