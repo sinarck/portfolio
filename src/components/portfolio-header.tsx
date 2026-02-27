@@ -23,7 +23,7 @@ export default function PortfolioHeader({
 			<h1 className="text-xl font-semibold tracking-tight text-pretty animate-in delay-1">
 				{name}
 			</h1>
-			<p className="mt-3 text-muted-foreground leading-relaxed text-pretty animate-in delay-2">
+			<p className="mt-3 text-muted-foreground text-pretty animate-in delay-2">
 				{headline}
 			</p>
 		</header>
