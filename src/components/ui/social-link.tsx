@@ -20,9 +20,9 @@ export default function SocialLink({ name, link, icon }: SocialItem) {
 			target="_blank"
 			rel="noreferrer noopener"
 			aria-label={`${name} (opens in new tab)`}
-			className="text-muted-foreground hover:text-foreground transition-colors duration-150 ease rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+			className="text-muted-foreground hover:text-foreground interactive rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
 		>
-			<Icon className="size-5" aria-hidden="true" />
+			<Icon className="size-[1em]" aria-hidden="true" />
 		</a>
 	);
 }
