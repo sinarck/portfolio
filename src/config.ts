@@ -58,11 +58,11 @@ export const portfolio: {
 			logo: "/work/doastly.webp",
 		},
 		{
-			company: "Sonder Initiative",
+			company: "Space Studio",
 			role: "Founder",
 			startDate: "2024-08-01",
 			description: "Freelance web development.",
-			logo: "/work/sonder-placeholder.svg",
+			logo: "/work/space-studio.svg",
 		},
 	],
 	projects: [
