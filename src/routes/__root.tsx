@@ -7,6 +7,7 @@ import {
 	Scripts,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+import { Analytics } from "@vercel/analytics/react";
 import NotFound from "@/components/not-found";
 import { site } from "@/config";
 import appCss from "../styles.css?url";
@@ -86,6 +87,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 					Skip to main content
 				</a>
 				{children}
+				<Analytics />
 				<TanStackDevtools
 					config={{ position: "bottom-right" }}
 					plugins={[
