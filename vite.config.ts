@@ -7,6 +7,9 @@ import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 
 const config = defineConfig({
+	esbuild: {
+		drop: process.env.NODE_ENV === "production" ? ["console", "debugger"] : [],
+	},
 	resolve: {
 		alias: {
 			"@": fileURLToPath(new URL("./src", import.meta.url)),
