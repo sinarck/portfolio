@@ -3,20 +3,15 @@ import type { SiteSettings } from "@/lib/sanity";
 
 type ProjectsProps = {
 	items: SiteSettings["projects"];
-	baseIndex: number;
 };
 
-export default function Projects({ items, baseIndex }: ProjectsProps) {
+export default function Projects({ items }: ProjectsProps) {
 	return (
 		<ul className="-mx-3 space-y-1">
-			{items.map((project, i) => (
-				<li
-					key={project._key}
-					className="animate-in"
-					style={{ "--i": baseIndex + i } as React.CSSProperties}
-				>
+			{items.map((project) => (
+				<li key={project._key} className="animate-in">
 					<a
-						href={project.link ?? undefined}
+						href={project.link}
 						target="_blank"
 						rel="noreferrer noopener"
 						className="group block px-3 py-3 hover-bg interactive focus-ring"

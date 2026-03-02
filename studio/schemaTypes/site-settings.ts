@@ -40,7 +40,6 @@ export const siteSettings = defineType({
 							type: "string",
 							options: {
 								list: [
-								{ title: "Building", value: "building" },
 								{ title: "Reading", value: "reading" },
 								{ title: "Listening", value: "listening" },
 								{ title: "Watching", value: "watching" },
@@ -124,7 +123,12 @@ export const siteSettings = defineType({
 							validation: (r) => r.required(),
 						}),
 						defineField({ name: "description", title: "Description", type: "text" }),
-						defineField({ name: "link", title: "Link", type: "url" }),
+						defineField({
+							name: "link",
+							title: "Link",
+							type: "url",
+							validation: (r) => r.required(),
+						}),
 					],
 					preview: {
 						select: { title: "name", subtitle: "description" },
