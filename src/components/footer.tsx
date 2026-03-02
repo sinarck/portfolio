@@ -1,5 +1,5 @@
 import SocialLink from "@/components/ui/social-link";
-import type { SocialItem } from "@/types";
+import type { SocialItem } from "@/types/portfolio";
 
 type FooterProps = {
 	socials: SocialItem[];
@@ -26,7 +26,7 @@ export default function Footer({
 				</a>
 				<nav aria-label="Social links" className="flex items-center gap-4">
 					{socials.map((social) => (
-						<SocialLink key={social.name} {...social} />
+						<SocialLink key={social._key} {...social} />
 					))}
 				</nav>
 			</div>

@@ -4,7 +4,7 @@ import {
 	HeadphonesIcon,
 	TelevisionIcon,
 } from "@phosphor-icons/react";
-import type { CurrentlyItem } from "@/types";
+import type { CurrentlyItem } from "@/types/portfolio";
 
 const typeIcons: Record<CurrentlyItem["type"], typeof HammerIcon> = {
 	building: HammerIcon,
@@ -21,10 +21,7 @@ export default function Currently({ items }: { items: CurrentlyItem[] }) {
 			{items.map((item) => {
 				const Icon = typeIcons[item.type];
 				return (
-					<span
-						key={`${item.type}-${item.title}`}
-						className="inline-flex items-center gap-1.5"
-					>
+					<span key={item._key} className="inline-flex items-center gap-1.5">
 						<Icon className="size-3.5" aria-hidden="true" />
 						{item.title}
 					</span>

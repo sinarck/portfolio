@@ -1,23 +1,19 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, getRouteApi } from "@tanstack/react-router";
 import Currently from "@/components/currently";
 import Experiences from "@/components/experiences";
 import Footer from "@/components/footer";
 import PortfolioHeader from "@/components/portfolio-header";
 import Projects from "@/components/projects";
 import Section from "@/components/section";
-import { portfolio, site } from "@/config";
+
+const rootRoute = getRouteApi("__root__");
 
 export const Route = createFileRoute("/")({
 	component: HomePage,
-	head: () => ({
-		meta: [
-			{ title: site.title },
-			{ name: "description", content: site.description },
-		],
-	}),
 });
 
 function HomePage() {
+	const s = rootRoute.useLoaderData();
 	let sectionIndex = 0;
 
 	return (
@@ -27,28 +23,28 @@ function HomePage() {
 			className="max-w-2xl lg:max-w-3xl mx-auto px-6 min-h-dvh flex flex-col justify-center pt-12 pb-8 lg:py-8"
 		>
 			<PortfolioHeader
-				name={portfolio.name}
-				headline={portfolio.headline}
-				availability={portfolio.availability}
+				name={`Hey, I'm ${s.name}`}
+				headline={s.headline}
+				availability={s.availability}
 			/>
 
-			{portfolio.currently && portfolio.currently.length > 0 && (
+			{s.currently?.length > 0 && (
 				<Section label="currently" staggerIndex={sectionIndex++}>
-					<Currently items={portfolio.currently} />
+					<Currently items={s.currently} />
 				</Section>
 			)}
 
 			<Section label="work" staggerIndex={sectionIndex++}>
-				<Experiences items={portfolio.experience} />
+				<Experiences items={s.experience} />
 			</Section>
 
 			<Section label="projects" staggerIndex={sectionIndex++}>
-				<Projects items={portfolio.projects} />
+				<Projects items={s.projects} />
 			</Section>
 
 			<Footer
-				socials={portfolio.socials}
-				email={portfolio.email}
+				socials={s.socials}
+				email={s.email}
 				staggerIndex={sectionIndex++}
 			/>
 		</main>

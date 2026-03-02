@@ -1,5 +1,5 @@
 import { formatDate } from "@/lib/utils";
-import type { ExperienceItem } from "@/types";
+import type { ExperienceItem } from "@/types/portfolio";
 
 type ExperiencesProps = {
 	items: ExperienceItem[];
@@ -9,16 +9,20 @@ export default function Experiences({ items }: ExperiencesProps) {
 	return (
 		<ul className="space-y-6">
 			{items.map((exp) => (
-				<li key={exp.company} className="grid grid-cols-[2.5rem_1fr] gap-x-4">
-					<img
-						src={exp.logo}
-						alt={`${exp.company} logo`}
-						width={40}
-						height={40}
-						loading="lazy"
-						decoding="async"
-						className="size-10 rounded object-contain row-span-2"
-					/>
+				<li key={exp._key} className="grid grid-cols-[2.5rem_1fr] gap-x-4">
+					{exp.logo ? (
+						<img
+							src={exp.logo}
+							alt={`${exp.company} logo`}
+							width={40}
+							height={40}
+							loading="lazy"
+							decoding="async"
+							className="size-10 rounded object-contain row-span-2"
+						/>
+					) : (
+						<div className="size-10 rounded bg-border row-span-2" />
+					)}
 					<div className="min-w-0 flex items-center justify-between gap-4 self-end">
 						<div className="min-w-0 flex items-center gap-2">
 							<span className="text-foreground leading-none">

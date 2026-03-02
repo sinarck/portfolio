@@ -1,5 +1,5 @@
 import { ArrowUpRightIcon } from "@phosphor-icons/react";
-import type { ProjectItem } from "@/types";
+import type { ProjectItem } from "@/types/portfolio";
 
 type ProjectsProps = {
 	items: ProjectItem[];
@@ -9,7 +9,7 @@ export default function Projects({ items }: ProjectsProps) {
 	return (
 		<ul className="-mx-3 space-y-1">
 			{items.map((project) => (
-				<li key={project.name}>
+				<li key={project._key}>
 					<a
 						href={project.link}
 						target="_blank"

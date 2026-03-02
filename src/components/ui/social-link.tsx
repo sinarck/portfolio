@@ -3,7 +3,7 @@ import {
 	LinkedinLogoIcon,
 	XLogoIcon,
 } from "@phosphor-icons/react";
-import type { SocialItem } from "@/config";
+import type { SocialItem } from "@/types/portfolio";
 
 const socialIcons = {
 	github: GithubLogoIcon,

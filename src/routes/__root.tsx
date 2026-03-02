@@ -9,7 +9,7 @@ import {
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { Analytics } from "@vercel/analytics/react";
 import NotFound from "@/components/not-found";
-import { site } from "@/config";
+import { getSiteSettings } from "@/lib/sanity";
 import appCss from "../styles.css?url";
 
 function RootErrorComponent({ error, reset }: ErrorComponentProps) {
@@ -40,21 +40,24 @@ function RootErrorComponent({ error, reset }: ErrorComponentProps) {
 }
 
 export const Route = createRootRoute({
-	head: () => ({
+	loader: () => getSiteSettings(),
+	staleTime: 5 * 60_000, // 5 min — reuse cached data on client nav
+	gcTime: 30 * 60_000, // 30 min — keep in memory
+	head: ({ loaderData: s }) => ({
 		meta: [
 			{ charSet: "utf-8" },
 			{ name: "viewport", content: "width=device-width, initial-scale=1" },
-			{ name: "theme-color", content: site.themeColor },
-			{ title: site.title },
-			{ name: "description", content: site.description },
-			{ property: "og:title", content: site.title },
-			{ property: "og:description", content: site.description },
-			{ property: "og:image", content: site.ogImage },
+			{ name: "theme-color", content: "#0a0a0a" },
+			{ title: s?.name ?? "" },
+			{ name: "description", content: s?.headline ?? "" },
+			{ property: "og:title", content: s?.name ?? "" },
+			{ property: "og:description", content: s?.headline ?? "" },
+			{ property: "og:image", content: "/og-image.png" },
 			{ property: "og:type", content: "website" },
 			{ name: "twitter:card", content: "summary_large_image" },
-			{ name: "twitter:title", content: site.title },
-			{ name: "twitter:description", content: site.description },
-			{ name: "twitter:image", content: site.ogImage },
+			{ name: "twitter:title", content: s?.name ?? "" },
+			{ name: "twitter:description", content: s?.headline ?? "" },
+			{ name: "twitter:image", content: "/og-image.png" },
 			{ name: "color-scheme", content: "dark" },
 		],
 		links: [
