@@ -20,7 +20,7 @@ function HomePage() {
 	const header = i;
 	i += 2; // name + headline
 	const currently = hasCurrently ? i++ : -1;
-	const currentlyItems = currently + 1; // overlaps with next section — doesn't block
+	const currentlyItems = i++;
 	const work = i++;
 	const workItems = i;
 	i += s.experience.length;

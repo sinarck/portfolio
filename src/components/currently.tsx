@@ -21,15 +21,14 @@ export default function Currently({
 	if (items.length === 0) return null;
 
 	return (
-		<div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
-			{items.map((item, i) => {
+		<div
+			className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground animate-in"
+			style={{ "--i": baseIndex } as React.CSSProperties}
+		>
+			{items.map((item) => {
 				const Icon = typeIcons[item.type];
 				return (
-					<span
-						key={item._key}
-						className="inline-flex items-center gap-1.5 animate-in"
-						style={{ "--i": baseIndex + i } as React.CSSProperties}
-					>
+					<span key={item._key} className="inline-flex items-center gap-1.5">
 						<Icon className="size-3.5" aria-hidden="true" />
 						{item.title}
 					</span>
