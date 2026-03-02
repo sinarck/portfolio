@@ -28,3 +28,7 @@ Thumbs.db
 
 # Vite
 .vite/
+
+# Sanity TypeGen (generated)
+studio/schema.json
+src/types/sanity.ts
