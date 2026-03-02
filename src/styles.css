@@ -91,7 +91,7 @@
 }
 
 @layer utilities {
-    /* Staggered entrance — delay driven by --i */
+    /* Staggered entrance — delay driven by --i, set once via DOM walk on mount */
     .animate-in {
         will-change: transform, opacity, filter;
         animation: fade-in-up var(--duration-entrance) var(--ease-out) backwards;

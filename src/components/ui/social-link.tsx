@@ -11,12 +11,7 @@ const socialIcons = {
 	x: XLogoIcon,
 } as const;
 
-export default function SocialLink({
-	name,
-	link,
-	icon,
-	staggerIndex,
-}: SocialItem & { staggerIndex: number }) {
+export default function SocialLink({ name, link, icon }: SocialItem) {
 	const Icon = socialIcons[icon];
 
 	return (
@@ -26,7 +21,6 @@ export default function SocialLink({
 			rel="noreferrer noopener"
 			aria-label={`${name} (opens in new tab)`}
 			className="link-muted focus-ring press-scale animate-in"
-			style={{ "--i": staggerIndex } as React.CSSProperties}
 		>
 			<Icon className="size-18px" aria-hidden="true" />
 		</a>

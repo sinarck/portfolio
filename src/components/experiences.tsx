@@ -1,19 +1,16 @@
 import type { SiteSettings } from "@/lib/sanity";
-import { formatDate } from "@/lib/utils";
 
 type ExperiencesProps = {
 	items: SiteSettings["experience"];
-	baseIndex: number;
 };
 
-export default function Experiences({ items, baseIndex }: ExperiencesProps) {
+export default function Experiences({ items }: ExperiencesProps) {
 	return (
 		<ul className="space-y-6">
-			{items.map((exp, i) => (
+			{items.map((exp) => (
 				<li
 					key={exp._key}
 					className="grid grid-cols-[2.5rem_1fr] gap-x-4 animate-in"
-					style={{ "--i": baseIndex + i } as React.CSSProperties}
 				>
 					<img
 						src={exp.logo ?? undefined}
@@ -34,7 +31,10 @@ export default function Experiences({ items, baseIndex }: ExperiencesProps) {
 							</span>
 						</div>
 						<time className="text-sm text-muted-foreground shrink-0 tabular-nums hidden sm:block leading-none">
-							{formatDate(exp.startDate)}
+							{new Date(`${exp.startDate}T00:00:00`).toLocaleDateString(
+								"en-US",
+								{ month: "short", year: "numeric" },
+							)}
 						</time>
 					</div>
 					<p className="self-start mt-1 text-sm text-muted-foreground sm:line-clamp-2">
