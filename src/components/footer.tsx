@@ -4,29 +4,31 @@ import type { SocialItem } from "@/types/portfolio";
 type FooterProps = {
 	socials: SocialItem[];
 	email: string;
-	staggerIndex?: number;
+	baseIndex: number;
 };
 
-export default function Footer({
-	socials,
-	email,
-	staggerIndex = 0,
-}: FooterProps) {
+export default function Footer({ socials, email, baseIndex }: FooterProps) {
 	return (
-		<footer
-			className="pt-10 lg:pt-8 border-t border-border animate-in stagger-in"
-			style={{ "--stagger-index": staggerIndex } as React.CSSProperties}
-		>
-			<div className="flex items-center justify-between">
+		<footer>
+			<hr
+				className="border-border animate-in origin-left [animation-name:grow-x]"
+				style={{ "--i": baseIndex } as React.CSSProperties}
+			/>
+			<div className="flex items-center justify-between pt-10 lg:pt-8">
 				<a
 					href={`mailto:${email}`}
-					className="text-sm text-muted-foreground hover:text-foreground interactive rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+					className="text-sm text-muted-foreground hover:text-foreground interactive rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background animate-in"
+					style={{ "--i": baseIndex + 1 } as React.CSSProperties}
 				>
 					{email.replace("@", " [at] ").replace(/\./g, " [dot] ")}
 				</a>
 				<nav aria-label="Social links" className="flex items-center gap-4">
-					{socials.map((social) => (
-						<SocialLink key={social._key} {...social} />
+					{socials.map((social, i) => (
+						<SocialLink
+							key={social._key}
+							{...social}
+							staggerIndex={baseIndex + 2 + i}
+						/>
 					))}
 				</nav>
 			</div>

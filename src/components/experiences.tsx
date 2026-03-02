@@ -3,13 +3,18 @@ import type { ExperienceItem } from "@/types/portfolio";
 
 type ExperiencesProps = {
 	items: ExperienceItem[];
+	baseIndex: number;
 };
 
-export default function Experiences({ items }: ExperiencesProps) {
+export default function Experiences({ items, baseIndex }: ExperiencesProps) {
 	return (
 		<ul className="space-y-6">
-			{items.map((exp) => (
-				<li key={exp._key} className="grid grid-cols-[2.5rem_1fr] gap-x-4">
+			{items.map((exp, i) => (
+				<li
+					key={exp._key}
+					className="grid grid-cols-[2.5rem_1fr] gap-x-4 animate-in"
+					style={{ "--i": baseIndex + i } as React.CSSProperties}
+				>
 					{exp.logo ? (
 						<img
 							src={exp.logo}

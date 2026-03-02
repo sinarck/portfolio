@@ -8,7 +8,7 @@ export default function NotFound() {
 					<span className="text-xs text-muted-foreground tracking-widest">
 						404
 					</span>
-					<h1 className="text-lg font-medium tracking-tight">Not Found</h1>
+					<h1 className="text-base font-semibold tracking-tight">Not Found</h1>
 				</div>
 				<p className="text-sm text-muted-foreground">
 					The requested page does not exist.

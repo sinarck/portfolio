@@ -1,15 +1,18 @@
 @import "tailwindcss";
-@import "@fontsource-variable/geist";
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Variable.ttf") format("truetype");
+  font-weight: 300 900;
+  font-display: swap;
+}
 
 @theme {
   --font-sans:
-    "Geist Variable", ui-sans-serif, system-ui, -apple-system,
+    "Satoshi", ui-sans-serif, system-ui, -apple-system,
     BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
-  --text-lg: 1.25rem;
-  --text-xl: 1.5rem;
 }
 
 @theme inline {
@@ -50,13 +53,7 @@
     line-height: 1.6;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
-
-    @media (min-width: 1024px) {
-      font-size: var(--text-base);
-    }
   }
-
-  /* Film grain texture — disabled for now */
 
   h1, h2, h3 {
     text-wrap: balance;
@@ -69,7 +66,6 @@
 }
 
 @layer utilities {
-  /* Respect reduced motion preferences */
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -80,7 +76,7 @@
     }
   }
 
-  /* Page load entrance animation */
+  /* Entrance animation — stagger via --i custom property */
   @keyframes fade-in-up {
     from {
       opacity: 0;
@@ -94,38 +90,18 @@
     }
   }
 
+  @keyframes grow-x {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+
   .animate-in {
+    will-change: transform, opacity, filter;
     animation: fade-in-up var(--duration-entrance) var(--ease-out) both;
+    animation-delay: calc(var(--i, 0) * 60ms);
   }
 
-  .delay-1 {
-    animation-delay: 80ms;
-  }
-  .delay-2 {
-    animation-delay: 160ms;
-  }
-
-  /* Stagger sections on page load — use --stagger-index set via inline style */
-  .stagger-in {
-    animation-delay: calc(var(--stagger-index, 0) * 80ms + 200ms);
-  }
-
-  /* Availability badge pulse */
-  @keyframes subtle-pulse {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.6;
-    }
-  }
-
-  .animate-subtle-pulse {
-    animation: subtle-pulse 3s ease-in-out infinite;
-  }
-
-  /* Standard interactive transition — used on all hoverable elements */
+  /* Standard interactive transition */
   .interactive {
     transition: color var(--duration-fast) var(--ease-out),
       background-color var(--duration-fast) var(--ease-out);
@@ -154,13 +130,15 @@
     }
 
     .hover-underline {
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform var(--duration-fast) var(--ease-out);
+      background-image: linear-gradient(currentColor, currentColor);
+      background-size: 0% 1px;
+      background-position: 0% 100%;
+      background-repeat: no-repeat;
+      transition: background-size var(--duration-fast) var(--ease-out);
     }
 
     .group:hover .hover-underline {
-      transform: scaleX(1);
+      background-size: 100% 1px;
     }
   }
 

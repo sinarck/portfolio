@@ -1,9 +1,7 @@
-import {
-	BookIcon,
-	HammerIcon,
-	HeadphonesIcon,
-	TelevisionIcon,
-} from "@phosphor-icons/react";
+import { BookIcon } from "@phosphor-icons/react/dist/icons/Book";
+import { HammerIcon } from "@phosphor-icons/react/dist/icons/Hammer";
+import { HeadphonesIcon } from "@phosphor-icons/react/dist/icons/Headphones";
+import { TelevisionIcon } from "@phosphor-icons/react/dist/icons/Television";
 import type { CurrentlyItem } from "@/types/portfolio";
 
 const typeIcons: Record<CurrentlyItem["type"], typeof HammerIcon> = {
@@ -13,15 +11,25 @@ const typeIcons: Record<CurrentlyItem["type"], typeof HammerIcon> = {
 	watching: TelevisionIcon,
 };
 
-export default function Currently({ items }: { items: CurrentlyItem[] }) {
+export default function Currently({
+	items,
+	baseIndex,
+}: {
+	items: CurrentlyItem[];
+	baseIndex: number;
+}) {
 	if (items.length === 0) return null;
 
 	return (
 		<div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
-			{items.map((item) => {
+			{items.map((item, i) => {
 				const Icon = typeIcons[item.type];
 				return (
-					<span key={item._key} className="inline-flex items-center gap-1.5">
+					<span
+						key={item._key}
+						className="inline-flex items-center gap-1.5 animate-in"
+						style={{ "--i": baseIndex + i } as React.CSSProperties}
+					>
 						<Icon className="size-3.5" aria-hidden="true" />
 						{item.title}
 					</span>

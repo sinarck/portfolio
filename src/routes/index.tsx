@@ -14,7 +14,20 @@ export const Route = createFileRoute("/")({
 
 function HomePage() {
 	const s = rootRoute.useLoaderData();
-	let sectionIndex = 0;
+	const hasCurrently = s.currently?.length > 0;
+
+	let i = 0;
+	const header = i;
+	i += 2; // name + headline
+	const currently = hasCurrently ? i++ : -1;
+	const currentlyItems = currently + 1; // overlaps with next section — doesn't block
+	const work = i++;
+	const workItems = i;
+	i += s.experience.length;
+	const projects = i++;
+	const projectItems = i;
+	i += s.projects.length;
+	const footer = i;
 
 	return (
 		// biome-ignore lint/correctness/useUniqueElementIds: intentional static ID for skip-link accessibility
@@ -25,28 +38,24 @@ function HomePage() {
 			<PortfolioHeader
 				name={`Hey, I'm ${s.name}`}
 				headline={s.headline}
-				availability={s.availability}
+				baseIndex={header}
 			/>
 
-			{s.currently?.length > 0 && (
-				<Section label="currently" staggerIndex={sectionIndex++}>
-					<Currently items={s.currently} />
+			{hasCurrently && (
+				<Section label="currently" baseIndex={currently}>
+					<Currently items={s.currently} baseIndex={currentlyItems} />
 				</Section>
 			)}
 
-			<Section label="work" staggerIndex={sectionIndex++}>
-				<Experiences items={s.experience} />
+			<Section label="work" baseIndex={work}>
+				<Experiences items={s.experience} baseIndex={workItems} />
 			</Section>
 
-			<Section label="projects" staggerIndex={sectionIndex++}>
-				<Projects items={s.projects} />
+			<Section label="projects" baseIndex={projects}>
+				<Projects items={s.projects} baseIndex={projectItems} />
 			</Section>
 
-			<Footer
-				socials={s.socials}
-				email={s.email}
-				staggerIndex={sectionIndex++}
-			/>
+			<Footer socials={s.socials} email={s.email} baseIndex={footer} />
 		</main>
 	);
 }

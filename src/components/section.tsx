@@ -3,18 +3,18 @@ import type { ReactNode } from "react";
 export default function Section({
 	label,
 	children,
-	staggerIndex = 0,
+	baseIndex,
 }: {
 	label: string;
 	children: ReactNode;
-	staggerIndex?: number;
+	baseIndex: number;
 }) {
 	return (
-		<section
-			className="mb-10 lg:mb-8 animate-in stagger-in"
-			style={{ "--stagger-index": staggerIndex } as React.CSSProperties}
-		>
-			<h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
+		<section className="mb-10 lg:mb-8">
+			<h2
+				className="text-xs uppercase tracking-widest text-muted-foreground mb-4 animate-in"
+				style={{ "--i": baseIndex } as React.CSSProperties}
+			>
 				{label}
 			</h2>
 			{children}

@@ -1,15 +1,20 @@
-import { ArrowUpRightIcon } from "@phosphor-icons/react";
+import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/icons/ArrowUpRight";
 import type { ProjectItem } from "@/types/portfolio";
 
 type ProjectsProps = {
 	items: ProjectItem[];
+	baseIndex: number;
 };
 
-export default function Projects({ items }: ProjectsProps) {
+export default function Projects({ items, baseIndex }: ProjectsProps) {
 	return (
 		<ul className="-mx-3 space-y-1">
-			{items.map((project) => (
-				<li key={project._key}>
+			{items.map((project, i) => (
+				<li
+					key={project._key}
+					className="animate-in"
+					style={{ "--i": baseIndex + i } as React.CSSProperties}
+				>
 					<a
 						href={project.link}
 						target="_blank"
@@ -17,9 +22,8 @@ export default function Projects({ items }: ProjectsProps) {
 						className="group block px-3 py-3 -outline-offset-2 rounded-sm hover-bg interactive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
 					>
 						<div className="flex items-center gap-1.5">
-							<span className="relative text-foreground inline-flex items-center">
+							<span className="text-foreground hover-underline">
 								{project.name}
-								<span className="absolute left-0 -bottom-px h-px w-full bg-current hover-underline" />
 							</span>
 							<ArrowUpRightIcon
 								className="size-3.5 text-muted-foreground hover-slide-in"
