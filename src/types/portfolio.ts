@@ -32,7 +32,6 @@ export type SiteSettings = {
 	name: string;
 	headline: string;
 	email: string;
-	availability: { status: "available" | "busy" | "open"; message: string };
 	currently: CurrentlyItem[];
 	experience: ExperienceItem[];
 	projects: ProjectItem[];

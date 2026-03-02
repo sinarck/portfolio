@@ -26,27 +26,6 @@ export const siteSettings = defineType({
 			validation: (r) => r.required().email(),
 		}),
 		defineField({
-			name: "availability",
-			title: "Availability",
-			type: "object",
-			fields: [
-				defineField({
-					name: "status",
-					title: "Status",
-					type: "string",
-					options: {
-						list: [
-							{ title: "Available", value: "available" },
-							{ title: "Busy", value: "busy" },
-							{ title: "Open", value: "open" },
-						],
-						layout: "radio",
-					},
-				}),
-				defineField({ name: "message", title: "Message", type: "string" }),
-			],
-		}),
-		defineField({
 			name: "currently",
 			title: "Currently",
 			type: "array",
