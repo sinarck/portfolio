@@ -107,6 +107,28 @@
       background-color var(--duration-fast) var(--ease-out);
   }
 
+  /* Composable focus ring */
+  .focus-ring {
+    border-radius: var(--radius-sm);
+
+    &:focus-visible {
+      outline: none;
+      box-shadow:
+        0 0 0 2px var(--background),
+        0 0 0 4px var(--ring);
+    }
+  }
+
+  /* Muted text link */
+  .link-muted {
+    color: var(--muted-foreground);
+    transition: color var(--duration-fast) var(--ease-out);
+
+    &:hover {
+      color: var(--foreground);
+    }
+  }
+
   /* Desktop-only hover interactions */
   @media (hover: hover) and (pointer: fine) {
     .hover-slide-in {

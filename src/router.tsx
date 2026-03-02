@@ -1,18 +1,20 @@
-import { createRouter, ErrorComponent } from "@tanstack/react-router";
+import { createRouter } from "@tanstack/react-router";
 
-// Import the generated route tree
+import ErrorPage from "@/components/error-page";
 import { routeTree } from "./routeTree.gen";
 
-// Create a new router instance
-export const getRouter = () => {
-	const router = createRouter({
+export const getRouter = () =>
+	createRouter({
 		routeTree,
 		context: {},
-
 		scrollRestoration: true,
 		defaultPreloadStaleTime: 0,
-		defaultErrorComponent: ({ error }) => <ErrorComponent error={error} />,
+		defaultErrorComponent: ({ error, reset }) => (
+			<ErrorPage
+				label="Error"
+				title="Something went wrong"
+				description={error.message || "An unexpected error occurred."}
+				action={{ type: "reset", reset }}
+			/>
+		),
 	});
-
-	return router;
-};

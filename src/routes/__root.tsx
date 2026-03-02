@@ -1,5 +1,4 @@
 import { TanStackDevtools } from "@tanstack/react-devtools";
-import type { ErrorComponentProps } from "@tanstack/react-router";
 import {
 	createRootRoute,
 	HeadContent,
@@ -13,36 +12,10 @@ const Analytics = lazy(() =>
 	import("@vercel/analytics/react").then((m) => ({ default: m.Analytics })),
 );
 
+import ErrorPage from "@/components/error-page";
 import NotFound from "@/components/not-found";
 import { getSiteSettings } from "@/lib/sanity";
 import appCss from "../styles.css?url";
-
-function RootErrorComponent({ error, reset }: ErrorComponentProps) {
-	return (
-		<main className="max-w-xl mx-auto px-6 min-h-dvh flex items-center justify-center">
-			<div className="text-center space-y-6">
-				<div className="space-y-2">
-					<span className="text-xs text-muted-foreground tracking-widest">
-						Error
-					</span>
-					<h1 className="text-base font-semibold tracking-tight">
-						Something went wrong
-					</h1>
-				</div>
-				<p className="text-sm text-muted-foreground">
-					{error.message || "An unexpected error occurred."}
-				</p>
-				<button
-					type="button"
-					onClick={reset}
-					className="inline-block text-sm text-muted-foreground hover:text-foreground interactive cursor-pointer rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-				>
-					Try again
-				</button>
-			</div>
-		</main>
-	);
-}
 
 export const Route = createRootRoute({
 	loader: () => getSiteSettings(),
@@ -75,7 +48,14 @@ export const Route = createRootRoute({
 			{ rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
 		],
 	}),
-	errorComponent: RootErrorComponent,
+	errorComponent: ({ error, reset }) => (
+		<ErrorPage
+			label="Error"
+			title="Something went wrong"
+			description={error.message || "An unexpected error occurred."}
+			action={{ type: "reset", reset }}
+		/>
+	),
 	notFoundComponent: () => <NotFound />,
 	component: RootComponent,
 	shellComponent: RootDocument,

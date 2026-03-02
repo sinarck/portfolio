@@ -17,7 +17,7 @@ export default function Footer({ socials, email, baseIndex }: FooterProps) {
 			<div className="flex items-center justify-between pt-10 lg:pt-8">
 				<a
 					href={`mailto:${email}`}
-					className="text-sm text-muted-foreground hover:text-foreground interactive rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background animate-in"
+					className="text-sm link-muted focus-ring animate-in"
 					style={{ "--i": baseIndex + 1 } as React.CSSProperties}
 				>
 					{email.replace("@", " [at] ").replace(/\./g, " [dot] ")}

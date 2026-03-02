@@ -19,7 +19,7 @@ export default function Projects({ items, baseIndex }: ProjectsProps) {
 						href={project.link}
 						target="_blank"
 						rel="noreferrer noopener"
-						className="group block px-3 py-3 -outline-offset-2 rounded-sm hover-bg interactive focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+						className="group block px-3 py-3 hover-bg interactive focus-ring"
 					>
 						<div className="flex items-center gap-1.5">
 							<span className="text-foreground hover-underline">
