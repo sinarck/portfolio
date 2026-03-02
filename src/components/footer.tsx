@@ -1,8 +1,8 @@
 import SocialLink from "@/components/ui/social-link";
-import type { SocialItem } from "@/types/portfolio";
+import type { SiteSettings } from "@/lib/sanity";
 
 type FooterProps = {
-	socials: SocialItem[];
+	socials: SiteSettings["socials"];
 	email: string;
 	baseIndex: number;
 };

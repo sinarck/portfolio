@@ -1,8 +1,8 @@
+import type { SiteSettings } from "@/lib/sanity";
 import { formatDate } from "@/lib/utils";
-import type { ExperienceItem } from "@/types/portfolio";
 
 type ExperiencesProps = {
-	items: ExperienceItem[];
+	items: SiteSettings["experience"];
 	baseIndex: number;
 };
 
@@ -15,19 +15,15 @@ export default function Experiences({ items, baseIndex }: ExperiencesProps) {
 					className="grid grid-cols-[2.5rem_1fr] gap-x-4 animate-in"
 					style={{ "--i": baseIndex + i } as React.CSSProperties}
 				>
-					{exp.logo ? (
-						<img
-							src={exp.logo}
-							alt={`${exp.company} logo`}
-							width={40}
-							height={40}
-							loading="lazy"
-							decoding="async"
-							className="size-10 rounded object-contain row-span-2"
-						/>
-					) : (
-						<div className="size-10 rounded bg-border row-span-2" />
-					)}
+					<img
+						src={exp.logo ?? undefined}
+						alt={`${exp.company} logo`}
+						width={40}
+						height={40}
+						loading="lazy"
+						decoding="async"
+						className="size-10 rounded object-contain row-span-2"
+					/>
 					<div className="min-w-0 flex items-center justify-between gap-4 self-end">
 						<div className="min-w-0 flex items-center gap-2">
 							<span className="text-foreground leading-none">

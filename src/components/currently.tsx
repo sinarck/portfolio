@@ -2,7 +2,9 @@ import { BookIcon } from "@phosphor-icons/react/dist/icons/Book";
 import { HammerIcon } from "@phosphor-icons/react/dist/icons/Hammer";
 import { HeadphonesIcon } from "@phosphor-icons/react/dist/icons/Headphones";
 import { TelevisionIcon } from "@phosphor-icons/react/dist/icons/Television";
-import type { CurrentlyItem } from "@/types/portfolio";
+import type { SiteSettings } from "@/lib/sanity";
+
+type CurrentlyItem = SiteSettings["currently"][number];
 
 const typeIcons: Record<CurrentlyItem["type"], typeof HammerIcon> = {
 	building: HammerIcon,

@@ -1,8 +1,8 @@
 import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/icons/ArrowUpRight";
-import type { ProjectItem } from "@/types/portfolio";
+import type { SiteSettings } from "@/lib/sanity";
 
 type ProjectsProps = {
-	items: ProjectItem[];
+	items: SiteSettings["projects"];
 	baseIndex: number;
 };
 
@@ -16,7 +16,7 @@ export default function Projects({ items, baseIndex }: ProjectsProps) {
 					style={{ "--i": baseIndex + i } as React.CSSProperties}
 				>
 					<a
-						href={project.link}
+						href={project.link ?? undefined}
 						target="_blank"
 						rel="noreferrer noopener"
 						className="group block px-3 py-3 hover-bg interactive focus-ring"
