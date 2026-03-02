@@ -29,6 +29,7 @@ export const siteSettings = defineType({
 			name: "currently",
 			title: "Currently",
 			type: "array",
+			validation: (r) => r.required(),
 			of: [
 				{
 					type: "object",
@@ -64,6 +65,7 @@ export const siteSettings = defineType({
 			name: "experience",
 			title: "Experience",
 			type: "array",
+			validation: (r) => r.required(),
 			of: [
 				{
 					type: "object",
@@ -92,12 +94,13 @@ export const siteSettings = defineType({
 							title: "Description",
 							type: "string",
 						}),
-						defineField({
-							name: "logo",
-							title: "Logo",
-							type: "image",
-							options: { hotspot: true },
-						}),
+					defineField({
+						name: "logo",
+						title: "Logo",
+						type: "image",
+						options: { hotspot: true },
+						validation: (Rule) => Rule.required(),
+					}),
 					],
 					preview: {
 						select: { title: "company", subtitle: "role" },
@@ -109,6 +112,7 @@ export const siteSettings = defineType({
 			name: "projects",
 			title: "Projects",
 			type: "array",
+			validation: (r) => r.required(),
 			of: [
 				{
 					type: "object",
@@ -132,6 +136,7 @@ export const siteSettings = defineType({
 			name: "socials",
 			title: "Social Links",
 			type: "array",
+			validation: (r) => r.required(),
 			of: [
 				{
 					type: "object",
