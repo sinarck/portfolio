@@ -15,6 +15,9 @@ const Analytics = lazy(() =>
 import ErrorPage from "@/components/error-page";
 import NotFound from "@/components/not-found";
 import { getSiteSettings } from "@/lib/sanity";
+
+const SITE_URL = "https://www.aadisanghvi.com";
+
 import appCss from "../styles.css?url";
 
 export const Route = createRootRoute({
@@ -30,16 +33,16 @@ export const Route = createRootRoute({
 			{ name: "description", content: s?.headline ?? "" },
 			{ property: "og:title", content: s?.name ?? "" },
 			{ property: "og:description", content: s?.headline ?? "" },
-			{ property: "og:url", content: "https://aadisanghvi.com" },
-			{ property: "og:image", content: "https://aadisanghvi.com/og-image.png" },
+			{ property: "og:url", content: SITE_URL },
+			{ property: "og:image", content: `${SITE_URL}/og-image.png` },
 			{ property: "og:type", content: "website" },
-			{ name: "twitter:url", content: "https://aadisanghvi.com" },
+			{ name: "twitter:url", content: SITE_URL },
 			{ name: "twitter:card", content: "summary_large_image" },
 			{ name: "twitter:title", content: s?.name ?? "" },
 			{ name: "twitter:description", content: s?.headline ?? "" },
 			{
 				name: "twitter:image",
-				content: "https://aadisanghvi.com/og-image.png",
+				content: `${SITE_URL}/og-image.png`,
 			},
 			{ name: "color-scheme", content: "dark" },
 		],
