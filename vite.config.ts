@@ -7,6 +7,9 @@ import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 
 const config = defineConfig({
+	build: {
+		cssMinify: "lightningcss",
+	},
 	esbuild: {
 		drop: process.env.NODE_ENV === "production" ? ["console", "debugger"] : [],
 	},
