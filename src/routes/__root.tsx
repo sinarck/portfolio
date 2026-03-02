@@ -7,7 +7,12 @@ import {
 	Scripts,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
-import { Analytics } from "@vercel/analytics/react";
+import { lazy, Suspense } from "react";
+
+const Analytics = lazy(() =>
+	import("@vercel/analytics/react").then((m) => ({ default: m.Analytics })),
+);
+
 import NotFound from "@/components/not-found";
 import { getSiteSettings } from "@/lib/sanity";
 import appCss from "../styles.css?url";
@@ -20,7 +25,7 @@ function RootErrorComponent({ error, reset }: ErrorComponentProps) {
 					<span className="text-xs text-muted-foreground tracking-widest">
 						Error
 					</span>
-					<h1 className="text-lg font-medium tracking-tight">
+					<h1 className="text-base font-semibold tracking-tight">
 						Something went wrong
 					</h1>
 				</div>
@@ -52,17 +57,21 @@ export const Route = createRootRoute({
 			{ name: "description", content: s?.headline ?? "" },
 			{ property: "og:title", content: s?.name ?? "" },
 			{ property: "og:description", content: s?.headline ?? "" },
-			{ property: "og:image", content: "/og-image.png" },
+			{ property: "og:url", content: "https://aadisanghvi.com" },
+			{ property: "og:image", content: "https://aadisanghvi.com/og-image.png" },
 			{ property: "og:type", content: "website" },
+			{ name: "twitter:url", content: "https://aadisanghvi.com" },
 			{ name: "twitter:card", content: "summary_large_image" },
 			{ name: "twitter:title", content: s?.name ?? "" },
 			{ name: "twitter:description", content: s?.headline ?? "" },
-			{ name: "twitter:image", content: "/og-image.png" },
+			{
+				name: "twitter:image",
+				content: "https://aadisanghvi.com/og-image.png",
+			},
 			{ name: "color-scheme", content: "dark" },
 		],
 		links: [
 			{ rel: "stylesheet", href: appCss },
-			{ rel: "manifest", href: "/manifest.json" },
 			{ rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
 		],
 	}),
@@ -90,7 +99,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 					Skip to main content
 				</a>
 				{children}
-				<Analytics />
+				<Suspense fallback={null}>
+					<Analytics />
+				</Suspense>
 				<TanStackDevtools
 					config={{ position: "bottom-right" }}
 					plugins={[
