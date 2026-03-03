@@ -1,3 +1,4 @@
+import { useWebHaptics } from "web-haptics/react";
 import SocialLink from "@/components/ui/social-link";
 import type { SiteSettings } from "@/lib/sanity";
 
@@ -7,6 +8,8 @@ type FooterProps = {
 };
 
 export default function Footer({ socials, email }: FooterProps) {
+	const { trigger } = useWebHaptics();
+
 	return (
 		<footer>
 			<hr className="border-border animate-in origin-left [animation-name:grow-x]" />
@@ -14,6 +17,7 @@ export default function Footer({ socials, email }: FooterProps) {
 				<a
 					href={`mailto:${email}`}
 					className="text-sm link-muted focus-ring animate-in"
+					onClick={() => trigger("light")}
 				>
 					{email.replace("@", " [at] ").replace(/\./g, " [dot] ")}
 				</a>

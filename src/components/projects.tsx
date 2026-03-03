@@ -1,4 +1,5 @@
 import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/icons/ArrowUpRight";
+import { useWebHaptics } from "web-haptics/react";
 import type { SiteSettings } from "@/lib/sanity";
 
 type ProjectsProps = {
@@ -6,6 +7,8 @@ type ProjectsProps = {
 };
 
 export default function Projects({ items }: ProjectsProps) {
+	const { trigger } = useWebHaptics();
+
 	return (
 		<ul className="-mx-3 space-y-1">
 			{items.map((project) => (
@@ -15,6 +18,7 @@ export default function Projects({ items }: ProjectsProps) {
 						target="_blank"
 						rel="noreferrer noopener"
 						className="group block px-3 py-3 hover-bg interactive focus-ring"
+						onClick={() => trigger("light")}
 					>
 						<div className="flex items-center gap-1.5">
 							<span className="text-foreground hover-underline">

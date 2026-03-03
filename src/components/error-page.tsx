@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { useWebHaptics } from "web-haptics/react";
 
 type ErrorPageProps = {
 	label: string;
@@ -13,6 +14,8 @@ export default function ErrorPage({
 	description,
 	action = { type: "home" },
 }: ErrorPageProps) {
+	const { trigger } = useWebHaptics();
+
 	return (
 		<main className="max-w-xl mx-auto px-6 min-h-dvh flex items-center justify-center">
 			<div className="text-center space-y-6">
@@ -26,13 +29,20 @@ export default function ErrorPage({
 				{action.type === "reset" ? (
 					<button
 						type="button"
-						onClick={action.reset}
+						onClick={() => {
+							trigger("medium");
+							action.reset();
+						}}
 						className="inline-block text-sm link-muted focus-ring cursor-pointer"
 					>
 						Try again
 					</button>
 				) : (
-					<Link to="/" className="inline-block text-sm link-muted focus-ring">
+					<Link
+						to="/"
+						className="inline-block text-sm link-muted focus-ring"
+						onClick={() => trigger("light")}
+					>
 						Return home
 					</Link>
 				)}
