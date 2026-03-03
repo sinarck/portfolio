@@ -20,10 +20,14 @@ export const staggerContainer: Variants = {
 };
 
 export const fadeInUp: Variants = {
-	hidden: { opacity: 0, y: 8, filter: "blur(4px)" },
+	hidden: {
+		opacity: 0,
+		transform: "translate3d(0, 8px, 0)",
+		filter: "blur(4px)",
+	},
 	visible: {
 		opacity: 1,
-		y: 0,
+		transform: "translate3d(0, 0px, 0)",
 		filter: "blur(0px)",
 		transition: { duration: 0.6, ease: EASE_OUT },
 	},
