@@ -1,5 +1,6 @@
 import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/icons/ArrowUpRight";
 import { useWebHaptics } from "web-haptics/react";
+import { fadeInUp, motion } from "@/components/ui/animate";
 import type { SiteSettings } from "@/lib/sanity";
 
 type ProjectsProps = {
@@ -12,12 +13,12 @@ export default function Projects({ items }: ProjectsProps) {
 	return (
 		<ul className="-mx-3 space-y-1">
 			{items.map((project) => (
-				<li key={project._key} className="animate-in">
+				<motion.li key={project._key} variants={fadeInUp}>
 					<a
 						href={project.link}
 						target="_blank"
 						rel="noreferrer noopener"
-						className="group block px-3 py-3 hover-bg interactive focus-ring"
+						className="group block px-3 py-3 transition-colors duration-200 ease-out pointer-fine:hover:bg-[var(--hover-overlay)] focus-ring"
 						onClick={() => trigger("light")}
 					>
 						<div className="flex items-center gap-1.5">
@@ -33,7 +34,7 @@ export default function Projects({ items }: ProjectsProps) {
 							{project.description}
 						</p>
 					</a>
-				</li>
+				</motion.li>
 			))}
 		</ul>
 	);

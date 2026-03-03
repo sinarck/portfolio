@@ -12,6 +12,7 @@ const Analytics = lazy(() =>
 	import("@vercel/analytics/react").then((m) => ({ default: m.Analytics })),
 );
 
+import { MotionConfig } from "motion/react";
 import ErrorPage from "@/components/error-page";
 import NotFound from "@/components/not-found";
 import { getSiteSettings } from "@/lib/sanity";
@@ -24,6 +25,9 @@ export const Route = createRootRoute({
 	loader: () => getSiteSettings(),
 	staleTime: 5 * 60_000, // 5 min — reuse cached data on client nav
 	gcTime: 30 * 60_000, // 30 min — keep in memory
+	headers: () => ({
+		"Cache-Control": "public, s-maxage=300, stale-while-revalidate=600",
+	}),
 	head: ({ loaderData: s }) => ({
 		meta: [
 			{ charSet: "utf-8" },
@@ -81,7 +85,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 				>
 					Skip to main content
 				</a>
-				{children}
+				<MotionConfig reducedMotion="user">{children}</MotionConfig>
 				<Suspense fallback={null}>
 					<Analytics />
 				</Suspense>

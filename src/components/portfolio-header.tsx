@@ -1,3 +1,5 @@
+import { fadeInUp, motion } from "@/components/ui/animate";
+
 type PortfolioHeaderProps = {
 	name: string;
 	headline: string;
@@ -9,10 +11,15 @@ export default function PortfolioHeader({
 }: PortfolioHeaderProps) {
 	return (
 		<header className="mb-10 lg:mb-8">
-			<h1 className="text-base font-semibold tracking-tight text-pretty animate-in">
+			<motion.h1
+				variants={fadeInUp}
+				className="text-base font-semibold tracking-tight text-pretty"
+			>
 				{name}
-			</h1>
-			<p className="mt-3 text-muted-foreground animate-in">{headline}</p>
+			</motion.h1>
+			<motion.p variants={fadeInUp} className="mt-3 text-muted-foreground">
+				{headline}
+			</motion.p>
 		</header>
 	);
 }

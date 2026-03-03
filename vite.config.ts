@@ -22,7 +22,12 @@ const config = defineConfig({
 		devtools(),
 		nitro(),
 		tailwindcss(),
-		tanstackStart(),
+    tanstackStart({
+      sitemap: {
+        enabled: true,
+        host: "https://www.aadisanghvi.com"
+      }
+    }),
 		viteReact({
 			babel: {
 				plugins: ["babel-plugin-react-compiler"],

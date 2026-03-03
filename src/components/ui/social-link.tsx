@@ -22,7 +22,7 @@ export default function SocialLink({ name, link, icon }: SocialItem) {
 			target="_blank"
 			rel="noreferrer noopener"
 			aria-label={`${name} (opens in new tab)`}
-			className="link-muted focus-ring press-scale animate-in"
+			className="link-muted focus-ring press-scale"
 			onClick={() => trigger("light")}
 		>
 			<Icon className="size-18px" aria-hidden="true" />

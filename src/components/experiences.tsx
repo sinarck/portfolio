@@ -1,3 +1,4 @@
+import { fadeInUp, motion } from "@/components/ui/animate";
 import type { SiteSettings } from "@/lib/sanity";
 
 type ExperiencesProps = {
@@ -8,9 +9,10 @@ export default function Experiences({ items }: ExperiencesProps) {
 	return (
 		<ul className="space-y-6">
 			{items.map((exp) => (
-				<li
+				<motion.li
 					key={exp._key}
-					className="grid grid-cols-[2.5rem_1fr] gap-x-4 animate-in"
+					variants={fadeInUp}
+					className="grid grid-cols-[2.5rem_1fr] gap-x-4"
 				>
 					<img
 						src={exp.logo ?? undefined}
@@ -40,7 +42,7 @@ export default function Experiences({ items }: ExperiencesProps) {
 					<p className="self-start mt-1 text-sm text-muted-foreground sm:line-clamp-2">
 						{exp.description}
 					</p>
-				</li>
+				</motion.li>
 			))}
 		</ul>
 	);

@@ -1,4 +1,5 @@
 import { useWebHaptics } from "web-haptics/react";
+import { fadeInUp, growX, motion } from "@/components/ui/animate";
 import SocialLink from "@/components/ui/social-link";
 import type { SiteSettings } from "@/lib/sanity";
 
@@ -12,11 +13,14 @@ export default function Footer({ socials, email }: FooterProps) {
 
 	return (
 		<footer>
-			<hr className="border-border animate-in origin-left [animation-name:grow-x]" />
-			<div className="flex items-center justify-between pt-10 lg:pt-8">
+			<motion.hr variants={growX} className="border-border origin-left" />
+			<motion.div
+				variants={fadeInUp}
+				className="flex items-center justify-between pt-10 lg:pt-8"
+			>
 				<a
 					href={`mailto:${email}`}
-					className="text-sm link-muted focus-ring animate-in"
+					className="text-sm link-muted focus-ring"
 					onClick={() => trigger("light")}
 				>
 					{email.replace("@", " [at] ").replace(/\./g, " [dot] ")}
@@ -26,7 +30,7 @@ export default function Footer({ socials, email }: FooterProps) {
 						<SocialLink key={social._key} {...social} />
 					))}
 				</nav>
-			</div>
+			</motion.div>
 		</footer>
 	);
 }

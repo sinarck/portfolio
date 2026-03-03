@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { fadeInUp, motion } from "@/components/ui/animate";
 
 export default function Section({
 	label,
@@ -9,9 +10,12 @@ export default function Section({
 }) {
 	return (
 		<section className="mb-10 lg:mb-8">
-			<h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-4 animate-in">
+			<motion.h2
+				variants={fadeInUp}
+				className="text-xs uppercase tracking-widest text-muted-foreground mb-4"
+			>
 				{label}
-			</h2>
+			</motion.h2>
 			{children}
 		</section>
 	);
