@@ -76,8 +76,10 @@
 		color: var(--muted-foreground);
 		transition: color 200ms var(--ease-out);
 
-		&:hover {
-			color: var(--foreground);
+		@media (hover: hover) and (pointer: fine) {
+			&:hover {
+				color: var(--foreground);
+			}
 		}
 	}
 
