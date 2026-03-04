@@ -61,6 +61,16 @@ export const Route = createRootRoute({
 			{ rel: "stylesheet", href: appCss },
 			{ rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
 		],
+		styles: [
+			{
+				children: `@font-face {
+	font-family: "Satoshi";
+	src: url("/fonts/Satoshi-Variable.woff2") format("woff2");
+	font-weight: 300 900;
+	font-display: swap;
+}`,
+			},
+		],
 	}),
 	errorComponent: ({ error, reset }) => (
 		<ErrorPage
