@@ -7,7 +7,6 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { lazy, Suspense } from "react";
-import { preload } from "react-dom";
 
 const Analytics = lazy(() =>
 	import("@vercel/analytics/react").then((m) => ({ default: m.Analytics })),
@@ -52,6 +51,13 @@ export const Route = createRootRoute({
 			{ name: "color-scheme", content: "dark" },
 		],
 		links: [
+			{
+				rel: "preload",
+				href: "/fonts/Satoshi-Variable.woff2",
+				as: "font",
+				type: "font/woff2",
+				crossOrigin: "anonymous",
+			},
 			{ rel: "stylesheet", href: appCss },
 			{ rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
 		],
@@ -74,12 +80,6 @@ function RootComponent() {
 }
 
 function RootDocument({ children }: { children: React.ReactNode }) {
-	preload("/fonts/Satoshi-Variable.woff2", {
-		as: "font",
-		type: "font/woff2",
-		crossOrigin: "anonymous",
-	});
-
 	return (
 		<html lang="en">
 			<head>
