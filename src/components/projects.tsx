@@ -1,6 +1,4 @@
 import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/icons/ArrowUpRight";
-import { fadeInUp, motion } from "@/components/ui/animate";
-import { triggerHaptic } from "@/lib/haptics";
 import type { Profile } from "@/lib/profile";
 
 type ProjectsProps = {
@@ -9,15 +7,14 @@ type ProjectsProps = {
 
 export default function Projects({ items }: ProjectsProps) {
 	return (
-		<ul className="-mx-3 space-y-1">
+		<ul className="-mx-3 space-y-1 enter-list">
 			{items.map((project) => (
-				<motion.li key={project._key} variants={fadeInUp}>
+				<li key={project._key} className="enter">
 					<a
 						href={project.link}
 						target="_blank"
 						rel="noreferrer noopener"
 						className="group block px-3 py-3 transition-colors duration-200 ease-out pointer-fine:hover:bg-(--hover-overlay) focus-ring"
-						onClick={() => triggerHaptic()}
 					>
 						<div className="flex items-center gap-1.5">
 							<span className="text-foreground hover-underline">
@@ -32,7 +29,7 @@ export default function Projects({ items }: ProjectsProps) {
 							{project.description}
 						</p>
 					</a>
-				</motion.li>
+				</li>
 			))}
 		</ul>
 	);

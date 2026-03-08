@@ -1,6 +1,4 @@
 import { Link } from "@tanstack/react-router";
-import { fadeInUp, motion, staggerContainer } from "@/components/ui/animate";
-import { triggerHaptic } from "@/lib/haptics";
 
 type ErrorPageProps = {
 	label: string;
@@ -16,39 +14,27 @@ export default function ErrorPage({
 	action = { type: "home" },
 }: ErrorPageProps) {
 	return (
-		<motion.main
-			variants={staggerContainer}
-			initial="hidden"
-			animate="visible"
-			className="mx-auto flex min-h-dvh w-full max-w-2xl flex-col justify-center px-6 pt-12 pb-8 lg:max-w-3xl lg:py-8"
-		>
-			<section className="max-w-xl">
-				<motion.div variants={fadeInUp}>
+		<main className="mx-auto flex min-h-dvh w-full max-w-2xl flex-col justify-center px-6 pt-12 pb-8 lg:max-w-3xl lg:py-8">
+			<section className="max-w-xl enter-group">
+				<div className="enter">
 					<span className="text-[11px] uppercase tracking-[0.28em] text-muted-foreground">
 						{label}
 					</span>
-				</motion.div>
+				</div>
 
-				<motion.h1
-					variants={fadeInUp}
-					className="mt-4 max-w-lg text-3xl font-semibold tracking-tight text-pretty sm:text-[2.5rem] sm:leading-none"
-				>
+				<h1 className="mt-4 max-w-lg text-3xl font-semibold tracking-tight text-pretty sm:text-[2.5rem] sm:leading-none enter">
 					{title}
-				</motion.h1>
+				</h1>
 
-				<motion.p
-					variants={fadeInUp}
-					className="mt-6 max-w-md text-base text-muted-foreground"
-				>
+				<p className="mt-6 max-w-md text-base text-muted-foreground enter">
 					{description}
-				</motion.p>
+				</p>
 
-				<motion.div variants={fadeInUp} className="mt-10">
+				<div className="mt-10 enter">
 					{action.type === "reset" ? (
 						<button
 							type="button"
 							onClick={() => {
-								triggerHaptic(20);
 								action.reset();
 							}}
 							className="inline-block text-sm link-muted focus-ring cursor-pointer"
@@ -56,16 +42,12 @@ export default function ErrorPage({
 							Try again
 						</button>
 					) : (
-						<Link
-							to="/"
-							className="inline-block text-sm link-muted focus-ring"
-							onClick={() => triggerHaptic()}
-						>
+						<Link to="/" className="inline-block text-sm link-muted focus-ring">
 							Return home
 						</Link>
 					)}
-				</motion.div>
+				</div>
 			</section>
-		</motion.main>
+		</main>
 	);
 }

@@ -5,7 +5,6 @@ import Footer from "@/components/footer";
 import PortfolioHeader from "@/components/portfolio-header";
 import Projects from "@/components/projects";
 import Section from "@/components/section";
-import { motion, staggerContainer } from "@/components/ui/animate";
 
 const rootRoute = getRouteApi("__root__");
 
@@ -18,12 +17,9 @@ function HomePage() {
 
 	return (
 		// biome-ignore lint/correctness/useUniqueElementIds: intentional static ID for skip-link accessibility
-		<motion.main
+		<main
 			id="main-content"
-			variants={staggerContainer}
-			initial="hidden"
-			animate="visible"
-			className="max-w-2xl lg:max-w-3xl mx-auto px-6 min-h-dvh flex flex-col justify-center pt-12 pb-8 lg:py-8"
+			className="page-stagger max-w-2xl lg:max-w-3xl mx-auto px-6 min-h-dvh flex flex-col justify-center pt-12 pb-8 lg:py-8"
 		>
 			<PortfolioHeader name={`Hey, I'm ${s.name}`} headline={s.headline} />
 
@@ -40,6 +36,6 @@ function HomePage() {
 			</Section>
 
 			<Footer socials={s.socials} email={s.email} />
-		</motion.main>
+		</main>
 	);
 }

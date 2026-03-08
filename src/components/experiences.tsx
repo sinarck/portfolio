@@ -1,4 +1,3 @@
-import { fadeInUp, motion } from "@/components/ui/animate";
 import type { Profile } from "@/lib/profile";
 
 type ExperiencesProps = {
@@ -18,12 +17,11 @@ function formatMonthYear(date: string) {
 
 export default function Experiences({ items }: ExperiencesProps) {
 	return (
-		<ul className="space-y-6">
+		<ul className="space-y-6 enter-list">
 			{items.map((exp) => (
-				<motion.li
+				<li
 					key={exp._key}
-					variants={fadeInUp}
-					className="grid grid-cols-[2.5rem_1fr] gap-x-4"
+					className="grid grid-cols-[2.5rem_1fr] gap-x-4 enter"
 				>
 					<img
 						src={exp.logo ?? undefined}
@@ -51,7 +49,7 @@ export default function Experiences({ items }: ExperiencesProps) {
 					<p className="self-start mt-1 text-sm text-muted-foreground sm:line-clamp-2">
 						{exp.description}
 					</p>
-				</motion.li>
+				</li>
 			))}
 		</ul>
 	);

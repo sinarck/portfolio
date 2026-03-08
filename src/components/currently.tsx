@@ -1,7 +1,6 @@
 import { BookIcon } from "@phosphor-icons/react/dist/icons/Book";
 import { HeadphonesIcon } from "@phosphor-icons/react/dist/icons/Headphones";
 import { TelevisionIcon } from "@phosphor-icons/react/dist/icons/Television";
-import { fadeInUp, motion } from "@/components/ui/animate";
 import type { Profile } from "@/lib/profile";
 
 type CurrentlyItem = Profile["currently"][number];
@@ -18,10 +17,7 @@ type CurrentlyProps = {
 
 export default function Currently({ items }: CurrentlyProps) {
 	return (
-		<motion.div
-			variants={fadeInUp}
-			className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground"
-		>
+		<div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground enter">
 			{items.map((item) => {
 				const Icon = typeIcons[item.type];
 
@@ -32,6 +28,6 @@ export default function Currently({ items }: CurrentlyProps) {
 					</span>
 				);
 			})}
-		</motion.div>
+		</div>
 	);
 }
