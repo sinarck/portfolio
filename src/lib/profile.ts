@@ -23,7 +23,6 @@ export const getProfile = createServerFn({ method: "GET" }).handler(
 
 		const response = await fetch(profileQueryUrl, {
 			cache: "no-store",
-			headers: { Accept: "application/json" },
 			signal: AbortSignal.timeout(8_000),
 		});
 

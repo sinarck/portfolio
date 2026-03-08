@@ -2,9 +2,9 @@ import { createFileRoute, getRouteApi } from "@tanstack/react-router";
 import Currently from "@/components/currently";
 import Experiences from "@/components/experiences";
 import Footer from "@/components/footer";
-import PortfolioHeader from "@/components/portfolio-header";
 import Projects from "@/components/projects";
 import Section from "@/components/section";
+import Header from "@/components/header";
 
 const rootRoute = getRouteApi("__root__");
 
@@ -21,7 +21,7 @@ function HomePage() {
 			id="main-content"
 			className="page-stagger max-w-2xl lg:max-w-3xl mx-auto px-6 min-h-dvh flex flex-col justify-center pt-12 pb-8 lg:py-8"
 		>
-			<PortfolioHeader name={`Hey, I'm ${s.name}`} headline={s.headline} />
+			<Header name={`Hey, I'm ${s.name}`} headline={s.headline} />
 
 			<Section label="currently">
 				<Currently items={s.currently} />

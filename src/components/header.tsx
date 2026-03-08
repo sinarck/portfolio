@@ -1,14 +1,14 @@
-type PortfolioHeaderProps = {
+type HeaderProps = {
 	name: string;
 	headline: string;
 };
 
-export default function PortfolioHeader({
+export default function Header({
 	name,
 	headline,
-}: PortfolioHeaderProps) {
+}: HeaderProps) {
 	return (
-		<header className="mb-10 lg:mb-8">
+		<header className="mb-10 lg:mb-8 enter-group">
 			<h1 className="text-base font-semibold tracking-tight text-pretty enter">
 				{name}
 			</h1>
