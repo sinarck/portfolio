@@ -1,6 +1,6 @@
-import { useWebHaptics } from "web-haptics/react";
 import { fadeInUp, growX, motion } from "@/components/ui/animate";
 import SocialLink from "@/components/ui/social-link";
+import { triggerHaptic } from "@/lib/haptics";
 import type { Profile } from "@/lib/profile";
 
 type FooterProps = {
@@ -9,8 +9,6 @@ type FooterProps = {
 };
 
 export default function Footer({ socials, email }: FooterProps) {
-	const { trigger } = useWebHaptics();
-
 	return (
 		<footer>
 			<motion.hr variants={growX} className="border-border origin-left" />
@@ -21,7 +19,7 @@ export default function Footer({ socials, email }: FooterProps) {
 				<a
 					href={`mailto:${email}`}
 					className="text-sm link-muted focus-ring"
-					onClick={() => trigger("light")}
+					onClick={() => triggerHaptic()}
 				>
 					{email.replace("@", " [at] ").replace(/\./g, " [dot] ")}
 				</a>

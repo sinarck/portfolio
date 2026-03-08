@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { useWebHaptics } from "web-haptics/react";
 import { fadeInUp, motion, staggerContainer } from "@/components/ui/animate";
+import { triggerHaptic } from "@/lib/haptics";
 
 type ErrorPageProps = {
 	label: string;
@@ -15,8 +15,6 @@ export default function ErrorPage({
 	description,
 	action = { type: "home" },
 }: ErrorPageProps) {
-	const { trigger } = useWebHaptics();
-
 	return (
 		<motion.main
 			variants={staggerContainer}
@@ -50,7 +48,7 @@ export default function ErrorPage({
 						<button
 							type="button"
 							onClick={() => {
-								trigger("medium");
+								triggerHaptic(20);
 								action.reset();
 							}}
 							className="inline-block text-sm link-muted focus-ring cursor-pointer"
@@ -61,7 +59,7 @@ export default function ErrorPage({
 						<Link
 							to="/"
 							className="inline-block text-sm link-muted focus-ring"
-							onClick={() => trigger("light")}
+							onClick={() => triggerHaptic()}
 						>
 							Return home
 						</Link>

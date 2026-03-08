@@ -12,7 +12,6 @@ const Analytics = lazy(() =>
 	import("@vercel/analytics/react").then((m) => ({ default: m.Analytics })),
 );
 
-import { MotionConfig } from "motion/react";
 import ErrorPage from "@/components/error-page";
 import NotFound from "@/components/not-found";
 import { getProfile } from "@/lib/profile";
@@ -102,7 +101,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 				>
 					Skip to main content
 				</a>
-				<MotionConfig reducedMotion="user">{children}</MotionConfig>
+				{children}
 				<Suspense fallback={null}>
 					<Analytics />
 				</Suspense>

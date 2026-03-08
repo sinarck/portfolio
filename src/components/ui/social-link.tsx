@@ -1,7 +1,7 @@
 import { GithubLogoIcon } from "@phosphor-icons/react/dist/icons/GithubLogo";
 import { LinkedinLogoIcon } from "@phosphor-icons/react/dist/icons/LinkedinLogo";
 import { XLogoIcon } from "@phosphor-icons/react/dist/icons/XLogo";
-import { useWebHaptics } from "web-haptics/react";
+import { triggerHaptic } from "@/lib/haptics";
 import type { Profile } from "@/lib/profile";
 
 type SocialItem = Profile["socials"][number];
@@ -14,7 +14,6 @@ const socialIcons = {
 
 export default function SocialLink({ name, link, icon }: SocialItem) {
 	const Icon = socialIcons[icon];
-	const { trigger } = useWebHaptics();
 
 	return (
 		<a
@@ -23,7 +22,7 @@ export default function SocialLink({ name, link, icon }: SocialItem) {
 			rel="noreferrer noopener"
 			aria-label={`${name} (opens in new tab)`}
 			className="link-muted focus-ring press-scale"
-			onClick={() => trigger("light")}
+			onClick={() => triggerHaptic()}
 		>
 			<Icon className="size-18px" aria-hidden="true" />
 		</a>

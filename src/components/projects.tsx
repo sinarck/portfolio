@@ -1,6 +1,6 @@
 import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/icons/ArrowUpRight";
-import { useWebHaptics } from "web-haptics/react";
 import { fadeInUp, motion } from "@/components/ui/animate";
+import { triggerHaptic } from "@/lib/haptics";
 import type { Profile } from "@/lib/profile";
 
 type ProjectsProps = {
@@ -8,8 +8,6 @@ type ProjectsProps = {
 };
 
 export default function Projects({ items }: ProjectsProps) {
-	const { trigger } = useWebHaptics();
-
 	return (
 		<ul className="-mx-3 space-y-1">
 			{items.map((project) => (
@@ -19,7 +17,7 @@ export default function Projects({ items }: ProjectsProps) {
 						target="_blank"
 						rel="noreferrer noopener"
 						className="group block px-3 py-3 transition-colors duration-200 ease-out pointer-fine:hover:bg-(--hover-overlay) focus-ring"
-						onClick={() => trigger("light")}
+						onClick={() => triggerHaptic()}
 					>
 						<div className="flex items-center gap-1.5">
 							<span className="text-foreground hover-underline">

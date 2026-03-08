@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
-    "@sanity/client": "^7.16.0",
     "@t3-oss/env-core": "^0.13.10",
     "@tailwindcss/vite": "^4.0.6",
     "@tanstack/react-router": "^1.132.0",
@@ -27,7 +26,6 @@
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "tailwindcss": "^4.0.6",
-    "web-haptics": "^0.0.6",
     "zod": "^4.3.6"
   },
   "devDependencies": {
@@ -40,6 +38,7 @@
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^5.0.4",
     "babel-plugin-react-compiler": "^1.0.0",
+    "rollup-plugin-visualizer": "^7.0.1",
     "typescript": "^5.7.2",
     "vite": "^7.1.7"
   },
