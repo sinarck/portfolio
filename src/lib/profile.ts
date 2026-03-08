@@ -1,18 +1,9 @@
-import { createClient } from "@sanity/client";
 import { createServerFn } from "@tanstack/react-start";
 import { defineQuery } from "groq";
 import { env } from "@/env";
 import { type Profile, profileSchema } from "@/lib/validations/profile";
 
 export type { Profile } from "@/lib/validations/profile";
-
-const sanityClient = createClient({
-	projectId: env.SANITY_PROJECT_ID,
-	dataset: env.SANITY_DATASET,
-	apiVersion: env.SANITY_API_VERSION,
-	useCdn: false,
-	perspective: "published",
-});
 
 export const PROFILE_QUERY = defineQuery(`*[_type == "profile"][0]{
 	name, headline, email,
@@ -24,7 +15,25 @@ export const PROFILE_QUERY = defineQuery(`*[_type == "profile"][0]{
 
 export const getProfile = createServerFn({ method: "GET" }).handler(
 	async (): Promise<Profile> => {
-		const result = await sanityClient.fetch(PROFILE_QUERY);
+		const profileQueryUrl = new URL(
+			`https://${env.SANITY_PROJECT_ID}.api.sanity.io/v${env.SANITY_API_VERSION}/data/query/${env.SANITY_DATASET}`,
+		);
+
+		profileQueryUrl.searchParams.set("query", PROFILE_QUERY);
+
+		const response = await fetch(profileQueryUrl, {
+			headers: { Accept: "application/json" },
+		});
+
+		if (!response.ok) {
+			throw new Error(`Failed to load profile: ${response.status}`);
+		}
+
+		const payload = (await response.json()) as {
+			result?: unknown;
+		};
+
+		const result = payload.result;
 
 		if (result == null) {
 			throw new Error("Profile not found");
