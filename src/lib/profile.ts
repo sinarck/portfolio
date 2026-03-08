@@ -1,9 +1,9 @@
 import { createServerFn } from "@tanstack/react-start";
 import { defineQuery } from "groq";
 import { env } from "@/env";
-import { type Profile, profileSchema } from "@/lib/validations/profile";
+import type { PROFILE_QUERY_RESULT } from "@/types/sanity";
 
-export type { Profile } from "@/lib/validations/profile";
+export type Profile = NonNullable<PROFILE_QUERY_RESULT>;
 
 export const PROFILE_QUERY = defineQuery(`*[_type == "profile"][0]{
 	name, headline, email,
@@ -13,8 +13,6 @@ export const PROFILE_QUERY = defineQuery(`*[_type == "profile"][0]{
 	socials[] { _key, name, link, icon }
 }`);
 
-const PROFILE_REQUEST_TIMEOUT = 8_000;
-
 export const getProfile = createServerFn({ method: "GET" }).handler(
 	async (): Promise<Profile> => {
 		const profileQueryUrl = new URL(
@@ -23,46 +21,24 @@ export const getProfile = createServerFn({ method: "GET" }).handler(
 
 		profileQueryUrl.searchParams.set("query", PROFILE_QUERY);
 
-		const controller = new AbortController();
-		const timeoutId = setTimeout(
-			() => controller.abort(),
-			PROFILE_REQUEST_TIMEOUT,
-		);
+		const response = await fetch(profileQueryUrl, {
+			cache: "no-store",
+			headers: { Accept: "application/json" },
+			signal: AbortSignal.timeout(8_000),
+		});
 
-		let result: unknown;
-
-		try {
-			const response = await fetch(profileQueryUrl, {
-				cache: "no-store",
-				headers: { Accept: "application/json" },
-				signal: controller.signal,
-			});
-
-			if (!response.ok) {
-				throw new Error(`Failed to load profile: ${response.status}`);
-			}
-
-			result = ((await response.json()) as { result?: unknown }).result;
-		} catch (error) {
-			if (error instanceof DOMException && error.name === "AbortError") {
-				throw new Error("Profile request timed out");
-			}
-
-			throw error;
-		} finally {
-			clearTimeout(timeoutId);
+		if (!response.ok) {
+			throw new Error(`Failed to load profile: ${response.status}`);
 		}
+
+		const result =
+			((await response.json()) as { result?: PROFILE_QUERY_RESULT }).result ??
+			null;
 
 		if (result == null) {
 			throw new Error("Profile not found");
 		}
 
-		const parsed = profileSchema.safeParse(result);
-
-		if (!parsed.success) {
-			throw new Error(`Invalid profile payload: ${parsed.error.message}`);
-		}
-
-		return parsed.data;
+		return result;
 	},
 );
