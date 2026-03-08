@@ -1,10 +1,10 @@
 import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/icons/ArrowUpRight";
 import { useWebHaptics } from "web-haptics/react";
 import { fadeInUp, motion } from "@/components/ui/animate";
-import type { SiteSettings } from "@/lib/sanity";
+import type { Profile } from "@/lib/profile";
 
 type ProjectsProps = {
-	items: SiteSettings["projects"];
+	items: Profile["projects"];
 };
 
 export default function Projects({ items }: ProjectsProps) {
@@ -18,7 +18,7 @@ export default function Projects({ items }: ProjectsProps) {
 						href={project.link}
 						target="_blank"
 						rel="noreferrer noopener"
-						className="group block px-3 py-3 transition-colors duration-200 ease-out pointer-fine:hover:bg-[var(--hover-overlay)] focus-ring"
+						className="group block px-3 py-3 transition-colors duration-200 ease-out pointer-fine:hover:bg-(--hover-overlay) focus-ring"
 						onClick={() => trigger("light")}
 					>
 						<div className="flex items-center gap-1.5">

@@ -2,9 +2,9 @@ import { BookIcon } from "@phosphor-icons/react/dist/icons/Book";
 import { HeadphonesIcon } from "@phosphor-icons/react/dist/icons/Headphones";
 import { TelevisionIcon } from "@phosphor-icons/react/dist/icons/Television";
 import { fadeInUp, motion } from "@/components/ui/animate";
-import type { SiteSettings } from "@/lib/sanity";
+import type { Profile } from "@/lib/profile";
 
-type CurrentlyItem = SiteSettings["currently"][number];
+type CurrentlyItem = Profile["currently"][number];
 
 const typeIcons: Record<CurrentlyItem["type"], typeof BookIcon> = {
 	reading: BookIcon,

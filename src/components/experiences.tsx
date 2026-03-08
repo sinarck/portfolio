@@ -1,9 +1,20 @@
 import { fadeInUp, motion } from "@/components/ui/animate";
-import type { SiteSettings } from "@/lib/sanity";
+import type { Profile } from "@/lib/profile";
 
 type ExperiencesProps = {
-	items: SiteSettings["experience"];
+	items: Profile["experience"];
 };
+
+function formatMonthYear(date: string) {
+	const [year, month, day] = date.split("-").map(Number);
+	if (!year || !month || !day) return date;
+
+	return new Intl.DateTimeFormat("en-US", {
+		month: "short",
+		year: "numeric",
+		timeZone: "UTC",
+	}).format(new Date(Date.UTC(year, month - 1, day)));
+}
 
 export default function Experiences({ items }: ExperiencesProps) {
 	return (
@@ -33,10 +44,8 @@ export default function Experiences({ items }: ExperiencesProps) {
 							</span>
 						</div>
 						<time className="text-sm text-muted-foreground shrink-0 tabular-nums hidden sm:block leading-none">
-							{new Date(`${exp.startDate}T00:00:00`).toLocaleDateString(
-								"en-US",
-								{ month: "short", year: "numeric" },
-							)}
+							{formatMonthYear(exp.startDate)} -{" "}
+							{exp.endDate ? formatMonthYear(exp.endDate) : "Present"}
 						</time>
 					</div>
 					<p className="self-start mt-1 text-sm text-muted-foreground sm:line-clamp-2">

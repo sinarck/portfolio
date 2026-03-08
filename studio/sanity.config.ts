@@ -1,13 +1,16 @@
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
-import { siteSettings } from "./schemaTypes/site-settings";
+import { profile } from "./schemaTypes/profile";
+
+const SANITY_PROJECT_ID = "hjdvv980";
+const SANITY_DATASET = "production";
 
 export default defineConfig({
 	name: "portfolio",
 	title: "Portfolio",
-	projectId: "hjdvv980",
-	dataset: "production",
+	projectId: SANITY_PROJECT_ID,
+	dataset: SANITY_DATASET,
 	plugins: [
 		structureTool({
 			structure: (S) =>
@@ -15,15 +18,15 @@ export default defineConfig({
 					.title("Content")
 					.items([
 						S.listItem()
-							.title("Site Settings")
+							.title("Profile")
 							.child(
 								S.document()
-									.schemaType("siteSettings")
-									.documentId("siteSettings"),
+									.schemaType("profile")
+									.documentId("profile"),
 							),
 					]),
 		}),
 		visionTool(),
 	],
-	schema: { types: [siteSettings] },
+	schema: { types: [profile] },
 });

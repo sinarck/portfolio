@@ -1,10 +1,10 @@
 import { useWebHaptics } from "web-haptics/react";
 import { fadeInUp, growX, motion } from "@/components/ui/animate";
 import SocialLink from "@/components/ui/social-link";
-import type { SiteSettings } from "@/lib/sanity";
+import type { Profile } from "@/lib/profile";
 
 type FooterProps = {
-	socials: SiteSettings["socials"];
+	socials: Profile["socials"];
 	email: string;
 };
 

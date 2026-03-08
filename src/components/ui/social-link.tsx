@@ -2,9 +2,9 @@ import { GithubLogoIcon } from "@phosphor-icons/react/dist/icons/GithubLogo";
 import { LinkedinLogoIcon } from "@phosphor-icons/react/dist/icons/LinkedinLogo";
 import { XLogoIcon } from "@phosphor-icons/react/dist/icons/XLogo";
 import { useWebHaptics } from "web-haptics/react";
-import type { SiteSettings } from "@/lib/sanity";
+import type { Profile } from "@/lib/profile";
 
-type SocialItem = SiteSettings["socials"][number];
+type SocialItem = Profile["socials"][number];
 
 const socialIcons = {
 	github: GithubLogoIcon,

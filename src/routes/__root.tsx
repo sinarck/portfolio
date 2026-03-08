@@ -15,18 +15,18 @@ const Analytics = lazy(() =>
 import { MotionConfig } from "motion/react";
 import ErrorPage from "@/components/error-page";
 import NotFound from "@/components/not-found";
-import { getSiteSettings } from "@/lib/sanity";
+import { getProfile } from "@/lib/profile";
+import appCss from "../styles.css?url";
 
 const SITE_URL = "https://www.aadisanghvi.com";
 
-import appCss from "../styles.css?url";
-
 export const Route = createRootRoute({
-	loader: () => getSiteSettings(),
-	staleTime: 5 * 60_000, // 5 min — reuse cached data on client nav
-	gcTime: 30 * 60_000, // 30 min — keep in memory
+	loader: () => getProfile(),
+	staleTime: 60_000, // 1 min — refresh fairly quickly after content edits
+	gcTime: 15 * 60_000, // 15 min — keep recent data around in memory
 	headers: () => ({
-		"Cache-Control": "public, s-maxage=300, stale-while-revalidate=600",
+		"Cache-Control":
+			"public, max-age=0, s-maxage=60, stale-while-revalidate=300",
 	}),
 	head: ({ loaderData: s }) => ({
 		meta: [
