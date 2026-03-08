@@ -13,6 +13,8 @@ export const PROFILE_QUERY = defineQuery(`*[_type == "profile"][0]{
 	socials[] { _key, name, link, icon }
 }`);
 
+const PROFILE_REQUEST_TIMEOUT = 8_000;
+
 export const getProfile = createServerFn({ method: "GET" }).handler(
 	async (): Promise<Profile> => {
 		const profileQueryUrl = new URL(
@@ -21,19 +23,35 @@ export const getProfile = createServerFn({ method: "GET" }).handler(
 
 		profileQueryUrl.searchParams.set("query", PROFILE_QUERY);
 
-		const response = await fetch(profileQueryUrl, {
-			headers: { Accept: "application/json" },
-		});
+		const controller = new AbortController();
+		const timeoutId = setTimeout(
+			() => controller.abort(),
+			PROFILE_REQUEST_TIMEOUT,
+		);
 
-		if (!response.ok) {
-			throw new Error(`Failed to load profile: ${response.status}`);
+		let result: unknown;
+
+		try {
+			const response = await fetch(profileQueryUrl, {
+				cache: "no-store",
+				headers: { Accept: "application/json" },
+				signal: controller.signal,
+			});
+
+			if (!response.ok) {
+				throw new Error(`Failed to load profile: ${response.status}`);
+			}
+
+			result = ((await response.json()) as { result?: unknown }).result;
+		} catch (error) {
+			if (error instanceof DOMException && error.name === "AbortError") {
+				throw new Error("Profile request timed out");
+			}
+
+			throw error;
+		} finally {
+			clearTimeout(timeoutId);
 		}
-
-		const payload = (await response.json()) as {
-			result?: unknown;
-		};
-
-		const result = payload.result;
 
 		if (result == null) {
 			throw new Error("Profile not found");
