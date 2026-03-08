@@ -1,17 +1,22 @@
 # Portfolio
 
-An extremely simple personal website website built with TanStack Start and Tailwind CSS.
+An extremely simple personal website built with TanStack Start and Tailwind CSS.
+
+## Prerequisites
+
+- Node.js 20+
+- pnpm 9+
 
 ## Development
 
 ```bash
-bun install
-bun dev
+pnpm install
+pnpm dev
 ```
 
 ## Build
 
 ```bash
-bun run build
-bun preview
+pnpm build
+pnpm preview
 ```
