@@ -15,19 +15,16 @@
 	},
 	"dependencies": {
 		"@phosphor-icons/react": "^2.1.10",
-		"@t3-oss/env-core": "^0.13.11",
 		"@tailwindcss/vite": "^4.2.2",
 		"@tanstack/react-router": "^1.168.7",
 		"@tanstack/react-start": "^1.167.12",
 		"@tanstack/router-plugin": "^1.167.8",
 		"@typescript/native-preview": "7.0.0-dev.20260307.1",
 		"@vercel/analytics": "^1.6.1",
-		"groq": "^5.18.0",
 		"nitro": "npm:nitro-nightly@3.0.1-20260227-181935-bfbb207c",
 		"react": "^19.2.4",
 		"react-dom": "^19.2.4",
-		"tailwindcss": "^4.2.2",
-		"zod": "^4.3.6"
+		"tailwindcss": "^4.2.2"
 	},
 	"devDependencies": {
 		"@tanstack/devtools-vite": "^0.3.12",

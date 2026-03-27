@@ -16,10 +16,8 @@ const toolIgnorePatterns = [
 	".vinxi/**",
 	".zed/**",
 	"dist/**",
-	"studio/**",
 	"src/routeTree.gen.ts",
 	"src/styles.css",
-	"src/types/sanity.ts",
 ];
 
 const config = defineConfig({

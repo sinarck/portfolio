@@ -15,9 +15,6 @@ importers:
       '@phosphor-icons/react':
         specifier: ^2.1.10
         version: 2.1.10(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      '@t3-oss/env-core':
-        specifier: ^0.13.11
-        version: 0.13.11(typescript@5.9.3)(zod@4.3.6)
       '@tailwindcss/vite':
         specifier: ^4.2.2
         version: 4.2.2(@voidzero-dev/vite-plus-core@0.1.14(@types/node@22.19.15)(esbuild@0.27.4)(jiti@2.6.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))
@@ -36,9 +33,6 @@ importers:
       '@vercel/analytics':
         specifier: ^1.6.1
         version: 1.6.1(react@19.2.4)
-      groq:
-        specifier: ^5.18.0
-        version: 5.18.0
       nitro:
         specifier: npm:nitro-nightly@3.0.1-20260227-181935-bfbb207c
         version: nitro-nightly@3.0.1-20260227-181935-bfbb207c(@voidzero-dev/vite-plus-core@0.1.14(@types/node@22.19.15)(esbuild@0.27.4)(jiti@2.6.1)(tsx@4.21.0)(typescript@5.9.3)(yaml@2.8.2))(jiti@2.6.1)(lru-cache@11.2.6)(rollup@4.59.0)
@@ -51,9 +45,6 @@ importers:
       tailwindcss:
         specifier: ^4.2.2
         version: 4.2.2
-      zod:
-        specifier: ^4.3.6
-        version: 4.3.6
     devDependencies:
       '@tanstack/devtools-vite':
         specifier: ^0.3.12
@@ -959,23 +950,6 @@ packages:
   '@standard-schema/spec@1.1.0':
     resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==}
 
-  '@t3-oss/env-core@0.13.11':
-    resolution: {integrity: sha512-sM7GYY+KL7H/Hl0BE0inWfk3nRHZOLhmVn7sHGxaZt9FAR6KqREXAE+6TqKfiavfXmpRxO/OZ2QgKRd+oiBYRQ==}
-    peerDependencies:
-      arktype: ^2.1.0
-      typescript: '>=5.0.0'
-      valibot: ^1.0.0-beta.7 || ^1.0.0
-      zod: ^3.24.0 || ^4.0.0
-    peerDependenciesMeta:
-      arktype:
-        optional: true
-      typescript:
-        optional: true
-      valibot:
-        optional: true
-      zod:
-        optional: true
-
   '@tailwindcss/node@4.2.2':
     resolution: {integrity: sha512-pXS+wJ2gZpVXqFaUEjojq7jzMpTGf8rU6ipJz5ovJV6PUGmlJ+jvIwGrzdHdQ80Sg+wmQxUFuoW1UAAwHNEdFA==}
 
@@ -1770,10 +1744,6 @@ packages:
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
 
-  groq@5.18.0:
-    resolution: {integrity: sha512-TqdRsnfKU/F4CDzdp0pICQoPkIJCBDHELlKyIhdZ2heZAnv+Vadg7iIkOUCwykvfxDt6dhbP5AyLx5zunJ3c2Q==}
-    engines: {node: '>=20.19 <22 || >=22.12'}
-
   h3@2.0.1-rc.16:
     resolution: {integrity: sha512-h+pjvyujdo9way8qj6FUbhaQcHlR8FEq65EhTX9ViT5pK8aLj68uFl4hBkF+hsTJAH+H1END2Yv6hTIsabGfag==}
     engines: {node: '>=20.11.1'}
@@ -2429,9 +2399,6 @@ packages:
   zod@3.25.76:
     resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
 
-  zod@4.3.6:
-    resolution: {integrity: sha512-rftlrkhHZOcjDwkGlnUtZZkvaPHCsDATp4pGpuOOMDaTdDDXF91wuVDJoWoPsKX/3YPQ5fHuF3STjcYyKr+Qhg==}
-
 snapshots:
 
   '@babel/code-frame@7.27.1':
@@ -3005,11 +2972,6 @@ snapshots:
       solid-js: 1.9.11
 
   '@standard-schema/spec@1.1.0': {}
-
-  '@t3-oss/env-core@0.13.11(typescript@5.9.3)(zod@4.3.6)':
-    optionalDependencies:
-      typescript: 5.9.3
-      zod: 4.3.6
 
   '@tailwindcss/node@4.2.2':
     dependencies:
@@ -3776,8 +3738,6 @@ snapshots:
 
   graceful-fs@4.2.11: {}
 
-  groq@5.18.0: {}
-
   h3@2.0.1-rc.16(crossws@0.4.4(srvx@0.11.13)):
     dependencies:
       rou3: 0.8.1
@@ -4395,5 +4355,3 @@ snapshots:
       yargs-parser: 22.0.0
 
   zod@3.25.76: {}
-
-  zod@4.3.6: {}

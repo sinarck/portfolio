@@ -30,6 +30,3 @@ Thumbs.db
 # Vite
 .vite/
 .vite-hooks/
-
-# Sanity TypeGen (generated)
-studio/schema.json
