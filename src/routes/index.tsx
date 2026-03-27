@@ -2,9 +2,9 @@ import { createFileRoute, getRouteApi } from "@tanstack/react-router";
 import Currently from "@/components/currently";
 import Experiences from "@/components/experiences";
 import Footer from "@/components/footer";
+import Header from "@/components/header";
 import Projects from "@/components/projects";
 import Section from "@/components/section";
-import Header from "@/components/header";
 
 const rootRoute = getRouteApi("__root__");
 
@@ -16,7 +16,7 @@ function HomePage() {
 	const s = rootRoute.useLoaderData();
 
 	return (
-		// biome-ignore lint/correctness/useUniqueElementIds: intentional static ID for skip-link accessibility
+		// oxlint-disable-next-line
 		<main
 			id="main-content"
 			className="page-stagger max-w-2xl lg:max-w-3xl mx-auto px-6 min-h-dvh flex flex-col justify-center pt-12 pb-8 lg:py-8"

@@ -5,16 +5,53 @@ import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
 import { nitro } from "nitro/vite";
 import { visualizer } from "rollup-plugin-visualizer";
-import { defineConfig } from "vite";
+import { defineConfig } from "vite-plus";
 
 const analyzeBundle = process.env.ANALYZE === "true";
+const isProduction = process.env.NODE_ENV === "production";
+
+const toolIgnorePatterns = [
+	".output/**",
+	".vite-hooks/**",
+	".vinxi/**",
+	".zed/**",
+	"dist/**",
+	"studio/**",
+	"src/routeTree.gen.ts",
+	"src/styles.css",
+	"src/types/sanity.ts",
+];
 
 const config = defineConfig({
+	fmt: {
+		ignorePatterns: toolIgnorePatterns,
+		printWidth: 80,
+		useTabs: true,
+	},
+	staged: {
+		"*": "vp check --fix",
+	},
+	lint: {
+		ignorePatterns: toolIgnorePatterns,
+		options: {
+			typeAware: true,
+			typeCheck: true,
+		},
+	},
 	build: {
 		cssMinify: "lightningcss",
-	},
-	esbuild: {
-		drop: process.env.NODE_ENV === "production" ? ["console", "debugger"] : [],
+		rolldownOptions: {
+			output: {
+				minify: isProduction
+					? {
+							compress: {
+								dropConsole: true,
+								dropDebugger: true,
+							},
+						}
+					: undefined,
+			},
+		},
 	},
 	resolve: {
 		alias: {

@@ -1,49 +1,59 @@
 {
-  "name": "portfolio",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "vite dev --port 3000",
-    "build": "vite build",
-    "preview": "vite preview",
-    "typecheck": "tsgo --noEmit",
-    "format": "biome format",
-    "lint": "biome lint",
-    "check": "biome check"
-  },
-  "dependencies": {
-    "@phosphor-icons/react": "^2.1.10",
-    "@t3-oss/env-core": "^0.13.10",
-    "@tailwindcss/vite": "^4.2.1",
-    "@tanstack/react-router": "^1.166.2",
-    "@tanstack/react-start": "^1.166.2",
-    "@tanstack/router-plugin": "^1.166.2",
-    "@typescript/native-preview": "7.0.0-dev.20260307.1",
-    "@vercel/analytics": "^1.6.1",
-    "groq": "^5.13.0",
-    "nitro": "npm:nitro-nightly@3.0.1-20260227-181935-bfbb207c",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "tailwindcss": "^4.2.1",
-    "zod": "^4.3.6"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "2.2.4",
-    "@tanstack/devtools-vite": "^0.3.12",
-    "@tanstack/react-devtools": "^0.7.11",
-    "@tanstack/react-router-devtools": "^1.166.2",
-    "@types/node": "^22.19.15",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^5.1.4",
-    "babel-plugin-react-compiler": "^1.0.0",
-    "rollup-plugin-visualizer": "^7.0.1",
-    "typescript": "^5.9.3",
-    "vite": "^7.3.1"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ]
-  }
+	"name": "portfolio",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "vp dev --port 3000",
+		"build": "vp build",
+		"preview": "vp preview",
+		"format": "vp fmt",
+		"format:check": "vp fmt --check",
+		"lint": "vp lint",
+		"lint:fix": "vp lint --fix",
+		"check": "vp check",
+		"prepare": "vp config"
+	},
+	"dependencies": {
+		"@phosphor-icons/react": "^2.1.10",
+		"@t3-oss/env-core": "^0.13.11",
+		"@tailwindcss/vite": "^4.2.2",
+		"@tanstack/react-router": "^1.168.7",
+		"@tanstack/react-start": "^1.167.12",
+		"@tanstack/router-plugin": "^1.167.8",
+		"@typescript/native-preview": "7.0.0-dev.20260307.1",
+		"@vercel/analytics": "^1.6.1",
+		"groq": "^5.18.0",
+		"nitro": "npm:nitro-nightly@3.0.1-20260227-181935-bfbb207c",
+		"react": "^19.2.4",
+		"react-dom": "^19.2.4",
+		"tailwindcss": "^4.2.2",
+		"zod": "^4.3.6"
+	},
+	"devDependencies": {
+		"@tanstack/devtools-vite": "^0.3.12",
+		"@tanstack/react-devtools": "^0.7.11",
+		"@tanstack/react-router-devtools": "^1.166.11",
+		"@types/node": "^22.19.15",
+		"@types/react": "^19.2.14",
+		"@types/react-dom": "^19.2.3",
+		"@vitejs/plugin-react": "^5.2.0",
+		"babel-plugin-react-compiler": "^1.0.0",
+		"rollup-plugin-visualizer": "^7.0.1",
+		"typescript": "^5.9.3",
+		"vite": "npm:@voidzero-dev/vite-plus-core@^0.1.14",
+		"vite-plus": "latest"
+	},
+	"packageManager": "pnpm@10.33.0",
+	"pnpm": {
+		"overrides": {
+			"vite": "npm:@voidzero-dev/vite-plus-core@latest",
+			"vitest": "npm:@voidzero-dev/vite-plus-test@latest"
+		},
+		"peerDependencyRules": {
+			"allowAny": [
+				"vite",
+				"vitest"
+			]
+		}
+	}
 }
