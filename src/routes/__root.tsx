@@ -14,39 +14,27 @@ const Analytics = lazy(() =>
 
 import ErrorPage from "@/components/error-page";
 import NotFound from "@/components/not-found";
-import { getProfile } from "@/lib/profile";
+import { siteMetadata } from "@/config/site";
 import appCss from "../styles.css?url";
 
-const SITE_URL = "https://www.aadisanghvi.com";
-
 export const Route = createRootRoute({
-	loader: () => getProfile(),
-	staleTime: 60_000, // 1 min — refresh fairly quickly after content edits
-	gcTime: 15 * 60_000, // 15 min — keep recent data around in memory
-	headers: () => ({
-		"Cache-Control":
-			"public, max-age=0, s-maxage=60, stale-while-revalidate=300",
-	}),
-	head: ({ loaderData: s }) => ({
+	head: () => ({
 		meta: [
 			{ charSet: "utf-8" },
 			{ name: "viewport", content: "width=device-width, initial-scale=1" },
 			{ name: "theme-color", content: "#0a0a0a" },
-			{ title: s?.name ?? "" },
-			{ name: "description", content: s?.headline ?? "" },
-			{ property: "og:title", content: s?.name ?? "" },
-			{ property: "og:description", content: s?.headline ?? "" },
-			{ property: "og:url", content: SITE_URL },
-			{ property: "og:image", content: `${SITE_URL}/og-image.png` },
-			{ property: "og:type", content: "website" },
-			{ name: "twitter:url", content: SITE_URL },
+			{ title: siteMetadata.title },
+			{ name: "description", content: siteMetadata.description },
+			{ name: "robots", content: siteMetadata.robots },
+			{ name: "author", content: siteMetadata.name },
+			{ name: "creator", content: siteMetadata.name },
+			{ name: "publisher", content: siteMetadata.name },
+			{ property: "og:site_name", content: siteMetadata.name },
+			{ property: "og:locale", content: siteMetadata.locale },
+			{ name: "twitter:url", content: siteMetadata.origin },
 			{ name: "twitter:card", content: "summary_large_image" },
-			{ name: "twitter:title", content: s?.name ?? "" },
-			{ name: "twitter:description", content: s?.headline ?? "" },
-			{
-				name: "twitter:image",
-				content: `${SITE_URL}/og-image.png`,
-			},
+			{ name: "twitter:site", content: siteMetadata.twitterHandle },
+			{ name: "twitter:creator", content: siteMetadata.twitterHandle },
 			{ name: "color-scheme", content: "dark" },
 		],
 		links: [
@@ -71,12 +59,10 @@ export const Route = createRootRoute({
 			},
 		],
 	}),
-	errorComponent: ({ error, reset }) => (
+	errorComponent: ({ error }) => (
 		<ErrorPage
-			label="Error"
 			title="Something went wrong"
 			description={error.message || "An unexpected error occurred."}
-			action={{ type: "reset", reset }}
 		/>
 	),
 	notFoundComponent: () => <NotFound />,
