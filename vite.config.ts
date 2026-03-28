@@ -4,7 +4,10 @@ import { devtools } from "@tanstack/devtools-vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
 import { nitro } from "nitro/vite";
+import { loadEnv } from "vite";
 import { defineConfig } from "vite-plus";
+
+const env = loadEnv(process.env.NODE_ENV ?? "production", process.cwd(), "");
 
 const toolingIgnorePatterns = [
 	".output/**",
@@ -36,7 +39,7 @@ const config = defineConfig({
 		cssMinify: "lightningcss",
 		rolldownOptions: {
 			output: {
-				minify: process.env.NODE_ENV === "production" && {
+				minify: env.NODE_ENV === "production" && {
 					compress: {
 						dropConsole: true,
 						dropDebugger: true,
@@ -67,7 +70,7 @@ const config = defineConfig({
 			},
 			sitemap: {
 				enabled: true,
-				host: process.env.VITE_SITE_URL!,
+				host: env.VITE_SITE_URL,
 			},
 		}),
 		viteReact({
