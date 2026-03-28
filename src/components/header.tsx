@@ -1,13 +1,13 @@
 type HeaderProps = {
-	name: string;
+	displayName: string;
 	headline: string;
 };
 
-export default function Header({ name, headline }: HeaderProps) {
+export default function Header({ displayName, headline }: HeaderProps) {
 	return (
 		<header className="mb-10 lg:mb-8 enter-group">
 			<h1 className="text-base font-semibold tracking-tight text-pretty enter">
-				{name}
+				{displayName}
 			</h1>
 			<p className="mt-3 text-muted-foreground enter">{headline}</p>
 		</header>

@@ -1,17 +1,17 @@
 import { ArrowUpRightIcon } from "@phosphor-icons/react/dist/icons/ArrowUpRight";
-import type { Profile } from "@/lib/profile";
+import type { ProjectLink } from "@/types/profile";
 
 type ProjectsProps = {
-	items: Profile["projects"];
+	items: ProjectLink[];
 };
 
 export default function Projects({ items }: ProjectsProps) {
 	return (
 		<ul className="-mx-3 space-y-1 enter-list">
 			{items.map((project) => (
-				<li key={project._key} className="enter">
+				<li key={`${project.name}:${project.url}`} className="enter">
 					<a
-						href={project.link}
+						href={project.url}
 						target="_blank"
 						rel="noreferrer noopener"
 						className="group block px-3 py-3 transition-colors duration-200 ease-out pointer-fine:hover:bg-(--hover-overlay) focus-ring"

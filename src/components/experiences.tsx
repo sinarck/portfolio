@@ -1,31 +1,20 @@
-import type { Profile } from "@/lib/profile";
+import type { WorkExperience } from "@/types/profile";
 
 type ExperiencesProps = {
-	items: Profile["experience"];
+	items: WorkExperience[];
 };
-
-function formatMonthYear(date: string) {
-	const [year, month, day] = date.split("-").map(Number);
-	if (!year || !month || !day) return date;
-
-	return new Intl.DateTimeFormat("en-US", {
-		month: "short",
-		year: "numeric",
-		timeZone: "UTC",
-	}).format(new Date(Date.UTC(year, month - 1, day)));
-}
 
 export default function Experiences({ items }: ExperiencesProps) {
 	return (
 		<ul className="space-y-6 enter-list">
-			{items.map((exp) => (
+			{items.map((experience) => (
 				<li
-					key={exp._key}
+					key={`${experience.company}:${experience.startDate}`}
 					className="grid grid-cols-[2.5rem_1fr] gap-x-4 enter"
 				>
 					<img
-						src={exp.logo ?? undefined}
-						alt={`${exp.company} logo`}
+						src={experience.logoUrl}
+						alt={`${experience.company} logo`}
 						width={40}
 						height={40}
 						loading="lazy"
@@ -35,19 +24,18 @@ export default function Experiences({ items }: ExperiencesProps) {
 					<div className="min-w-0 flex items-center justify-between gap-4 self-end">
 						<div className="min-w-0 flex items-center gap-2">
 							<span className="text-foreground leading-none">
-								{exp.company}
+								{experience.company}
 							</span>
-							<span className="text-xs text-muted-foreground px-2 py-0.5 rounded-full border border-border leading-none">
-								{exp.role}
+							<span className="text-xs text-muted-foreground px-2 py-0.5 rounded-full border border-border leading-none select-none">
+								{experience.role}
 							</span>
 						</div>
 						<time className="text-sm text-muted-foreground shrink-0 tabular-nums hidden sm:block leading-none">
-							{formatMonthYear(exp.startDate)} -{" "}
-							{exp.endDate ? formatMonthYear(exp.endDate) : "Present"}
+							{experience.startDate} - {experience.endDate}
 						</time>
 					</div>
 					<p className="self-start mt-1 text-sm text-muted-foreground sm:line-clamp-2">
-						{exp.description}
+						{experience.description}
 					</p>
 				</li>
 			))}
