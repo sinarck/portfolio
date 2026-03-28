@@ -4,13 +4,9 @@ import { devtools } from "@tanstack/devtools-vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
 import { nitro } from "nitro/vite";
-import { visualizer } from "rollup-plugin-visualizer";
 import { defineConfig } from "vite-plus";
 
-const analyzeBundle = process.env.ANALYZE === "true";
-const isProduction = process.env.NODE_ENV === "production";
-
-const toolIgnorePatterns = [
+const toolingIgnorePatterns = [
 	".output/**",
 	".vite-hooks/**",
 	".vinxi/**",
@@ -22,7 +18,7 @@ const toolIgnorePatterns = [
 
 const config = defineConfig({
 	fmt: {
-		ignorePatterns: toolIgnorePatterns,
+		ignorePatterns: toolingIgnorePatterns,
 		printWidth: 80,
 		useTabs: true,
 	},
@@ -30,7 +26,7 @@ const config = defineConfig({
 		"*": "vp check --fix",
 	},
 	lint: {
-		ignorePatterns: toolIgnorePatterns,
+		ignorePatterns: toolingIgnorePatterns,
 		options: {
 			typeAware: true,
 			typeCheck: true,
@@ -40,14 +36,12 @@ const config = defineConfig({
 		cssMinify: "lightningcss",
 		rolldownOptions: {
 			output: {
-				minify: isProduction
-					? {
-							compress: {
-								dropConsole: true,
-								dropDebugger: true,
-							},
-						}
-					: undefined,
+				minify: process.env.NODE_ENV === "production" && {
+					compress: {
+						dropConsole: true,
+						dropDebugger: true,
+					},
+				},
 			},
 		},
 	},
@@ -61,9 +55,19 @@ const config = defineConfig({
 		nitro(),
 		tailwindcss(),
 		tanstackStart({
+			prerender: {
+				enabled: true,
+				autoSubfolderIndex: true,
+				autoStaticPathsDiscovery: true,
+				concurrency: 8,
+				crawlLinks: true,
+				failOnError: true,
+				retryCount: 1,
+				retryDelay: 250,
+			},
 			sitemap: {
 				enabled: true,
-				host: "https://www.aadisanghvi.com",
+				host: process.env.VITE_SITE_URL!,
 			},
 		}),
 		viteReact({
@@ -71,13 +75,6 @@ const config = defineConfig({
 				plugins: ["babel-plugin-react-compiler"],
 			},
 		}),
-		analyzeBundle &&
-			visualizer({
-				filename: ".output/bundle-analysis.html",
-				gzipSize: true,
-				brotliSize: true,
-				open: false,
-			}),
 	],
 });
 
