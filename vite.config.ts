@@ -7,7 +7,7 @@ import { nitro } from "nitro/vite";
 import { loadEnv } from "vite";
 import { defineConfig } from "vite-plus";
 
-const env = loadEnv(process.env.NODE_ENV ?? "production", process.cwd(), "");
+const env = loadEnv(process.env.NODE_ENV!, process.cwd(), "");
 
 const toolingIgnorePatterns = [
 	".output/**",

@@ -60,7 +60,7 @@ export const profileContent: ProfileContent = {
 		{
 			name: "X",
 			icon: XLogoIcon,
-			url: "https://x.com/aadisanghvii",
+			url: "https://x.com/aadisanghv",
 		},
 	],
 };
